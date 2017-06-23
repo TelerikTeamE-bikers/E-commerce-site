@@ -1,0 +1,26 @@
+{
+  "name": "E-commerce-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TelerikTeamE-bikers/E-commerce-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TelerikTeamE-bikers/E-commerce-site/issues"
+  },
+  "homepage": "https://github.com/TelerikTeamE-bikers/E-commerce-site#readme",
+  "dependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.0.0",
+    "eslint-config-google": "^0.8.0",
+    "yarn": "^0.24.5"
+  }
+}
