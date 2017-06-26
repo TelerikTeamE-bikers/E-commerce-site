@@ -1,35 +1,16 @@
-// class HomeController {
-//     // constructor(asd){
-//     //     this.asd=asd;
-//     // };
+const express = require('express');
+const app = express();
+app.set('view engine', 'pug');
+app.set('views', '../views');
 
-//     loadHome(req, res) {
-//         res.send(this.asd);
-//     };
-// }
 
-// const homeController = new HomeController();
-
-// module.exports = { homeController };
-
-const loadHome = (req, res) => {
-    res.send("1");
-};
-
-const loadHome2 = (req, res) => {
-    res.send('2');
-};
-
+const loadHome = app.get('/', (req, res) => { // using PUG
+    res.render('home', {
+        title: 'Home page',
+        message: 'Hello there!. This is home page created using pug',
+    });
+});
 
 module.exports = {
     loadHome,
-    loadHome2
 };
-
-// module.exports = function ({ data }) {
-//     return {
-//         home(req, res) {
-//             res.send(data);
-//         }
-//     };
-// };
