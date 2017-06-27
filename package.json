@@ -1,30 +1,35 @@
 {
-  "name": "E-commerce-site",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TelerikTeamE-bikers/E-commerce-site.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TelerikTeamE-bikers/E-commerce-site/issues"
-  },
-  "homepage": "https://github.com/TelerikTeamE-bikers/E-commerce-site#readme",
-  "dependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.0.0",
-    "eslint-config-google": "^0.8.0",
-    "express": "^4.15.3",
-    "jquery": "^3.2.1",
-    "nodemon": "^1.11.0",
-    "pug": "^2.0.0-rc.2",
-    "yarn": "^0.24.5"
-  }
+    "name": "E-commerce-site",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha ./src/**/*.test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TelerikTeamE-bikers/E-commerce-site.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/TelerikTeamE-bikers/E-commerce-site/issues"
+    },
+    "homepage": "https://github.com/TelerikTeamE-bikers/E-commerce-site#readme",
+    "dependencies": {
+        "babel-eslint": "^7.2.3",
+        "eslint": "^4.0.0",
+        "eslint-config-google": "^0.8.0",
+        "express": "^4.15.3",
+        "jquery": "^3.2.1",
+        "nodemon": "^1.11.0",
+        "pug": "^2.0.0-rc.2",
+        "yarn": "^0.24.5"
+    },
+    "devDependencies": {
+        "chai": "^4.0.2",
+        "mocha": "^3.4.2",
+        "supertest": "^3.0.0"
+    }
 }

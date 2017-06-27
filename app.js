@@ -11,8 +11,17 @@ app.set('views', './src/views');
 app.get('/', (req, res) => { // Rendering home page using PUG
     res.render('home', {
         title: 'Home page',
-        message: 'Hello there!. This is home page created using pug',
+        message: 'Hello there!. This is home page created using PUG',
     });
 });
 
-app.listen(3000);
+app.get('/404', (req, res) => {
+    res.status(404).send({
+        error: 'Page not found.',
+        name: 'Todo App v1.0',
+    });
+});
+
+app.listen(3030);
+
+module.exports.app = app;
