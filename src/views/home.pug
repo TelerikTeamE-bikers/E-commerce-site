@@ -1,5 +1,25 @@
+
 html
   head
     title= title
+    link(rel='stylesheet', href='../styles/home.css')
   body
-    h1= message
+    header.site-header
+      .wrapper
+        .site-header__logo
+          img(src="")
+        .site-header__menu-logo
+          .site-header__menu-logo__top
+          .site-header__menu-logo__middle
+          .site-header__menu-logo__bottom
+        .site-header__menu-content
+          .site-header__btn-container
+            a.btn.open-modal(href="#") Get in Touch
+          nav.primary-nav.primary-nav--pull-right
+            ul
+              li
+                a#our-begining-link(href="#our-beginning") Our Beginning
+              li
+                a#features-link(href="#features") Features
+              li
+                a#testimonials-link(href="testimonials") Testimonials

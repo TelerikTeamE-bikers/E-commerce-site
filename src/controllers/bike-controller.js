@@ -5,15 +5,15 @@ const Unit = mongoose.model('Unit', { unitType: String });
 
 const loadAllBikes = (req, res) => {
     //mongoose.connect('mongodb://localhost:27017/DatabaseName')
-    
+
     // MongoClient.connect('mongodb://localhost:27017/DatabaseName')
     //     .then((db)=> {
     //         console.log(db);
     //         // query the database...
     //     })
 
-    var b = new Unit({ unitType: 'Bike' }).save(() =>{
-        var a = Unit.find({ unitType: 'Bike' }).exec(() => {
+    const b = new Unit({ unitType: 'Bike' }).save(() => {
+        const a = Unit.find({ unitType: 'Bike' }).exec(() => {
             console.log(a);
         });
     }); // create
