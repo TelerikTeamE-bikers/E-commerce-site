@@ -1,5 +1,8 @@
 const express = require('express');
+
 // const homeController = require('./src/controllers/home-controller'); // Not sure how to use it yet
+const bikeController = require('./src/controllers/bike-controller');
+
 const app = express();
 app.set('view engine', 'pug');
 app.set('views', './src/views');
@@ -15,6 +18,10 @@ app.get('/', (req, res) => { // Rendering home page using PUG
     });
 });
 
+app.get('/AllBikes', (req, res) => {
+    bikeController.loadAllBikes(req, res);
+});
+
 app.get('/404', (req, res) => {
     res.status(404).send({
         error: 'Page not found.',
@@ -22,6 +29,6 @@ app.get('/404', (req, res) => {
     });
 });
 
-app.listen(3030);
+app.listen(3030, () => console.log(`App running at :3030`));
 
 module.exports.app = app;
