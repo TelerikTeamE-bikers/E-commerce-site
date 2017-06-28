@@ -29,6 +29,9 @@ app.get('/404', (req, res) => {
     });
 });
 
-app.listen(3030, () => console.log(`App running at :3030`));
+app.listen(3030, () => {
+    var date = new Date();
+    console.log('  >Log--' + date.toLocaleTimeString() + ` :: App running at :3030`)
+});
 
 module.exports.app = app;
