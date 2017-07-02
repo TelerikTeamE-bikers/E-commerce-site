@@ -1,0 +1,2 @@
+To Start Mongo from CMD:
+	C:\Program Files\MongoDB\Server\3.4\bin>mongod.exe --dbpath /F:/Development/MongoData
