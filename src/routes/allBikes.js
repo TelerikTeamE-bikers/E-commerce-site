@@ -20,6 +20,8 @@ router.get('/', (req, res) => {
     }).catch((err) => {
         errorHandler.handleError(req, res, err);
     });
+
+    errorHandler.handleError(req, res, new Error("test error"), 500);
 });
 
 module.exports = router;

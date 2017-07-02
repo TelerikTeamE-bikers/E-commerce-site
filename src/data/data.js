@@ -80,35 +80,5 @@ module.exports = {
                     errorHandler.handleError(req, res, err, 444);
                 });
         });
-
-        // MongoClient.connect(constants.DB_URL, (err, db) => {
-        //     if (err) {
-        //         console.log('Unable to connect to the Server', err);
-        //     } else {
-        //         console.log('Connection established to', constants.DB_URL);
-
-        //         var bikesCollection = db.collection('bikes');
-
-        //         bikesCollection.find({}).toArray(function (err, bikeResult) {
-        //             let result;
-
-        //             if (err) {
-        //                 result = err;
-        //             } else if (bikeResult.length) {
-        //                 result = bikeResult;
-        //             } else {
-        //                 result = 'No bikes found';
-        //             }
-
-        //             db.close();
-
-        //             return result;
-        //             // return new Promise((resolve, reject) =>{
-        //             //     resolve(result);
-        //             //     reject(result);
-        //             // });
-        //         });
-        //     };
-        //});
     }
 };

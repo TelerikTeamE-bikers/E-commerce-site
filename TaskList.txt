@@ -1,0 +1,16 @@
+_Sava_
+Done:
+-set up mongo db
+-get bikes from mongo
+
+Currently working on:
+-inserting bikes in mongo
+-error handling
+
+_Peter_
+Done:
+Currently working on:
+
+_Todor_
+Done:
+Currently working on:
