@@ -10,7 +10,7 @@ app.set('view engine', 'pug');
 app.set('views', './src/views');
 
 
-const constants = require('../common/constants');
+const constants = require('./src/common/constants');
 const mainRoutes = require('./src/routes');
 const allBikesRoutes = require('./src/routes/allBikes.js');
 const spareParts = require('./src/routes/spareParts.js');
