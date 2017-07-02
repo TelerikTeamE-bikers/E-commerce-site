@@ -15,7 +15,7 @@
         }
     }
     &__btn-container {
-        margin: 0 auto;
+        margin: 5 auto;
         @mixin atMedium {
             float: right;
         }
