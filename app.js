@@ -4,8 +4,11 @@ const express = require('express');
 //const bikeController = require('./src/controllers/bike-controller');
 
 const app = express();
+//app.use(express.static(path.join('temp')));
+app.use('/static', express.static('temp'));
 app.set('view engine', 'pug');
 app.set('views', './src/views');
+
 
 const constants = require('../common/constants');
 const mainRoutes = require('./src/routes');
