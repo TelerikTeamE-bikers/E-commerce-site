@@ -1,11 +1,14 @@
 const express = require('express');
-
-// const homeController = require('./src/controllers/home-controller'); // Not sure how to use it yet
+const path = require('path');
+// const homeController = require('./src/controllers/home-controller');  
 const bikeController = require('./src/controllers/bike-controller');
 
 const app = express();
+//app.use(express.static(path.join('temp')));
+app.use('/static', express.static('temp'));
 app.set('view engine', 'pug');
 app.set('views', './src/views');
+
 
 // app.get('/', (req, res) => { // using PUG
 //     res.send(homeController.loadHome);
