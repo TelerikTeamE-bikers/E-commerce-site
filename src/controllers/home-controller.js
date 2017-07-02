@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const app = express();
 app.set('view engine', 'pug');
 app.set('views', '../views');
@@ -13,4 +13,4 @@ const loadHome = app.get('/', (req, res) => { // using PUG
 
 module.exports = {
     loadHome,
-};
+};*/

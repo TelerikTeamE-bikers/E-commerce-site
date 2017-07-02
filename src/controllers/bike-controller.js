@@ -1,4 +1,4 @@
-const mongodb = require('mongodb');
+/*const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const mongoose = require('mongoose');
 const Unit = mongoose.model('Unit', { unitType: String });
@@ -42,4 +42,4 @@ const loadAllBikes = (req, res) => {
 
 module.exports = {
     loadAllBikes,
-};
+};*/
