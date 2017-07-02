@@ -13,11 +13,14 @@ app.set('views', './src/views');
 const constants = require('./src/common/constants');
 const mainRoutes = require('./src/routes');
 const allBikesRoutes = require('./src/routes/allBikes.js');
-const spareParts = require('./src/routes/spareParts.js');
+const sparePartsRoutes = require('./src/routes/spareParts.js');
+const accessoriesRoutes = require('./src/routes/accessories.js');
+
 
 app.use('/', mainRoutes);
 app.use('/allbikes', allBikesRoutes);
-app.use('/Bike-Spare-Parts', spareParts);
+app.use('/Bike-Spare-Parts', sparePartsRoutes);
+app.use('/accessories', accessoriesRoutes);
 
 // app.get('/', (req, res) => { // using PUG
 //     res.send(homeController.loadHome);
@@ -40,8 +43,8 @@ app.use((req, res, next) => {
 //error handler
 app.use((err, req, res, next) => {
     res.locals.error = err;
-    res.status(err.status)
-    res.render('error')
+    res.status(err.status);
+    res.render('error');
 })
 
 app.listen(constants.APP_PORT, () => {
