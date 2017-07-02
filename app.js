@@ -1,13 +1,7 @@
 const express = require('express');
-<<<<<<< HEAD
-const path = require('path');
-// const homeController = require('./src/controllers/home-controller');  
-const bikeController = require('./src/controllers/bike-controller');
-=======
 
 // const homeController = require('./src/controllers/home-controller'); // Not sure how to use it yet
 //const bikeController = require('./src/controllers/bike-controller');
->>>>>>> ce82410bcd40722074c3f5ee47371ac11f392741
 
 const app = express();
 //app.use(express.static(path.join('temp')));
@@ -15,8 +9,6 @@ app.use('/static', express.static('temp'));
 app.set('view engine', 'pug');
 app.set('views', './src/views');
 
-<<<<<<< HEAD
-=======
 const mainRoutes = require('./src/routes');
 const allBikesRoutes = require('./src/routes/allBikes.js');
 const spareParts = require('./src/routes/spareParts.js');
@@ -24,7 +16,6 @@ const spareParts = require('./src/routes/spareParts.js');
 app.use('/', mainRoutes);
 app.use('/allbikes', allBikesRoutes);
 app.use('/Bike-Spare-Parts', spareParts);
->>>>>>> ce82410bcd40722074c3f5ee47371ac11f392741
 
 // app.get('/', (req, res) => { // using PUG
 //     res.send(homeController.loadHome);
