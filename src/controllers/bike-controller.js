@@ -1,7 +1,8 @@
-const mongodb = require('mongodb');
+/*const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const mongoose = require('mongoose');
-const Unit = mongoose.model('Unit', { unitType: String });
+const protocol = 'mongodb:/';
+const server = 'localhost:27017';
+const databaseName = 'testDb';
 
 const loadAllBikes = (req, res) => {
     //mongoose.connect('mongodb://localhost:27017/DatabaseName')
@@ -11,14 +12,6 @@ const loadAllBikes = (req, res) => {
     //         console.log(db);
     //         // query the database...
     //     })
-
-    const b = new Unit({ unitType: 'Bike' }).save(() => {
-        const a = Unit.find({ unitType: 'Bike' }).exec(() => {
-            console.log(a);
-        });
-    }); // create
-
-    // var a = Unit.find({ unitType: 'Bike' }).exec(callback); // fetch
 
     // console.log(a);
 
@@ -42,4 +35,4 @@ const loadAllBikes = (req, res) => {
 
 module.exports = {
     loadAllBikes,
-};
+};*/
