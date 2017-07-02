@@ -7,10 +7,12 @@ Currently working on:
 -inserting bikes in mongo
 -error handling
 
+----------------------------------------------
 _Peter_
 Done:
 Currently working on:
 
+-----------------------------------------------
 _Todor_
 Done:
 Currently working on:
