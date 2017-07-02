@@ -6,8 +6,8 @@ extends layout.pug
 //-     li= model
 
 block content
-  //- table
-  //- each bike in bikeList
-  //-   tr#bike_list_item    
-  //-     td #{bike.brand}
-  //-     td #{bike.model}
+  table
+  each bike in bikeList
+    tr#bike_list_item    
+      td #{bike.brand}
+      td #{bike.model}

@@ -1,9 +1,9 @@
-const MongoClient = require('mongodb').MongoClient;
-const ObjectId = require('mongodb').ObjectId;
+const { MongoClient, ObectId } = require('mongodb');
 //const crypto = require('crypto-js');
 const constants = require('../common/constants');
 const userModel = require('../models/user');
 const bikeModel = require('../models/bike');
+const errorHandler = require('../errorHandling/errorHandler');
 
 module.exports = {
     // findUserById(id) {
@@ -51,7 +51,7 @@ module.exports = {
     // },
     addBike(bike) {
         MongoClient.connect(constants.DB_URL, (err, db) => {
-            if(err){
+            if (err) {
                 return console.log("Failed to connect to db!!" + "\n" + err)
             }
             db.collection('bikes').insertOne({
@@ -62,29 +62,53 @@ module.exports = {
             db.close();
         });
     },
-    getAllBikes() {
-        MongoClient.connect(constants.DB_URL, (err, db) => {
-            if (err) {
-                console.log('Unable to connect to the Server', err);
-            } else {
-                console.log('Connection established to', url);
-
-                var bikesCollection = db.collection('bikes');
-
-                bikesCollection.find({}).toArray(function (err, bikeResult) {
-                    let result;
-                    if (err) {
-                        result = err;
-                    } else if (bikeResult.length) {
-                        result = employeeResult;
-                    } else {
-                        result = 'No documents found';
-                    }
+    getAllBikes(req, res) {
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(constants.DB_URL)
+                .then((db) => {
+                    db.collection('bikes')
+                        .find()
+                        .toArray()
+                        .then((bikes) => {
+                            resolve(bikes || null);
+                        })
 
                     db.close();
-                    return result;
+                })
+                .catch((err) => {
+                    console.log('Unable to connect to the Server', err);
+                    errorHandler.handleError(req, res, err, 444);
                 });
-            };
         });
+
+        // MongoClient.connect(constants.DB_URL, (err, db) => {
+        //     if (err) {
+        //         console.log('Unable to connect to the Server', err);
+        //     } else {
+        //         console.log('Connection established to', constants.DB_URL);
+
+        //         var bikesCollection = db.collection('bikes');
+
+        //         bikesCollection.find({}).toArray(function (err, bikeResult) {
+        //             let result;
+
+        //             if (err) {
+        //                 result = err;
+        //             } else if (bikeResult.length) {
+        //                 result = bikeResult;
+        //             } else {
+        //                 result = 'No bikes found';
+        //             }
+
+        //             db.close();
+
+        //             return result;
+        //             // return new Promise((resolve, reject) =>{
+        //             //     resolve(result);
+        //             //     reject(result);
+        //             // });
+        //         });
+        //     };
+        //});
     }
 };
