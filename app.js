@@ -5,7 +5,7 @@ const express = require('express');
 
 const app = express();
 //app.use(express.static(path.join('temp')));
-app.use('/static', express.static('temp'));
+app.use('/static', express.static('public'));
 app.set('view engine', 'pug');
 app.set('views', './src/views');
 

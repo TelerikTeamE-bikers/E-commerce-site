@@ -14,5 +14,5 @@
              console.log(errorInfo.toString());
              this.emit('end');
          })
-         .pipe(gulp.dest('./temp/styles'));
+         .pipe(gulp.dest('./public/styles'));
  });
