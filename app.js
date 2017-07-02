@@ -7,6 +7,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', './src/views');
 
+const constants = require('../common/constants');
 const mainRoutes = require('./src/routes');
 const allBikesRoutes = require('./src/routes/allBikes.js');
 const spareParts = require('./src/routes/spareParts.js');
@@ -40,10 +41,10 @@ app.use((err, req, res, next) => {
     res.render('error')
 })
 
-app.listen(3030, () => {
+app.listen(constants.APP_PORT, () => {
     const date = new Date();
     console.log('  >Log--' + date.toLocaleTimeString() +
-        ` :: App running at :3030`);
+        ` :: App running at :` + constants.APP_PORT);
 });
 
 module.exports.app = app;
