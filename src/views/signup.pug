@@ -1,21 +1,24 @@
 extends layout.pug
 
-block content
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/signup.css')
 
-    br
-    form
-    .signup-container
-        label
-        b Email
-        input.singup-text(type='text', placeholder='Enter Email', name='email', required='')
-        label
-        b Password
-        input.singup-password(type='password', placeholder='Enter Password', name='psw', required='')
-        label
-        b Repeat Password
-        input.singup-password(type='password', placeholder='Repeat Password', name='psw-repeat', required='')
-        input(type='checkbox', checked='checked')
-        |  Remember me
-        .clearfix
-        button.cancelbtn(type='button') Cancel
-        button.signupbtn(type='submit') Sign Up
+block content
+    .wrapper
+        br
+        form
+        .signup-container
+            label
+            b Email
+            input.singup-text(type='text', placeholder='Enter Email', name='email', required='')
+            label
+            b Password
+            input.singup-password(type='password', placeholder='Enter Password', name='psw', required='')
+            label
+            b Repeat Password
+            input.singup-password(type='password', placeholder='Repeat Password', name='psw-repeat', required='')
+            input(type='checkbox', checked='checked')
+            |  Remember me
+            .clearfix
+            button.cancelbtn(type='button') Cancel
+            button.signupbtn(type='submit') Sign Up
