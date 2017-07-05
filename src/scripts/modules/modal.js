@@ -11,8 +11,12 @@ class Modal {
     events() {
         //clicking te open modal button
         this.openModalButton.click(this.openModal.bind(this));
-        console.log('TESTTT')
-            //clicking the x close modal button
+        // console.log(this.openModalButton);
+        // console.log(this.modal);
+        // console.log('TESTTT123')
+        // console.log(this.openModalButton.click);
+
+        //clicking the x close modal button
         this.closeModalButton.click(this.closeModal.bind(this));
 
         //pushes any key
@@ -28,7 +32,7 @@ class Modal {
 
     openModal() {
         this.modal.addClass('modal--is-visible');
-        console.log('TESTTT Open modal');
+        // console.log('TESTTT Open modal');
         return false; // do let anchor tag (in this case the button)with # to go to the top of the page 
 
     }

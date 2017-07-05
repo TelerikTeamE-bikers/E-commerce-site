@@ -10340,7 +10340,10 @@ var _modal2 = _interopRequireDefault(_modal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _jquery2.default)('.modal').addClass('modal--is-visible');
+// console.log("here123");
+// console.log($('.modal').eq(1).html());
+// $('.modal').addClass('modal--is-visible');
+
 
 var modal = new _modal2.default();
 
@@ -10380,7 +10383,11 @@ var Modal = function () {
         value: function events() {
             //clicking te open modal button
             this.openModalButton.click(this.openModal.bind(this));
-            console.log('TESTTT');
+            // console.log(this.openModalButton);
+            // console.log(this.modal);
+            // console.log('TESTTT123')
+            // console.log(this.openModalButton.click);
+
             //clicking the x close modal button
             this.closeModalButton.click(this.closeModal.bind(this));
 

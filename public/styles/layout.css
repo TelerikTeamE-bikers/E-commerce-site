@@ -720,6 +720,28 @@ a {
                     transform: scale(1);
         }
 
+.site-footer {
+    padding: 0.5rem 0;
+    background-color: #2f5572;
+    text-align: center;
+    color: #FFF;
+}
+
+.site-footer__text {
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: 200;
+    }
+
+@media (min-width: 800px) {
+
+.site-footer__text {
+            display: inline;
+            margin-right: 1.4rem;
+            margin-bottom: 0
+    }
+    }
+
 .primary-nav {
     padding-top: 10px;
 }
