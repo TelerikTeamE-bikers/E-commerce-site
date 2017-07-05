@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 
 //  const homeController = require('./src/controllers/home-controller');
@@ -50,10 +51,13 @@ app.use((err, req, res, next) => {
     res.status(err.status);
     res.render('error');
 });
+=======
+const constants = require('./src/common/constants');
+const app = require('./src/core/core')('data');;
+>>>>>>> 1f53e0804cb8cf95450f11a3bd65ebe774b94e41
 
 app.listen(constants.APP_PORT, () => {
-    const date = new Date();
-    console.log('  >Log--' + date.toLocaleTimeString() +
+    console.log('  >Log--' + new Date().toLocaleTimeString() +
         ` :: App running at :` + constants.APP_PORT);
 });
 
