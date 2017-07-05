@@ -11,13 +11,26 @@ const signupRoutes = require('../routes/signup.js');
 module.exports = function (data) {
 
     let app = express();
+    app.set('view engine', 'pug');
+
+    var fs = require('fs');
+    var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+    process.env.ENV_MODE = config.Environment;
+
+    if (process.env.ENV_MODE === 'PRODUCTION') {
+        console.log(true);
+        //app.use('/static', express.static('build'));
+    } else {
+        console.log(process.env.ENV_MODE);
+        //app.use('/static', express.static('public'));
+    }
 
     // const homeController = require('./src/controllers/home-controller'); // Not sure how to use it yet
     //const bikeController = require('./src/controllers/bike-controller');
 
     //app.use(express.static(path.join('temp')));
     app.use('/static', express.static('public'));
-    app.set('view engine', 'pug');
+
     app.set('views', './src/views');
 
     app.use('/', mainRoutes);
