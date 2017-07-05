@@ -1,13 +1,17 @@
 header.site-header
     .wrapper
-        .site-header__logo
-          img(src="")
+        a.site-header__logo(href="/")
+          
         .site-header__menu-logo
           .site-header__menu-logo__top
           .site-header__menu-logo__middle
           .site-header__menu-logo__bottom
         .site-header__menu-content
           .site-header__btn-container
+            a.btn(href="login") Log-In
+            span &nbsp
+            a.btn(href="signup") Sign-Up
+            span &nbsp
             a.btn.open-modal(href="#") Get in Touch
           nav.primary-nav.primary-nav--pull-right
             ul
