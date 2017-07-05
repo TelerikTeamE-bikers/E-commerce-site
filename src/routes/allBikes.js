@@ -6,7 +6,7 @@ const errorHandler = require('../errorHandling/errorHandler');
 
 router.get('/', (req, res) => {
     console.log("all bikes page");
-
+ //
     //const bike = bikeModel.getBike('brand 1', 'model 1');
     //console.log(bike);
     //data.addBike(bike);
