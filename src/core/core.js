@@ -1,12 +1,12 @@
 const express = require('express');
+const constants = require('../common/constants');
 
-const constants = require('./src/common/constants');
-const mainRoutes = require('./src/routes');
-const allBikesRoutes = require('./src/routes/allBikes.js');
-const sparePartsRoutes = require('./src/routes/spareParts.js');
-const accessoriesRoutes = require('./src/routes/accessories.js');
-const loginRoutes = require('./src/routes/login.js');
-const signupRoutes = require('./src/routes/signup.js');
+const mainRoutes = require('../routes');
+const allBikesRoutes = require('../routes/allBikes.js');
+const sparePartsRoutes = require('../routes/spareParts.js');
+const accessoriesRoutes = require('../routes/accessories.js');
+const loginRoutes = require('../routes/login.js');
+const signupRoutes = require('../routes/signup.js');
 
 module.exports = function (data) {
 
