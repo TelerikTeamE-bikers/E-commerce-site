@@ -569,11 +569,7 @@ a {
 }
         .site-header--dark {
             background-color: rgba(23, 51, 72, .85);
-<<<<<<< HEAD
         }
-=======
-        }
->>>>>>> 5cbac4e5ab454fb78823f19c7021d1459cbb37f6
     }
 
 .site-header__btn-container {
@@ -584,11 +580,7 @@ a {
 
 .site-header__btn-container {
             float: right
-<<<<<<< HEAD
     }
-=======
-    }
->>>>>>> 5cbac4e5ab454fb78823f19c7021d1459cbb37f6
     }
 
 .site-header__logo {
@@ -618,11 +610,7 @@ a {
             .site-header--dark .site-header__logo {
                 -webkit-transform: scale(.57);
                         transform: scale(.57);
-<<<<<<< HEAD
             }
-=======
-            }
->>>>>>> 5cbac4e5ab454fb78823f19c7021d1459cbb37f6
     }
 
 .site-header__menu-logo {
@@ -683,11 +671,7 @@ a {
 
 .site-header__menu-logo {
             display: none
-<<<<<<< HEAD
     }
-=======
-    }
->>>>>>> 5cbac4e5ab454fb78823f19c7021d1459cbb37f6
     }
 
 .site-header__menu-icon--close-x::before {
@@ -726,11 +710,7 @@ a {
             padding-top: 0;
             -webkit-transform: scale(1);
                     transform: scale(1)
-<<<<<<< HEAD
     }
-=======
-    }
->>>>>>> 5cbac4e5ab454fb78823f19c7021d1459cbb37f6
     }
 
 .site-header__menu-content.site-header__menu-content--is-visible {
@@ -739,6 +719,28 @@ a {
             -webkit-transform: scale(1);
                     transform: scale(1);
         }
+
+.site-footer {
+    padding: 0.5rem 0;
+    background-color: #2f5572;
+    text-align: center;
+    color: #FFF;
+}
+
+.site-footer__text {
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: 200;
+    }
+
+@media (min-width: 800px) {
+
+.site-footer__text {
+            display: inline;
+            margin-right: 1.4rem;
+            margin-bottom: 0
+    }
+    }
 
 .primary-nav {
     padding-top: 10px;
