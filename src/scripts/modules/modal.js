@@ -11,8 +11,12 @@ class Modal {
     events() {
         //clicking te open modal button
         this.openModalButton.click(this.openModal.bind(this));
-        console.log('TESTTT')
-            //clicking the x close modal button
+        console.log(this.openModalButton);
+        console.log(this.modal);
+        console.log('TESTTT123')
+        console.log(this.openModalButton.click);
+
+        //clicking the x close modal button
         this.closeModalButton.click(this.closeModal.bind(this));
 
         //pushes any key

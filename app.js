@@ -1,10 +1,10 @@
 const express = require('express');
 
-// const homeController = require('./src/controllers/home-controller'); // Not sure how to use it yet
-//const bikeController = require('./src/controllers/bike-controller');
+//  const homeController = require('./src/controllers/home-controller');
+//  const bikeController = require('./src/controllers/bike-controller');
 
 const app = express();
-//app.use(express.static(path.join('temp')));
+//  app.use(express.static(path.join('temp')));
 app.use('/static', express.static('public'));
 app.set('view engine', 'pug');
 app.set('views', './src/views');
@@ -26,26 +26,27 @@ app.use('/accessories', accessoriesRoutes);
 //     res.send(homeController.loadHome);
 // });
 
-/*app.get('/404', (req, res) => {
+/* app.get('/404', (req, res) => {
     res.status(404).send({
         error: 'Page not found.',
         name: 'Todo App v1.0',
     });
 });*/
 
-//custom error handler
+// custom error handler
 app.use((req, res, next) => {
-    const err = new Error('Not Found. Please verify you have entered a valid address')
+    const err = new Error(
+        'Not Found. Please verify you have entered a valid address');
     err.status = 404;
-    next(err)
-})
+    next(err);
+});
 
-//error handler
+// error handler
 app.use((err, req, res, next) => {
     res.locals.error = err;
     res.status(err.status);
     res.render('error');
-})
+});
 
 app.listen(constants.APP_PORT, () => {
     const date = new Date();
