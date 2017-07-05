@@ -18,18 +18,16 @@ module.exports = function (data) {
     process.env.ENV_MODE = config.Environment;
 
     if (process.env.ENV_MODE === 'PRODUCTION') {
-        console.log(true);
-        //app.use('/static', express.static('build'));
+        app.use('/static', express.static('build'));
     } else {
-        console.log(process.env.ENV_MODE);
-        //app.use('/static', express.static('public'));
+        app.use('/static', express.static('public'));
     }
 
     // const homeController = require('./src/controllers/home-controller'); // Not sure how to use it yet
     //const bikeController = require('./src/controllers/bike-controller');
 
     //app.use(express.static(path.join('temp')));
-    app.use('/static', express.static('public'));
+    //app.use('/static', express.static('public'));
 
     app.set('views', './src/views');
 
