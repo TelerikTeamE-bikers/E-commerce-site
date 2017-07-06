@@ -1,54 +1,78 @@
-const bikeModel = require('../models/bike');
+const bikeModel = require('../models/viewModels/bike-viewModel');
+const data = require('../data/data');
+const errorHandler = require('../components/errorHandling/errorHandler');
 //const validator = require('../common/validator');
 
-module.exports = function(data) {
+module.exports = 
+function(data) {
     return {
-        getLoginForm(req, res) {
-            res.render('login-view', {
-                result: {
-                    title: 'Login',
-                },
+        getAll(req, res) {
+            console.log("all bikes page");
+
+            //const bike = bikeModel.getBike('brand 1', 'model 1');
+            //console.log(bike);
+            //data.addBike(bike);
+
+            //let bikes;
+
+            data.getAllBikes(req, res).then((bikes) => {
+                res.render('allBikes', {
+                    'bikeList': bikes
+                });
+            }).catch((err) => {
+                errorHandler.handleError(req, res, err);
             });
-        },
-        getRegisterForm(req, res) {
-            res.render('register-view', {
-                result: {
-                    title: 'Register',
-                },
-            });
-        },
-        register(req, res) {
-            validator.validatePasswordsMatch(req.body.password,
-                req.body.passConfirmation);
 
-            const user = userModel
-                .getUser(req.body.username, req.body.password);
+            //errorHandler.handleError(req, res, new Error("test error"), 500);
+            
+        //}
+        //     getLoginForm(req, res) {
+        //         res.render('login-view', {
+        //             result: {
+        //                 title: 'Login',
+        //             },
+        //         });
+        //     },
+        //     getRegisterForm(req, res) {
+        //         res.render('register-view', {
+        //             result: {
+        //                 title: 'Register',
+        //             },
+        //         });
+        //     },
+        //     register(req, res) {
+        //         validator.validatePasswordsMatch(req.body.password,
+        //             req.body.passConfirmation);
 
-            data.addUser(user);
-            res.redirect('/login');
-        },
-        logout(req, res) {
-            req.logout();
-            res.status(200).redirect('/');
-        },
-        getProfile(req, res) {
-            const result = {};
-            result.title = 'User profile';
+        //         const user = userModel
+        //             .getUser(req.body.username, req.body.password);
 
-            if (req.isAuthenticated()) {
-                result.user = req.user.username;
-            }
+        //         data.addUser(user);
+        //         res.redirect('/login');
+        //     },
+        //     logout(req, res) {
+        //         req.logout();
+        //         res.status(200).redirect('/');
+        //     },
+        //     getProfile(req, res) {
+        //         const result = {};
+        //         result.title = 'User profile';
 
-            res.render('profile-view', { result });
-        },
-        unauthorized(req, res) {
-            res.render('unauthorized-view', {
-                result: {
-                    title: 'Unauthorized',
-                },
-            });
-        },
-    };
+        //         if (req.isAuthenticated()) {
+        //             result.user = req.user.username;
+        //         }
+
+        //         res.render('profile-view', { result });
+        //     },
+        //     unauthorized(req, res) {
+        //         res.render('unauthorized-view', {
+        //             result: {
+        //                 title: 'Unauthorized',
+        //             },
+        //         });
+        //     },
+    }
+    }
 };
 
 

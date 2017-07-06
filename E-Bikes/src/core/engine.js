@@ -31,12 +31,12 @@ module.exports = function (data) {
 
     app.set('views', './src/views');
 
-    app.use('/', mainRoutes);
-    app.use('/allbikes', allBikesRoutes);
-    app.use('/Bike-Spare-Parts', sparePartsRoutes);
-    app.use('/accessories', accessoriesRoutes);
-    app.use('/login', loginRoutes);
-    app.use('/signup', signupRoutes);
+    //app.use('/', mainRoutes);
+    // //app.use('/allbikes', allBikesRoutes);
+    // app.use('/Bike-Spare-Parts', sparePartsRoutes);
+    // app.use('/accessories', accessoriesRoutes);
+    // app.use('/login', loginRoutes);
+    // app.use('/signup', signupRoutes);
 
     // app.get('/', (req, res) => { // using PUG
     //     res.send(homeController.loadHome);
@@ -50,18 +50,18 @@ module.exports = function (data) {
     });*/
 
     //custom error handler
-    app.use((req, res, next) => {
-        const err = new Error('Not Found. Please verify you have entered a valid address')
-        err.status = 404;
-        next(err);
-    });
+    // app.use((req, res, next) => {
+    //     const err = new Error('Not Found. Please verify you have entered a valid address')
+    //     err.status = 404;
+    //     next(err);
+    // });
 
-    //error handler
-    app.use((err, req, res, next) => {
-        res.locals.error = err;
-        res.status(err.status);
-        res.render('error');
-    });
+    // //error handler
+    // app.use((err, req, res, next) => {
+    //     res.locals.error = err;
+    //     res.status(err.status);
+    //     res.render('error');
+    // });
 
     return app;
 };
