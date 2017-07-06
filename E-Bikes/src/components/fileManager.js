@@ -4,7 +4,6 @@ const path = require('path');
 module.exports = {
     initializeRoutes(app, controllers) {
         fs.readdirSync('./src/routes')
-            //.filter(x => x.includes('-router'))
             .filter(x => x.includes('-router'))
             .forEach(file => {
                 console.log("Loading router:", '../routes/' + file);
