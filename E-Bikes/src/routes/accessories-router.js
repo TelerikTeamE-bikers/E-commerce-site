@@ -2,13 +2,12 @@ const express = require('express');
 
 module.exports = (app, controllers) => {
     let router = new express.Router();
-    let controller = controllers.home;
+    let controller = controllers.accessories;
 
     router
-        .get('/', controller.loadHome)
-        .get('/home', controller.loadHome);
+        .get('/', controller.loadAccessories);
 
-    app.use('/', router);
+    app.use('/accessories', router);
 
     return router;
 };
