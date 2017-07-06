@@ -2,11 +2,12 @@ const express = require('express');
 
 module.exports = (app, controllers) => {
     let router = new express.Router();
-    let controller = controllers.bike;
+    let controller = controllers.login;
 
-    router.get('/allbikes', controller.getAll);
+    router
+        .get('/', controller.loadLogin);
 
-    app.use('/bike', router);
+    app.use('/login', router);
 
     return router;
 };

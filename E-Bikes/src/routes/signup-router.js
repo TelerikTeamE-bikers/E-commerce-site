@@ -2,11 +2,12 @@ const express = require('express');
 
 module.exports = (app, controllers) => {
     let router = new express.Router();
-    let controller = controllers.bike;
+    let controller = controllers.signup;
 
-    router.get('/allbikes', controller.getAll);
+    router
+        .get('/', controller.loadSignup);
 
-    app.use('/bike', router);
+    app.use('/signup', router);
 
     return router;
 };
