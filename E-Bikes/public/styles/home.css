@@ -874,58 +874,73 @@ a {
             color: #d59541;
         }
 
-/* Full-width input fields */
-
-.singup-text,
-.singup-password {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+.large-hero {
+    position: relative;
+    border-bottom: 10px solid #2f5572;
 }
 
-/* Set a style for all buttons */
-
-.cancelbtn,
-.signupbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-/* Extra styles for the cancel button */
-
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-}
-
-/* Add padding to container elements */
-
-.signup-container {
-    padding: 16px;
-}
-
-/* Clear floats */
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-
-@media screen and (max-width: 300px) {
-    .cancelbtn,
-    .signupbtn {
-        width: 100%;
+.large-hero__image {
+        display: block;
     }
-}
+
+.large-hero__text-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+        text-align: center;
+        padding-top: 88px;
+    }
+
+@media (min-width: 800px) {
+
+.large-hero__text-content {
+            padding-top: 60px
+    }
+    }
+
+.large-hero__title {
+        font-weight: 300;
+        color: #2f5572;
+        margin: 0;
+        font-size: 2.4rem;
+    }
+
+@media (min-width: 530px) {
+
+.large-hero__title {
+            font-size: 4.8rem
+    }
+    }
+
+.large-hero__subtitle {
+        font-weight: 300;
+        color: #2f5572;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+@media (min-width: 530px) {
+
+.large-hero__subtitle {
+            font-size: 2.9rem
+    }
+    }
+
+.large-hero__description {
+        color: #FFF;
+        font-size: 1.1rem;
+        font-weight: 100;
+        max-width: 30rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+@media (min-width: 530px) {
+
+.large-hero__description {
+            font-size: 1.875rem
+    }
+    }
