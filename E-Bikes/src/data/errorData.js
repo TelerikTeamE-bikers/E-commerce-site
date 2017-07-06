@@ -1,7 +1,7 @@
 const { MongoClient, ObectId } = require('mongodb');
 //const crypto = require('crypto-js');
 const constants = require('../common/constants');
-const errorModel = require('../models/error');
+const errorModel = require('../models/ViewModels/error-viewModel');
 
 module.exports = {
       addError(error) {

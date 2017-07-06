@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bikeModel = require('../models/bike');
+const bikeModel = require('../models/viewModels/bike-viewModel');
 const data = require('../data/data');
 const errorHandler = require('../components/errorHandling/errorHandler');
 

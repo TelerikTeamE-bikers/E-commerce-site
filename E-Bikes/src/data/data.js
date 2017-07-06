@@ -1,8 +1,8 @@
 const { MongoClient, ObectId } = require('mongodb');
 //const crypto = require('crypto-js');
 const constants = require('../common/constants');
-const userModel = require('../models/user');
-const bikeModel = require('../models/bike');
+const userModel = require('../models/viewModels/user-viewModel');
+const bikeModel = require('../models/viewModels/bike-viewModel');
 const errorHandler = require('../components/errorHandling/errorHandler');
 
 module.exports = {
