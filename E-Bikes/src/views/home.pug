@@ -1,0 +1,19 @@
+extends layout.pug
+
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/home.css')
+
+block content
+  .large-hero
+    picture
+      source(srcset="/static/images/hero--large.jpg", media="(min-width: 1380px)")
+      source(srcset="/static/images/hero--medium.jpg", media="(min-width: 990px)")
+      source(srcset="/static/images/hero--large.jpg", media="(min-width: 640px)")
+      img.large-hero__image(src="/static/images/hero--smaller.jpg")
+    .large-hero__text-content
+      .wrapper  
+        h1.large-hero__title Your e-bike
+        h2.large-hero__subtitle is one click away
+        p.large-hero__description We inspire people to bike
+        p
+          a.btn.btn--orange.btn--large.open-modal Discover our e-bikes
