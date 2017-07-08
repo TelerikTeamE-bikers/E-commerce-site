@@ -1,4 +1,4 @@
-const errorData = require('../../data/errorData');
+const errorData = require('../data/errorData');
 
 module.exports = {
     handleError(req, res, err, customStatus) {

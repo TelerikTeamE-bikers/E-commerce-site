@@ -1,6 +1,6 @@
 const bikeModel = require('../models/viewModels/bike-viewModel');
-const data = require('../data/data');
-const errorHandler = require('../components/errorHandling/errorHandler');
+//const data = require('../data/data');
+const errorHandler = require('../core/errorHandler');
 //const validator = require('../common/validator');
 
 module.exports = 
@@ -15,7 +15,7 @@ function(data) {
 
             //let bikes;
 
-            data.getAllBikes(req, res).then((bikes) => {
+            data.bike.getAllBikes(req, res).then((bikes) => {
                 res.render('allBikes', {
                     'bikeList': bikes
                 });

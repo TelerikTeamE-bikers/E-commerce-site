@@ -1,4 +1,4 @@
-const errorHandler = require('../components/errorHandling/errorHandler');
+const errorHandler = require('../core/errorHandler');
 
 module.exports = function (data) {
     return {
