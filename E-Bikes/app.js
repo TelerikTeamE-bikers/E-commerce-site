@@ -1,11 +1,5 @@
 const constants = require('./src/common/constants');
 const app = require('./src/core/engine')('data');
-const componentLoader = require('./src/core/componentLoader');
-
-const unitOfWork = componentLoader.initializeRepositories();
-const controllers = componentLoader.initializeControllers(unitOfWork);
-
-componentLoader.initializeRoutes(app, controllers);
 
 app.listen(constants.APP_PORT, () => {
     console.log('----|  Startup log  |----');
