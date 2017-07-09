@@ -1,5 +1,7 @@
 const express = require('express');
 const constants = require('../common/constants');
+const componentLoader = require('./componentLoader');
+const errorHandler = require('./errorHandler');
 
 module.exports = function (data) {
 
@@ -17,6 +19,14 @@ module.exports = function (data) {
     }
 
     app.set('views', './src/views');
+
+
+    let unitOfWork = componentLoader.initializeRepositories();
+    let controllers = componentLoader.initializeControllers(unitOfWork);
+
+    componentLoader.initializeRoutes(app, controllers);
+
+    errorHandler.handleErrors(app);
 
     // app.get('/', (req, res) => { // using PUG
     //     res.send(homeController.loadHome);

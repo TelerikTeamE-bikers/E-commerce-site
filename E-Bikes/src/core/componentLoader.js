@@ -31,7 +31,27 @@ module.exports = {
         //console.log(2, controllers)
         console.log("All controllers loaded.");
         console.log();
-        
+
         return controllers;
-    }
+    },
+    initializeRepositories() {
+        let repositories = {};
+
+        fs.readdirSync('./src/data/repositories')
+            .filter(x => x.includes('-repository'))
+            .forEach(file => {
+                //console.log("f: ", file)
+                let repositoryModule = require(path.join('../data/repositories', file));
+                //console.log(1, controllerModule)
+                console.log("Loading repository:", '../data/repositories/' + file);
+
+                repositories[file.substring(0, file.indexOf('-'))] = repositoryModule;
+            });
+
+        //console.log(2, controllers)
+        console.log("All repositories loaded.");
+        console.log();
+
+        return repositories;
+    },
 };
