@@ -114,7 +114,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -895,21 +896,21 @@ a {
 
 /* Set a style for all buttons */
 
-.cancelbtn,
 .loginbtn {
-    background-color: #4CAF50;
+    background-color: lightgreen;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+    padding: 10px 18px;
+    margin: 8px 4px;
     cursor: pointer;
-    width: 100%;
+    width: 13em;
 }
 
 /* Extra style for the cancel button (red) */
 
 .cancelbtn {
     width: auto;
+    color: white;
+    margin: 8px 4px;
     padding: 10px 18px;
     background-color: #d59541;
 }

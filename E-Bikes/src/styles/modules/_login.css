@@ -20,15 +20,13 @@
 
 /* Set a style for all buttons */
 
-.cancelbtn,
 .loginbtn {
-    background-color: #4CAF50;
+    background-color: lightgreen;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+    padding: 10px 18px;
+    margin: 8px 4px;
     cursor: pointer;
-    width: 100%;
+    width: 13em;
 }
 
 
@@ -36,6 +34,8 @@
 
 .cancelbtn {
     width: auto;
+    color: white;
+    margin: 8px 4px;
     padding: 10px 18px;
     background-color: $mainOrange;
 }
