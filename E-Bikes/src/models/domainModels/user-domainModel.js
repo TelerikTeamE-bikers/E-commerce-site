@@ -1,6 +1,6 @@
 //const crypto = require('crypto-js');
 const constants = require('../../common/constants');
-const cart = require('../domainModels/cart-domainModel');
+const cart = require('./shoppingCart-domainModel');
 //const validator = require('../common/validator');
 
 class UserDomainModel {
@@ -36,6 +36,10 @@ class UserDomainModel {
 
     AddToCart(bike){
         this._shoppingCart.AddToCart(bike);
+    }
+
+    getCartTotalPrce(){
+        return this._shoppingCart.totalPrice;
     }
 }
 
