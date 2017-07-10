@@ -3,9 +3,10 @@ const constants = require('../../common/constants');
 //const validator = require('../common/validator');
 
 class BikeDbModel {
-    constructor(brand, model) {
+    constructor(brand, model, price) {
         this._brand = brand;
         this._model = model;
+        this._price = price;
     }
 
     get brand() {
@@ -30,10 +31,18 @@ class BikeDbModel {
         //this._password = new crypto.SHA1(value.trim()).toString();
         this._model = value.trim().toString();
     }
+
+    get price() {
+        return this._price;
+    }
+
+    set price(value) {
+        this._price = value;
+    }
 }
 
 module.exports = {
-    getBike(brand, model) {
-        return new BikeDbModel(brand, model);
+    getBike(brand, model, price) {
+        return new BikeDbModel(brand, model, price);
     },
 };

@@ -32,7 +32,7 @@ class UserViewModel {
 }
 
 module.exports = {
-    getUser(username, password) {
-        return new UserViewModel(username, password);
+    getUser(username, password, shoppingCart) {
+        return new UserViewModel(username, password, shoppingCart);
     },
 };

@@ -36,7 +36,7 @@ class BikeDomainModel {
 }
 
 module.exports = {
-    getBike(brand, model) {
-        return new BikeDomainModel(brand, model);
+    getBike(brand, model, price) {
+        return new BikeDomainModel(brand, model, price);
     },
 };

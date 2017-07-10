@@ -3,9 +3,10 @@ const constants = require('../../common/constants');
 //const validator = require('../common/validator');
 
 class UserDbModel {
-    constructor(username, password) {
+    constructor(username, password, shoppingCart) {
         this.username = username;
         this.password = password;
+        this._shoppingCart = shoppingCart;
     }
 
     get username() {
@@ -30,10 +31,18 @@ class UserDbModel {
         //this._password = new crypto.SHA1(value.trim()).toString();
         this._password = value.trim().toString();
     }
+
+    get shoppingCart() {
+        return this._shoppingCart;
+    }
+
+    set shoppingCart(value) {
+        this._shoppingCart = value;
+    }
 }
 
 module.exports = {
-    getUser(username, password) {
-        return new UserDbModel(username, password);
+    getUser(username, password, shoppingCart) {
+        return new UserDbModel(username, password, shoppingCart);
     },
 };
