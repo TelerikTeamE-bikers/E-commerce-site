@@ -15,7 +15,7 @@ class BikeDomainModel {
     }
 
     set brand(value) {
-        this._brand = value.trim();
+        this._brand = value;
     }
 
     get model() {
@@ -23,7 +23,7 @@ class BikeDomainModel {
     }
 
     set model(value) {
-        this._model = value.toString();
+        this._model = value;
     }
 
     get price() {

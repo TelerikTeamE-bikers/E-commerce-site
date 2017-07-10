@@ -34,11 +34,19 @@ class UserDomainModel {
         this._password = value.trim().toString();
     }
 
-    AddToCart(bike){
+    get shoppingCart(){
+        return this._shoppingCart;
+    }
+
+    get shoppingHistory(){
+        return this._shoppingHistory;
+    }
+
+    addToCart(bike){
         this._shoppingCart.AddToCart(bike);
     }
 
-    getCartTotalPrce(){
+    getCartTotalPrice(){
         return this._shoppingCart.totalPrice;
     }
 }

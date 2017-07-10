@@ -14,10 +14,7 @@ class BikeDbModel {
     }
 
     set brand(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_USERNAME_LENGTH, constants.MAX_USERNAME_LENGTH);
-
-        this._brand = value.trim();
+        this._brand = value;
     }
 
     get model() {
@@ -25,11 +22,7 @@ class BikeDbModel {
     }
 
     set model(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_PASSWORD_LENGTH, constants.MAX_PASSWORD_LENGTH);
-
-        //this._password = new crypto.SHA1(value.trim()).toString();
-        this._model = value.trim().toString();
+        this._model = value;
     }
 
     get price() {
