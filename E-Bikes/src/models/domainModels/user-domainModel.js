@@ -1,11 +1,14 @@
 //const crypto = require('crypto-js');
 const constants = require('../../common/constants');
+const cart = require('../domainModels/cart-domainModel');
 //const validator = require('../common/validator');
 
 class UserDomainModel {
     constructor(username, password) {
-        this.username = username;
-        this.password = password;
+        this._username = username;
+        this._password = password;
+        this._shoppingCart = cart.getCart();
+        this._shoppingHistory = [];
     }
 
     get username() {
@@ -29,6 +32,10 @@ class UserDomainModel {
 
         //this._password = new crypto.SHA1(value.trim()).toString();
         this._password = value.trim().toString();
+    }
+
+    AddToCart(bike){
+        this._shoppingCart.AddToCart(bike);
     }
 }
 

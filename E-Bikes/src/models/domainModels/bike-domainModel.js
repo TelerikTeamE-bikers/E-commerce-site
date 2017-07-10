@@ -1,11 +1,13 @@
 //const crypto = require('crypto-js');
 const constants = require('../../common/constants');
+
 //const validator = require('../common/validator');
 
 class BikeDomainModel {
-    constructor(brand, model) {
+    constructor(brand, model, price) {
         this._brand = brand;
         this._model = model;
+        this._price = price;
     }
 
     get brand() {
@@ -13,9 +15,6 @@ class BikeDomainModel {
     }
 
     set brand(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_USERNAME_LENGTH, constants.MAX_USERNAME_LENGTH);
-
         this._brand = value.trim();
     }
 
@@ -24,11 +23,15 @@ class BikeDomainModel {
     }
 
     set model(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_PASSWORD_LENGTH, constants.MAX_PASSWORD_LENGTH);
+        this._model = value.toString();
+    }
 
-        //this._password = new crypto.SHA1(value.trim()).toString();
-        this._model = value.trim().toString();
+    get price() {
+        return this._price;
+    }
+
+    set price(value) {
+        this._price = value;
     }
 }
 

@@ -1,7 +1,9 @@
 class UserViewModel {
-    constructor(username, password) {
-        this.username = username;
-        this.password = password;
+    constructor(username, password, shoppingCart) {
+        this._username = username;
+        this._password = password;
+        this._shoppingCart = shoppingCart;
+        this._shoppingHistory = [];
     }
 
     get username() {
@@ -18,6 +20,14 @@ class UserViewModel {
 
     set password(value) {
         this._password = value.trim().toString();
+    }
+
+    get shoppingCart() {
+        return this._shoppingCart;
+    }
+
+    set shoppingCart(value) {
+        this._shoppingCart = value;
     }
 }
 
