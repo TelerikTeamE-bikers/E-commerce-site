@@ -1,0 +1,151 @@
+/* Default Styles
+--------------------------------------------------- */
+
+.home-a:link {
+    text-decoration: underline;
+    color: #000;
+    font-weight: bold;
+}
+
+.home-a:visited {
+    text-decoration: underline;
+    color: #000;
+    font-weight: bold;
+}
+
+.home-a:hover {
+    text-decoration: underline;
+    color: #669933;
+    font-weight: bold;
+}
+
+.home-a:active {
+    text-decoration: underline;
+    color: #000;
+    font-weight: bold;
+}
+
+#home-wrapper {
+    width: 965px;
+    margin: 0 auto;
+}
+
+#home-content {
+    background-color: #eee;
+    width: 960px;
+    text-align: left;
+    overflow: auto;
+    position: relative;
+    margin: 25px 0px 25px 0px;
+    border: #fff solid 2px;
+}
+
+.clear {
+    float: none;
+    clear: both;
+    margin: 20px 0px 20px 0px;
+}
+
+
+/* Header
+--------------------------------------------------- */
+
+#contact-details .header_1 {
+    float: left;
+    width: 350px;
+    text-align: center;
+    margin: 40px 0px 0px 20px;
+}
+
+#contact-details .header_1 img {
+    border: #fff solid 4px;
+    background: url("../images/bg_img_dark_green.png");
+    padding: 16px;
+    margin: 10px 0px 0px 0px;
+}
+
+#contact-details .header_2 {
+    float: left;
+    width: 570px;
+    margin: 40px 0px 0px 10px;
+}
+
+#contact-details .header_2 a {
+    font-weight: normal;
+}
+
+#contact-details h1 {
+    margin: 0px 0px 0px 20px;
+    font-size: 52px;
+    font-weight: bold;
+}
+
+#contact-details h3 {
+    margin: 0px 0px 32px 20px;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#contact-details ul.info_1 {
+    list-style: none;
+    margin: 0px 0px 0px -12px;
+    font-size: 18px;
+}
+
+#contact-details ul.info_2 {
+    list-style: none;
+    margin: 0px 0px 15px -12px;
+    font-size: 18px;
+}
+
+#contact-details li.address {
+    background: url("../images/home.png") no-repeat;
+    background-position: 0px 0px;
+    padding: 0px 0px 12px 40px;
+}
+
+#contact-details li.phone {
+    background: url("../images/phone.png") no-repeat;
+    background-position: 0px 0px;
+    padding: 0px 0px 12px 40px;
+}
+
+#contact-details li.email {
+    background: url("../images/mail.png") no-repeat;
+    background-position: 0px 0px;
+    padding: 0px 0px 12px 40px;
+    font-weight: bold;
+}
+
+#contact-details li.site_url {
+    background: url("../images/computer.png") no-repeat;
+    background-position: 0px 2px;
+    padding: 0px 0px 12px 40px;
+    font-weight: bold;
+}
+
+#contact-details li.twitter {
+    background: url("../images/twitter_sm.png") no-repeat;
+    background-position: 0px 0px;
+    padding: 0px 0px 12px 40px;
+    font-weight: bold;
+}
+
+#contact-details li.address {
+    background-position: 0px 0px;
+    padding: 0px 0px 12px 40px;
+    font-weight: bold;
+}
+
+#contact-details li.phone {
+    background-position: 0px 0px;
+    padding: 0px 0px 12px 40px;
+    font-weight: bold;
+}
+
+.changeDetails {
+    background-color: lightblue;
+    float: right;
+    margin: 0px 80px
+}

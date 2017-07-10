@@ -1,0 +1,45 @@
+extends layout.pug
+
+block custom-styles
+      
+    
+    link(rel='stylesheet', href='/static/styles/myProfile.css')
+    
+
+block content
+       .wrapper
+           #home-wrapper
+                // Begin Content Area
+                #home-content
+                    // Begin Header
+                    p
+                    // Begin Contact Section
+                    section#contact-details
+                        
+                        .header_1
+                            img(src='/static/images/defaultProfilePic.png', width='250', height='250', alt='Your Name')
+                        
+                        .header_2
+                            h1
+                                span Todor Dinkov
+                                                            
+                            ul.info_1 
+                                li.address Address:   
+                                    a.home-a(href='mailto:your-email@gmail.com', title='View a Map') 555 Street Address, Toledo, Ohio, 43606 U.S.A.
+                            ul.info_2
+                                li.phone Phone:  
+                                    a.home-a(href='mailto:your-email@gmail.com', title='Call us!') (000) 000-0000
+                                li.email Email address: 
+                                    a.home-a(href='mailto:your-email@gmail.com', title='Send an Email')  your-email@gmail.com
+                                li.site_url Website:  
+                                    a.home-a(href='http://www.webcodepro.net/about.php', title='www.your-website.com') www.your-website.com
+                                li.twitter Purchase History:  
+                                    a.home-a(href='http://twitter.com/twitter-screen-name', title='View your past orders') Click to View 
+                                .container-button
+                                    form(action='./updateProfile')
+                                        input.changeDetails(type='submit', value='Change Details', title="Press to change user details")
+   
+                                        
+                    .clear  
+   
+                                   

@@ -1,0 +1,49 @@
+extends layout.pug
+
+
+      
+block content
+    
+        .wrapper
+            .container
+                br
+                fieldset Details:
+                    .header_1
+                        img(src='/static/images/defaultProfilePic.png', width='250', height='250', alt='Your Name')                                
+                    .form-group
+                        label Email Address:
+                        
+                    input(name='textinput', type='text', placeholder='trade show name')
+                    // Text input
+                    .form-group
+                        label Address
+                        
+                    input(name='textinput', type='text', placeholder='date attended')
+                    // Text input
+                    .form-group
+                        label Phone
+                        
+                    input(name='textinput', type='text', placeholder='host')
+                    // Select Basic
+                    .form-group
+                        label Sex:
+                        
+                        select(name='selectbasic')
+                            option(value='1') Male
+                            option(value='2') Female
+ 
+                    .form-group
+                        label.col-md-4.control-label(for='filebutton') upload photo
+                        .col-md-4
+                        input#filebutton.input-file(name='filebutton', type='file')
+                    // Button
+                    .form-group
+                        label.col-md-4.control-label(for='singlebutton')
+                        .col-md-4
+                        button#singlebutton.btn.btn-primary(name='singlebutton') submit
+
+
+
+
+
+
