@@ -1,8 +1,8 @@
 //const crypto = require('crypto-js');
-const constants = require('../common/constants');
+const constants = require('../../common/constants');
 //const validator = require('../common/validator');
 
-class Bike {
+class BikeDbModel {
     constructor(brand, model) {
         this._brand = brand;
         this._model = model;
@@ -34,6 +34,6 @@ class Bike {
 
 module.exports = {
     getBike(brand, model) {
-        return new Bike(brand, model);
+        return new BikeDbModel(brand, model);
     },
 };

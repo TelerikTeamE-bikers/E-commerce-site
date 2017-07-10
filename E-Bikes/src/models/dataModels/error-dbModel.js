@@ -1,5 +1,5 @@
 //const crypto = require('crypto-js');
-const constants = require('../common/constants');
+const constants = require('../../common/constants');
 //const validator = require('../common/validator');
 
 class Error {

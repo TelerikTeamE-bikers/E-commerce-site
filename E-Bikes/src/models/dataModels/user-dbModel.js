@@ -1,8 +1,8 @@
 //const crypto = require('crypto-js');
-const constants = require('../common/constants');
+const constants = require('../../common/constants');
 //const validator = require('../common/validator');
 
-class User {
+class UserDbModel {
     constructor(username, password) {
         this.username = username;
         this.password = password;
@@ -34,6 +34,6 @@ class User {
 
 module.exports = {
     getUser(username, password) {
-        return new User(username, password);
+        return new UserDbModel(username, password);
     },
 };
