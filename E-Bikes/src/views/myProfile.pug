@@ -5,6 +5,10 @@ block custom-styles
     
     link(rel='stylesheet', href='/static/styles/myProfile.css')
     
+block custom-scripts
+    
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='/static/scripts/myProfile.js')
 
 block content
        .wrapper
@@ -34,7 +38,19 @@ block content
                                 li.site_url Website:  
                                     a.home-a(href='http://www.webcodepro.net/about.php', title='www.your-website.com') www.your-website.com
                                 li.twitter Purchase History:  
-                                    a.home-a(href='http://twitter.com/twitter-screen-name', title='View your past orders') Click to View 
+                                        .history_modal
+                                            input#history_modal__trigger(type='checkbox')
+                                            label(for='history_modal__trigger')  History 
+                                            .history_modal__overlay
+                                                    .history_modal__wrap
+                                                        label(for='history_modal__trigger') ✖
+                                                        h2.history_main History to be listed in the loading image once the request is returned successfully
+                                                        p
+                                                            #loadingDiv
+                                                                img(src='/static/images/loading_gif.gif')
+                                                                br
+                                                                | Loading
+
                                 .container-button
                                     form(action='./updateProfile')
                                         input.changeDetails(type='submit', value='Change Details', title="Press to change user details")

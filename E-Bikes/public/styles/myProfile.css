@@ -909,11 +909,11 @@ a {
 
 #home-content {
     background-color: #eee;
-    width: 960px;
+    width: auto;
     text-align: left;
     overflow: auto;
     position: relative;
-    margin: 25px 0px 25px 0px;
+    margin: 15px 0px 15px 0px;
     border: #fff solid 2px;
 }
 
@@ -935,7 +935,6 @@ a {
 
 #contact-details .header_1 img {
     border: #fff solid 4px;
-    background: url("../images/bg_img_dark_green.png");
     padding: 16px;
     margin: 10px 0px 0px 0px;
 }
@@ -952,7 +951,7 @@ a {
 
 #contact-details h1 {
     margin: 0px 0px 0px 20px;
-    font-size: 52px;
+    font-size: 40px;
     font-weight: bold;
 }
 
@@ -976,33 +975,28 @@ a {
 }
 
 #contact-details li.address {
-    background: url("../images/home.png") no-repeat;
     background-position: 0px 0px;
     padding: 0px 0px 12px 40px;
 }
 
 #contact-details li.phone {
-    background: url("../images/phone.png") no-repeat;
     background-position: 0px 0px;
     padding: 0px 0px 12px 40px;
 }
 
 #contact-details li.email {
-    background: url("../images/mail.png") no-repeat;
     background-position: 0px 0px;
     padding: 0px 0px 12px 40px;
     font-weight: bold;
 }
 
 #contact-details li.site_url {
-    background: url("../images/computer.png") no-repeat;
     background-position: 0px 2px;
     padding: 0px 0px 12px 40px;
     font-weight: bold;
 }
 
 #contact-details li.twitter {
-    background: url("../images/twitter_sm.png") no-repeat;
     background-position: 0px 0px;
     padding: 0px 0px 12px 40px;
     font-weight: bold;
@@ -1023,5 +1017,92 @@ a {
 .changeDetails {
     background-color: lightblue;
     float: right;
-    margin: 0px 80px
+    margin: 0px 80px;
+    cursor: pointer;
+}
+
+/* Modal
+--------------------------------------------------- */
+
+.history_modal>label {
+    background: lightgreen;
+    border: 1px solid grey;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.2em 1.5em;
+    text-shadow: 1px 1px 1px #fff;
+    -webkit-transition: all 0.55s;
+    transition: all 0.55s;
+}
+
+.history_modal__overlay {
+    background: black;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    text-shadow: none;
+    top: 0;
+    z-index: 600;
+}
+
+.history_modal__wrap label {
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 1.5em;
+    line-height: 1.5;
+    position: absolute;
+    right: .5em;
+    top: .5em;
+    width: 1.5em;
+}
+
+.history_modal__wrap p {
+    color: #FFD300;
+    text-align: justify;
+}
+
+/*==================================== 
+  Our Modal action styles
+=====================================*/
+
+#history_modal__trigger {
+    position: absolute;
+    top: -1000px;
+}
+
+.history_modal__overlay {
+    opacity: 0;
+    z-index: -100;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#history_modal__trigger:checked~.history_modal__overlay {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    z-index: 800;
+}
+
+.history_main {
+    color: white;
+}
+
+#loadingDiv {
+    color: white;
+    padding: 2px;
+}
+
+.history_modal {
+    float: right;
+    padding-right: 45%;
+    padding-bottom: 10px
 }
