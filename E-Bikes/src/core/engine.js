@@ -18,7 +18,8 @@ module.exports = () => {
     app.set('view engine', 'pug');
     app.set('views', './src/views');
 
-    const unitOfWork = componentLoader.initializeRepositories();
+    const contexts = componentLoader.initializeContexts();
+    const unitOfWork = componentLoader.initializeRepositories(contexts);
     const controllers = componentLoader.initializeControllers(unitOfWork);
 
     componentLoader.initializeRoutes(app, controllers);

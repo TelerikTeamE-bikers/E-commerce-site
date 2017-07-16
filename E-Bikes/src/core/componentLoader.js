@@ -34,14 +34,14 @@ module.exports = {
 
         return controllers;
     },
-    initializeRepositories() {
+    initializeRepositories(contexts) {
         let repositories = {};
 
         fs.readdirSync('./src/data/repositories')
             .filter(x => x.includes('-repository'))
             .forEach(file => {
                 //console.log("f: ", file)
-                let repositoryModule = require(path.join('../data/repositories', file));
+                let repositoryModule = require(path.join('../data/repositories', file))(contexts);
                 //console.log(1, controllerModule)
                 console.log("Loading repository:", '../data/repositories/' + file);
 
@@ -54,4 +54,21 @@ module.exports = {
 
         return repositories;
     },
+    initializeContexts() {
+        let contexts = {};
+
+        fs.readdirSync('./src/data/dbContexts')
+            .filter(x => x.includes('-dbContext'))
+            .forEach(file => {
+                let contextModule = require(path.join('../data/dbContexts', file));
+                console.log("Loading context:", '../data/dbContexts/' + file);
+
+                contexts[file.substring(0, file.indexOf('-'))] = contextModule;
+            });
+
+        console.log("All contexts loaded.");
+        console.log();
+
+        return contexts;
+    }
 };
