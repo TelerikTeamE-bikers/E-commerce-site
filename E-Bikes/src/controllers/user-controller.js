@@ -48,9 +48,10 @@ module.exports = function(data) {
             return res.render('login', {});
         },
         registerNewUser(req, res) {
-            const body = req.body;
-            console.log(body);
-            console.log('I am trying to register new user');
+            console.log(req.body);
+            req.login(req.body, () => {
+                res.redirect('/auth/profile');
+            });
         },
     };
 };

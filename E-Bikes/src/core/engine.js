@@ -4,6 +4,9 @@ const errorHandler = require('./errorHandler');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const session = require('express-session');
 
 module.exports = () => {
     const app = express();
@@ -18,6 +21,9 @@ module.exports = () => {
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded());
+    app.use(cookieParser());
+    app.use(session({ secret: 'ebikes' }));
+    require('../config/passport')(app);
     app.set('view engine', 'pug');
     app.set('views', './src/views');
 
