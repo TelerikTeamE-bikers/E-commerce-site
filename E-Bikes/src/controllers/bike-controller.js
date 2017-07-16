@@ -15,13 +15,14 @@ module.exports =
 
                 //let bikes;
 
-                data.bike.getAllBikes(req, res).then((bikes) => {
-                    res.render('allBikes', {
-                        'bikeList': bikes
+                data.bike.getAllBikes(req, res)
+                    .then((bikes) => {
+                        res.render('allBikes', {
+                            'bikeList': bikes
+                        });
+                    }).catch((err) => {
+                        errorHandler.handleError(req, res, err);
                     });
-                }).catch((err) => {
-                    errorHandler.handleError(req, res, err);
-                });
 
                 //errorHandler.handleError(req, res, new Error("test error"), 500);
 
