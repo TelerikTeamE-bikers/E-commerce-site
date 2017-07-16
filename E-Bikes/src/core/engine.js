@@ -2,14 +2,14 @@ const express = require('express');
 const constants = require('../common/constants');
 const componentLoader = require('./componentLoader');
 const errorHandler = require('./errorHandler');
+const fs = require('fs');
 
-module.exports = function (data) {
-
-    let app = express();
+module.exports = function(data) {
+    const app = express();
     app.set('view engine', 'pug');
 
-    var fs = require('fs');
-    var config = JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
+
+    const config = JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
     process.env.ENV_MODE = config.Environment;
 
     if (process.env.ENV_MODE === 'PRODUCTION') {
@@ -21,8 +21,8 @@ module.exports = function (data) {
     app.set('views', './src/views');
 
 
-    let unitOfWork = componentLoader.initializeRepositories();
-    let controllers = componentLoader.initializeControllers(unitOfWork);
+    const unitOfWork = componentLoader.initializeRepositories();
+    const controllers = componentLoader.initializeControllers(unitOfWork);
 
     componentLoader.initializeRoutes(app, controllers);
 
