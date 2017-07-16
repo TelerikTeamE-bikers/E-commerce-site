@@ -53,13 +53,28 @@ const constants = require('../common/constants');
 let _db;
 
 module.exports = {
-    connectToServer: function (callback) {
-        MongoClient.connect(constants.DB_URL, function (err, db) {
-            _db = db;
-            return callback(err);
+    // connectToServer(callback) {
+    //     MongoClient.connect(constants.DB_URL, function (err, db) {
+    //         _db = db;
+    //         return callback(err);
+    //     });
+    // },
+    connectToServer() {
+        return new Promise((resolve, reject) => {
+            MongoClient.connect(constants.DB_URL, function (err, db) {
+                if (err) {
+                    console.log(2)
+                    //errorHandler.handleError(err);
+                    reject(err);
+                } else {
+                    resolve(db);
+                    console.log(3)
+                }
+            });
+            console.log(4)
         });
     },
-    getDb: function () {
+    getDb() {
         return _db;
     }
 };

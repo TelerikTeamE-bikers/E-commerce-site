@@ -82,37 +82,40 @@ module.exports = {
     //                 errorHandler.handleError(req, res, err, 444);
     //             });
     //     });
-    getAllBikes(req, res) {
-        // return new Promise((resolve, reject) => {
-        //     console.log('1')
-        //     var d = mongo.get('bikes');
+    getAllBikes(req, res, errorHandler) {
+        //       return new Promise((resolve, reject) => {
+        //         console.log('1')
 
-        //     d.collection('bikes')
-        //         .find()
-        //         .toArray()
-        //         .then((bikes) => {
-        //             console.log(bikes)
+        //         mongo.connectToServer((reject) => {
+        //             var db = mongo.getDb();
 
-        //             resolve(bikes || null);
-        //         })
+        //             db.collection('bikes')
+        //                 .find()
+        //                 .toArray()
+        //                 .then((bikes) => {
+        //                     console.log(bikes)
 
-        // });
-
+        //                     resolve(bikes || null);
+        //                 })
+        //         });
+        //     });
         return new Promise((resolve, reject) => {
             console.log('1')
 
-            mongo.connectToServer(function (err) {
-                var db = mongo.getDb();
+            mongo.connectToServer()
+                .then((db) => {
+                    db.collection('bikes')
+                        .find()
+                        .toArray()
+                        .then((bikes) => {
+                            console.log(bikes)
 
-                db.collection('bikes')
-                    .find()
-                    .toArray()
-                    .then((bikes) => {
-                        console.log(bikes)
-
-                        resolve(bikes || null);
-                    })
-            });
+                            resolve(bikes || null);
+                        })
+                }).catch((err) => {
+                    console.log(err)
+                    errorHandler.handleError(req, res, err, 444);
+                });
         });
     }
 };

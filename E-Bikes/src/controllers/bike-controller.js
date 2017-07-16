@@ -15,7 +15,7 @@ module.exports =
 
                 //let bikes;
 
-                data.bike.getAllBikes(req, res)
+                data.bike.getAllBikes(req, res, errorHandler)
                     .then((bikes) => {
                         res.render('allBikes', {
                             'bikeList': bikes
