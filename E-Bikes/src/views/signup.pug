@@ -6,7 +6,7 @@ block custom-styles
 
 block content
     .wrapper
-        form.sign-in-form
+        form.sign-in-form(action='/auth/signup', method='post')
             .signup-container
                 label
                 b Email

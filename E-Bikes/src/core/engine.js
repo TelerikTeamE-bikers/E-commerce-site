@@ -3,6 +3,7 @@ const componentLoader = require('./componentLoader');
 const errorHandler = require('./errorHandler');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
+const bodyParser = require('body-parser');
 
 module.exports = () => {
     const app = express();
@@ -15,6 +16,8 @@ module.exports = () => {
         app.use('/static', express.static('public'));
     }
 
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded());
     app.set('view engine', 'pug');
     app.set('views', './src/views');
 

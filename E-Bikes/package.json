@@ -19,6 +19,7 @@
     "homepage": "https://github.com/TelerikTeamE-bikers/E-commerce-site#readme",
     "dependencies": {
         "babel-eslint": "^7.2.3",
+        "body-parser": "^1.17.2",
         "eslint": "^4.0.0",
         "eslint-config-google": "^0.8.0",
         "express": "^4.15.3",

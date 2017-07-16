@@ -2,7 +2,7 @@ const errorHandler = require('../core/errorHandler');
 const userDomainModel = require('../models/domainModels/user-domainModel');
 const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 
-module.exports = function (data) {
+module.exports = function(data) {
     return {
         registerUser(req, res) {
             // let user = userDomainModel.getUser("go6o", "123");
@@ -40,7 +40,17 @@ module.exports = function (data) {
             }).catch((err) => {
                 errorHandler.handleError(req, res, err);
             });
-
-        }
-    }
+        },
+        signUpUser(req, res) {
+            return res.render('signup', {});
+        },
+        logInUser(req, res) {
+            return res.render('login', {});
+        },
+        registerNewUser(req, res) {
+            const body = req.body;
+            console.log(body);
+            console.log('I am trying to register new user');
+        },
+    };
 };
