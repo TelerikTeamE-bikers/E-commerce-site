@@ -1,5 +1,5 @@
 const constants = require('./src/common/constants');
-const app = require('./src/core/engine');
+const app = require('./src/core/engine')();
 
 app.listen(constants.APP_PORT, () => {
     console.log('----|  Startup log  |----');

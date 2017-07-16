@@ -6,8 +6,8 @@ module.exports = (app, controllers) => {
 
     router.get('/allbikes', controller.getAll);
 
+    //app.use('/', router);
     app.use('/bike', router);
-    app.use('/', router);
 
     return router;
 };
