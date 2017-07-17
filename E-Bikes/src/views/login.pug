@@ -8,14 +8,14 @@ block custom-styles
 block content
     .wrapper
         br
-        form.log-in-form
+        form.log-in-form(action='/auth/login', method='post')
             .container
                 label
-                b Username
-                input.login-text(type='text', placeholder='Enter Username', name='uname', required)
+                b Email
+                input.login-text(type='text', placeholder='Enter Email', name='email', required)
                 label
                 b Password
-                input.login-password(type='password', placeholder='Enter Password', name='psw', required)
+                input.login-password(type='password', placeholder='Enter Password', name='password', required)
                 
             .container-button
                 button.loginbtn(type='submit')  Login

@@ -3,6 +3,7 @@ const userDomainModel = require('../models/domainModels/user-domainModel');
 const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const { MongoClient } = require('mongodb');
 const constants = require('../common/constants');
+const passport = require('passport');
 
 module.exports = function(data) {
     return {
@@ -58,7 +59,7 @@ module.exports = function(data) {
                 };
                 db.collection('users').insertOne(user, (e, results) => {
                     req.login(results.ops[0], () => { // the user takes results.ops[0] in the session and this is used in loadProfile as req.user
-                        console.log(results);
+                        // console.log(results);
                         res.redirect('/auth/myProfile');
                     });
                 });
@@ -69,5 +70,13 @@ module.exports = function(data) {
                 email: req.user.email, // req.user comes from passport
             });
         },
+        // registerExistingUser(req, res) {
+        //     console.log('Register new user');
+        //     passport.authenticate('local', {
+        //         failureRedirect: '/auth/login',
+        //     }, () => {
+        //         res.redirect('/auth/myProfile');
+        //     });
+        // },
     };
 };
