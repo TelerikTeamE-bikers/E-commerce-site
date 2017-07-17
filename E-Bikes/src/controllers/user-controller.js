@@ -1,6 +1,8 @@
 const errorHandler = require('../core/errorHandler');
 const userDomainModel = require('../models/domainModels/user-domainModel');
 const bikeDomainModel = require('../models/domainModels/bike-domainModel');
+const { MongoClient } = require('mongodb');
+const constants = require('../common/constants');
 
 module.exports = function(data) {
     return {
@@ -33,8 +35,8 @@ module.exports = function(data) {
             // let foundUser = data.user.findUserByCredentials("go6o", "123");
             // console.log("Found user:", foundUser);
 
-            data.user.findUserByCredentials("go6o", "123").then((user) => {
-                console.log("Found user:", user);
+            data.user.findUserByCredentials('go6o', '123').then((user) => {
+                console.log('Found user:', user);
 
                 res.render('home', {});
             }).catch((err) => {
@@ -48,9 +50,23 @@ module.exports = function(data) {
             return res.render('login', {});
         },
         registerNewUser(req, res) {
-            console.log(req.body);
-            req.login(req.body, () => {
-                res.redirect('/auth/profile');
+            // console.log(req.body.email);
+            MongoClient.connect(constants.DB_URL, (err, db) => {
+                const user = {
+                    email: req.body.email,
+                    password: req.body.password,
+                };
+                db.collection('users').insertOne(user, (e, results) => {
+                    req.login(results.ops[0], () => { // the user takes results.ops[0] in the session and this is used in loadProfile as req.user
+                        console.log(results);
+                        res.redirect('/auth/myProfile');
+                    });
+                });
+            });
+        },
+        loadProfile(req, res) {
+            res.render('myProfile', {
+                email: req.user.email, // req.user comes from passport
             });
         },
     };

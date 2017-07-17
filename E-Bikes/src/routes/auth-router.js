@@ -8,7 +8,8 @@ module.exports = (app, controllers) => {
     router
         .get('/signup', controller.signUpUser)
         .get('/login', controller.logInUser)
-        .post('/signup', controller.registerNewUser);
+        .post('/signup', controller.registerNewUser)
+        .get('/myProfile', controller.loadProfile);
 
     app.use('/auth', router);
 
