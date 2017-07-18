@@ -5,4 +5,7 @@ module.exports = {
     MAX_USERNAME_LENGTH: 15,
     MIN_PASSWORD_LENGTH: 5,
     MAX_PASSWORD_LENGTH: 15,
+
+    BIKES_COLLECTION: 'bikes',
+    USERS_COLLECTION: 'users',
 };
