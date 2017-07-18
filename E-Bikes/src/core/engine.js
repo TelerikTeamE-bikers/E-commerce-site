@@ -1,14 +1,11 @@
 const express = require('express');
 const componentLoader = require('./componentLoader');
 const errorHandler = require('./errorHandler');
-const fs = require('fs');
-const config =
-    JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
-module.exports = () => {
+module.exports = (config) => {
     const app = express();
 
     process.env.ENV_MODE = config.Environment;
@@ -19,10 +16,21 @@ module.exports = () => {
         app.use('/static', express.static('public'));
     }
 
+    app.use(
+        bodyParser.urlencoded({
+            extended: true
+        })
+    );
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded());
     app.use(cookieParser());
-    app.use(session({ secret: 'ebikes' }));
+    app.use(
+        session({
+            secret: 'ebikes',
+            resave: true,
+            saveUninitialized: true
+        })
+    );
+
     app.use((req, res, next) => {
         res.locals.user = req.user; // for pug calling only user
         res.locals.authenticated = req.isAuthenticated(); //todo function
@@ -35,8 +43,8 @@ module.exports = () => {
     const contexts = componentLoader.initializeContexts();
     const unitOfWork = componentLoader.initializeRepositories(contexts);
     const controllers = componentLoader.initializeControllers(unitOfWork);
-
     componentLoader.initializeRoutes(app, controllers);
+
     errorHandler.handleErrors(app);
 
     return app;

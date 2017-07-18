@@ -7,6 +7,7 @@ const errorHandler = require('../../core/errorHandler');
 //const mongo = require('../mongoDbContext');
 
 module.exports = (contexts) => {
+    
     let context = contexts.mongo
     return {
         // findUserById(id) {
