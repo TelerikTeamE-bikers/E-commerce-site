@@ -14,7 +14,7 @@ module.exports = (app, controllers) => {
             // (req, res) => res.redirect('/auth/myProfile')
             passport.authenticate('local', {
                 successRedirect: '/auth/myProfile',
-                failureRedirect: '/', // entering failure redirect???
+                failureRedirect: '/auth/signup', // entering failure redirect???
             })
         )
         .get('/myProfile', controller.loadProfile)

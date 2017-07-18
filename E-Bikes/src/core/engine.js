@@ -6,7 +6,6 @@ const config =
     JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const passport = require('passport');
 const session = require('express-session');
 
 module.exports = () => {
@@ -24,6 +23,11 @@ module.exports = () => {
     app.use(bodyParser.urlencoded());
     app.use(cookieParser());
     app.use(session({ secret: 'ebikes' }));
+    app.use((req, res, next) => {
+        res.locals.user = req.user; // for pug calling only user
+        res.locals.authenticated = req.isAuthenticated(); //todo function
+        next();
+    });
     require('../config/passport')(app);
     app.set('view engine', 'pug');
     app.set('views', './src/views');
