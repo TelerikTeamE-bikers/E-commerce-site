@@ -6,7 +6,7 @@ module.exports = (contexts, constants, errorHandler) => {
 
     let context = contexts.mongo
     return {
-        createUser(user) {
+        createUser(req, res, user) {
             return new Promise((resolve, reject) => {
                 context.connectToServer()
                     .then((db) => {
@@ -26,26 +26,26 @@ module.exports = (contexts, constants, errorHandler) => {
                     });
             });
         },
-        findUserByCredentials(username, password) {
+        findUserByCredentials(email, password) {
             return new Promise((resolve, reject) => {
                 context.connectToServer()
                     .then((db) => {
                         db.collection(constants.USERS_COLLECTION)
                             .findOne({
-                                username: username,
+                                email: email,
                                 password: password,
                             })
                             .then((user) => {
                                 resolve(user || null);
                             }).catch((err) => {
-                                console.log(err)
-                                errorHandler.handleError(req, res, err, 444);
+                                console.log(err);
+                                //errorHandler.handleError(req, res, err, 444);
                             });
                     });
             });
         },
 
-        findUserById(id) {
+        findUserById(req, res, id) {
             return new Promise((resolve, reject) => {
                 context.connectToServer()
                     .then((db) => {
@@ -61,7 +61,7 @@ module.exports = (contexts, constants, errorHandler) => {
                     });
             });
         },
-        
+
         // createUser(user) {
         //     let newUser = userDbModel.getUser(user.username, user.password, user.shoppingCart, user.shoppingHistory)
 

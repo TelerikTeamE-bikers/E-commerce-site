@@ -32,17 +32,20 @@ module.exports = (config, constants, errorHandler, componentLoader) => {
         })
     );
 
-    app.use((req, res, next) => {
-        res.locals.user = req.user; // for pug calling only user
-        res.locals.authenticated = req.isAuthenticated();
-        next();
-    });
-    require('../config/passport')(app);
+    const contexts = componentLoader.initializeContexts();
+    const unitOfWork = componentLoader.initializeRepositories(contexts, constants, errorHandler);
+    //app.use(flash())
+    require('./modules/authentication-module')(app, unitOfWork, errorHandler);
+
+    // app.use((req, res, next) => {
+    //     res.locals.user = req.user; // for pug calling only user
+    //     res.locals.authenticated = req.isAuthenticated();
+    //     next();
+    // });
+
     app.set('view engine', 'pug');
     app.set('views', './src/views');
 
-    const contexts = componentLoader.initializeContexts();
-    const unitOfWork = componentLoader.initializeRepositories(contexts, constants, errorHandler);
     const controllers = componentLoader.initializeControllers(unitOfWork);
     componentLoader.initializeRoutes(app, controllers);
 

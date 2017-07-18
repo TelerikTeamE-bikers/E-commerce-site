@@ -4,7 +4,7 @@ module.exports = (contexts, constants, errorHandler) => {
 
     let context = contexts.mongo
     return {
-        findBikeById(id) {
+        findBikeById(req, res, id) {
             return new Promise((resolve, reject) => {
                 context.connectToServer()
                     .then((db) => {
@@ -21,7 +21,7 @@ module.exports = (contexts, constants, errorHandler) => {
             });
         },
 
-        addBike(bike) {
+        addBike(req, res, bike) {
             return new Promise((resolve, reject) => {
                 context.connectToServer()
                     .then((db) => {
@@ -62,59 +62,59 @@ module.exports = (contexts, constants, errorHandler) => {
 };
 
 // findUserById(id) {
-        //     return new Promise((resolve, reject) => {
-        //         MongoClient.connect(constants.DB_URL)
-        //             .then((db) => {
-        //                 db.collection('users')
-        //                     .findOne({ _id: new ObjectId(id) })
-        //                     .then((user) => {
-        //                         resolve(user || null);
-        //                     });
+//     return new Promise((resolve, reject) => {
+//         MongoClient.connect(constants.DB_URL)
+//             .then((db) => {
+//                 db.collection('users')
+//                     .findOne({ _id: new ObjectId(id) })
+//                     .then((user) => {
+//                         resolve(user || null);
+//                     });
 
-        //                 db.close();
-        //             });
-        //     });
-        // },
-        // findUserByCredentials(username, password) {
-        //     const searchedUser = userModel.getUser(username, password);
+//                 db.close();
+//             });
+//     });
+// },
+// findUserByCredentials(username, password) {
+//     const searchedUser = userModel.getUser(username, password);
 
-        //     return new Promise((resolve, reject) => {
-        //         MongoClient.connect(constants.DB_URL)
-        //             .then((db) => {
-        //                 db.collection('users')
-        //                     .findOne({
-        //                         username: searchedUser.username,
-        //                         password: searchedUser.password,
-        //                     })
-        //                     .then((user) => {
-        //                         resolve(user || null);
-        //                     });
+//     return new Promise((resolve, reject) => {
+//         MongoClient.connect(constants.DB_URL)
+//             .then((db) => {
+//                 db.collection('users')
+//                     .findOne({
+//                         username: searchedUser.username,
+//                         password: searchedUser.password,
+//                     })
+//                     .then((user) => {
+//                         resolve(user || null);
+//                     });
 
-        //                 db.close();
-        //             });
-        //     });
-        // },
-        // addUser(user) {
-        //     MongoClient.connect(constants.DB_URL, function(err, db) {
-        //         db.collection('users').insertOne({
-        //             username: user.username,
-        //             password: user.password,
-        //         });
+//                 db.close();
+//             });
+//     });
+// },
+// addUser(user) {
+//     MongoClient.connect(constants.DB_URL, function(err, db) {
+//         db.collection('users').insertOne({
+//             username: user.username,
+//             password: user.password,
+//         });
 
-        //         db.close();
-        //     });
-        // },
+//         db.close();
+//     });
+// },
 
-        // addBike(bike) {
-        //     MongoClient.connect(constants.DB_URL, (err, db) => {
-        //         if (err) {
-        //             return console.log("Failed to connect to db!!" + "\n" + err)
-        //         }
-        //         db.collection('bikes').insertOne({
-        //             brand: bike.brand,
-        //             model: bike.model,
-        //         });
+// addBike(bike) {
+//     MongoClient.connect(constants.DB_URL, (err, db) => {
+//         if (err) {
+//             return console.log("Failed to connect to db!!" + "\n" + err)
+//         }
+//         db.collection('bikes').insertOne({
+//             brand: bike.brand,
+//             model: bike.model,
+//         });
 
-        //         db.close();
-        //     });
-        // },
+//         db.close();
+//     });
+// },

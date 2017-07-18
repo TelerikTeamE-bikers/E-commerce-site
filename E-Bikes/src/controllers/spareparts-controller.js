@@ -6,6 +6,6 @@ module.exports = function(data) {
             res.render('spareParts', {
                 user: req.user,
             });
-        }
-    }
+        },
+    };
 };
