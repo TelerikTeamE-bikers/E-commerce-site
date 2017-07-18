@@ -17,10 +17,11 @@ module.exports = (app, controllers) => {
                 failureRedirect: '/', // entering failure redirect???
             })
         )
-        .get('/myProfile', controller.loadProfile);
+        .get('/myProfile', controller.loadProfile)
+        .get('/updateProfile', controller.loadUpdateProfile);
 
     app.use('/auth', router);
-    app.use('/', router);
+    // app.use('/', router);
 
     return router;
 };

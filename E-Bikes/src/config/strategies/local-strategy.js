@@ -8,11 +8,11 @@ module.exports = () => {
             usernameFiled: 'email',
             passwordField: 'password'
         },
-        (username, password, done) => {
+        (email, password, done) => {
 
             MongoClient.connect(constants.DB_URL, (err, db) => {
                 db.collection('users').findOne({
-                        email: username
+                        email: email
                     },
                     (err, results) => {
                         if (results.passwords === password) {

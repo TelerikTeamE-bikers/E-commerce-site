@@ -70,6 +70,9 @@ module.exports = function(data) {
                 email: req.user.email, // req.user comes from passport
             });
         },
+        loadUpdateProfile(req, res) {
+            res.render('updateProfile', {});
+        },
         // registerExistingUser(req, res) {
         //     console.log('Register new user');
         //     passport.authenticate('local', {
