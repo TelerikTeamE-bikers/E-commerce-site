@@ -10,9 +10,12 @@ module.exports = (contexts, constants, errorHandler) => {
                     .then((db) => {
                         db.collection(constants.BIKES_COLLECTION)
                             .findOne({ _id: new ObjectId(id) })
-                            .then((user) => {
+                            .then((bike) => {
                                 db.close();
-                                resolve(user || null);
+                                resolve(bike || null);
+                            }).catch((err) => {
+                                console.log(err)
+                                errorHandler.handleError(req, res, err, 444);
                             });
                     });
             });
