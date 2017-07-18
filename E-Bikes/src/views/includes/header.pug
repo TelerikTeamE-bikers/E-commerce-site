@@ -8,21 +8,22 @@ header.site-header
           .site-header__menu-logo__bottom
         .site-header__menu-content
           .site-header__btn-container
-            a.btn(href="/auth/login") Log-In
-            span &nbsp
-            a.btn(href="/auth/signup") Sign-Up
-            span &nbsp
-            a.btn.open-modal(href="#") Get in Touch
+            if user
+              a.btn(href="/auth/logout") Log-Out
+              span &nbsp
+              a.btn.open-modal(href="/auth/my-cart") My Cart
+            else
+              a.btn(href="/auth/login") Log-In
+              span &nbsp
+              a.btn(href="/auth/signup") Sign-Up
+              span &nbsp
           nav.primary-nav.primary-nav--pull-right
             ul
               li
                 a(href="/bike/allbikes") All Bikes
               li
-                a#features-link(href="bike-spare-parts") Parts & Spares
+                a#features-link(href="/bike-spare-parts") Parts & Spares
               li
-                a#accessories-link(href="accessories") Accessories
+                a#accessories-link(href="/accessories") Accessories
               li
-                a#testimonials-link(href="testimonials") Testimonials
-              if authenticated
-                li
-                  a#success-link(href="testimonials") Success   
+                a#testimonials-link(href="/testimonials") Testimonials

@@ -1,9 +1,11 @@
 const errorHandler = require('../core/errorHandler');
 
-module.exports = function (data) {
+module.exports = function(data) {
     return {
         loadAccessories(req, res) {
-            res.render('accessories', {});
+            res.render('accessories', {
+                user: req.user,
+            });
         }
     }
 };

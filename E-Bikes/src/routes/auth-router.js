@@ -18,7 +18,11 @@ module.exports = (app, controllers) => {
             })
         )
         .get('/myProfile', controller.loadProfile)
-        .get('/updateProfile', controller.loadUpdateProfile);
+        .get('/updateProfile', controller.loadUpdateProfile)
+        .get('/logout', function(req, res) {
+            req.logout();
+            res.redirect('/');
+        });
 
     app.use('/auth', router);
     // app.use('/', router);

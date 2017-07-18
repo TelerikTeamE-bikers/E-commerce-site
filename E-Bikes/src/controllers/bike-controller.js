@@ -4,7 +4,7 @@ const errorHandler = require('../core/errorHandler');
 //const validator = require('../common/validator');
 
 module.exports =
-    function (data) {
+    function(data) {
         return {
             getAll(req, res) {
                 console.log("all bikes page");
@@ -18,7 +18,8 @@ module.exports =
                 data.bike.getAllBikes(req, res, errorHandler)
                     .then((bikes) => {
                         res.render('allBikes', {
-                            'bikeList': bikes
+                            'bikeList': bikes,
+                            user: req.user,
                         });
                     }).catch((err) => {
                         errorHandler.handleError(req, res, err);

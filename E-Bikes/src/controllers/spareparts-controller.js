@@ -1,9 +1,11 @@
 const errorHandler = require('../core/errorHandler');
 
-module.exports = function (data) {
+module.exports = function(data) {
     return {
         loadSpareParts(req, res) {
-            res.render('spareParts', {});
+            res.render('spareParts', {
+                user: req.user,
+            });
         }
     }
 };

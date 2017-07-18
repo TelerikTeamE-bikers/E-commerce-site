@@ -45,10 +45,14 @@ module.exports = function(data) {
             });
         },
         signUpUser(req, res) {
-            return res.render('signup', {});
+            return res.render('signup', {
+                user: req.user,
+            });
         },
         logInUser(req, res) {
-            return res.render('login', {});
+            return res.render('login', {
+                user: req.user,
+            });
         },
         registerNewUser(req, res) {
             // console.log(req.body.email);
@@ -67,11 +71,14 @@ module.exports = function(data) {
         },
         loadProfile(req, res) {
             res.render('myProfile', {
-                email: req.user.email, // req.user comes from passport
+                email: req.user.email,
+                user: req.user, // req.user comes from passport
             });
         },
         loadUpdateProfile(req, res) {
-            res.render('updateProfile', {});
+            res.render('updateProfile', {
+                user: req.user,
+            });
         },
         // registerExistingUser(req, res) {
         //     console.log('Register new user');

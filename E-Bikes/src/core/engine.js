@@ -33,7 +33,7 @@ module.exports = (config) => {
 
     app.use((req, res, next) => {
         res.locals.user = req.user; // for pug calling only user
-        res.locals.authenticated = req.isAuthenticated(); //todo function
+        res.locals.authenticated = req.isAuthenticated();
         next();
     });
     require('../config/passport')(app);
