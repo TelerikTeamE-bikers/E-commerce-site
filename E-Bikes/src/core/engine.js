@@ -1,11 +1,12 @@
 const express = require('express');
-const componentLoader = require('./componentLoader');
-const errorHandler = require('./errorHandler');
+//const componentLoader = require('./componentLoader');
+//const errorHandler = require('./errorHandler');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+//const constants = require('../../common/constants');
 
-module.exports = (config) => {
+module.exports = (config, constants, errorHandler, componentLoader) => {
     const app = express();
 
     process.env.ENV_MODE = config.Environment;
@@ -41,7 +42,7 @@ module.exports = (config) => {
     app.set('views', './src/views');
 
     const contexts = componentLoader.initializeContexts();
-    const unitOfWork = componentLoader.initializeRepositories(contexts);
+    const unitOfWork = componentLoader.initializeRepositories(contexts, constants, errorHandler);
     const controllers = componentLoader.initializeControllers(unitOfWork);
     componentLoader.initializeRoutes(app, controllers);
 

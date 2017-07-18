@@ -1,7 +1,14 @@
 const constants = require('./src/common/constants');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
-const app = require('./src/core/engine')(config);
+const componentLoader = require('./src/core/componentLoader');
+const errorHandler = require('./src/core/errorHandler');
+
+const app = require('./src/core/engine')
+    (config,
+    constants,
+    errorHandler,
+    componentLoader);
 
 app.listen(constants.APP_PORT, () => {
     console.log('----|  Startup log  |----');

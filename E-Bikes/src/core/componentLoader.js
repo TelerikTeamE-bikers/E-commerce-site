@@ -34,14 +34,17 @@ module.exports = {
 
         return controllers;
     },
-    initializeRepositories(contexts) {
+    initializeRepositories(contexts, constants, errorHandler) {
         let repositories = {};
 
         fs.readdirSync('./src/data/repositories')
             .filter(x => x.includes('-repository'))
             .forEach(file => {
                 //console.log("f: ", file)
-                let repositoryModule = require(path.join('../data/repositories', file))(contexts);
+                let repositoryModule = require(path.join('../data/repositories', file))
+                    (contexts,
+                    constants,
+                    errorHandler);
                 //console.log(1, controllerModule)
                 console.log("Loading repository:", '../data/repositories/' + file);
 
