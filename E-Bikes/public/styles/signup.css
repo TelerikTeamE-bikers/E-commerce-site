@@ -721,6 +721,13 @@ a {
                     transform: scale(1);
         }
 
+.site-header__my-cart {
+        background: url(../../../static/images/myCart.jpg) no-repeat 0px center;
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+    }
+
 .site-footer {
     padding: 0.5rem 0;
     background-color: #2f5572;
