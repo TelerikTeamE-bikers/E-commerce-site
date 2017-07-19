@@ -114,8 +114,7 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -598,6 +597,7 @@ a {
         transition: -webkit-transform .6s ease-out;
         transition: transform .6s ease-out;
         transition: transform .6s ease-out, -webkit-transform .6s ease-out;
+        margin-bottom: 1rem;
     }
 
 @media (min-width: 800px) {
@@ -606,7 +606,7 @@ a {
             left: auto;
             -webkit-transform: translateX(0);
                     transform: translateX(0);
-            padding: 25px 36px
+            margin-bottom: 1rem
     }
             .site-header--dark .site-header__logo {
                 -webkit-transform: scale(.57);
@@ -875,6 +875,10 @@ a {
             color: #d59541;
         }
 
+.sign-up-form {
+    margin-top: 3rem;
+}
+
 /* Full-width input fields */
 
 .singup-text,
@@ -891,7 +895,7 @@ a {
 /* Set a style for all buttons */
 
 .signupbtn {
-    background-color: lightgreen;
+    background-color: #d59541;
     color: white;
     padding: 10px 18px;
     margin: 5px 0;
@@ -915,19 +919,18 @@ a {
     padding: 16px;
 }
 
+@media (min-width: 800px) {
+
+.signup-container {
+        width: 40%;
+        margin: 0 auto
+}
+    }
+
 /* Clear floats */
 
 .clearfix::after {
     content: "";
     clear: both;
     display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-
-@media screen and (max-width: 300px) {
-    .cancelbtn,
-    .signupbtn {
-        width: 100%;
-    }
 }

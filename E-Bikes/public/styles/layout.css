@@ -114,8 +114,7 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -598,6 +597,7 @@ a {
         transition: -webkit-transform .6s ease-out;
         transition: transform .6s ease-out;
         transition: transform .6s ease-out, -webkit-transform .6s ease-out;
+        margin-bottom: 1rem;
     }
 
 @media (min-width: 800px) {
@@ -606,7 +606,7 @@ a {
             left: auto;
             -webkit-transform: translateX(0);
                     transform: translateX(0);
-            padding: 25px 36px
+            margin-bottom: 1rem
     }
             .site-header--dark .site-header__logo {
                 -webkit-transform: scale(.57);

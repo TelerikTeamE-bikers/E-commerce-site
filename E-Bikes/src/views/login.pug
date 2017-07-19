@@ -9,19 +9,15 @@ block content
     .wrapper
         br
         form.log-in-form(action='/auth/login', method='post')
-            .container
+            .login-container
                 label
                 b Email
                 input.login-text(type='text', placeholder='Enter Email', name='email', required)
                 label
                 b Password
-                input.login-password(type='password', placeholder='Enter Password', name='password', required)
-                
-            .container-button
-                button.loginbtn(type='submit')  Login
+                input.login-password(type='password', placeholder='Enter Password', name='password', required)  
                 .container-button
-                input(type='checkbox', checked='checked')
-                |  Remember me
-            .container-button  
-                       
-                button.cancelbtn(type='button') Cancel
+                    button.loginbtn(type='submit')  Login
+                    .container-button
+                    input(type='checkbox', checked='checked')
+                    |  Remember me

@@ -14,12 +14,11 @@ module.exports = (app, data, errorHandler) => {
         (email, password, done) => {
             data.user.findUserByCredentials(email, password)
                 .then((user) => {
-                    console.log(user);
+                    // console.log(user);
                     if (user !== null) {
                         return done(null, user);
-                    } else {
-                        return done(null, false, { message: 'User not found' });
                     }
+                    return done(null, false, { message: 'User not found' });
                 }).catch((err) => {
                     console.log(err);
                     // errorHandler.handleError(req, res, err, 444);
@@ -34,6 +33,12 @@ module.exports = (app, data, errorHandler) => {
 
     app.use(passport.initialize());
     app.use(passport.session());
+
+    // If authentication succeeds, a session will be established and maintained
+    // via a cookie set in the user's browser.
+    // Each subsequent request will not contain credentials, but rather the unique
+    // cookie that identifies the session. In order to support login sessions,
+    // Passport will serialize and deserialize user instances to and from the session.
 
     passport.serializeUser((user, done) => {
         done(null, user._id);

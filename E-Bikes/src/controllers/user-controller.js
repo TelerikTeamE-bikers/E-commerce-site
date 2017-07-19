@@ -55,15 +55,15 @@ module.exports = function(data) {
             });
         },
         registerNewUser(req, res) {
-            // console.log(req.body.email);
+            // console.log(req.body.email); 
             MongoClient.connect(constants.DB_URL, (err, db) => {
                 const user = {
                     email: req.body.email,
                     password: req.body.password,
                 };
                 db.collection('users').insertOne(user, (e, results) => {
-                    req.login(results.ops[0], () => { // the user takes results.ops[0] in the session and this is used in loadProfile as req.user
-                        // console.log(results);
+                    req.login(user, () => { // the user takes results.ops[0] in the session and this is used in loadProfile as req.user
+                        console.log(user + 'test passport');
                         res.redirect('/auth/myProfile');
                     });
                 });

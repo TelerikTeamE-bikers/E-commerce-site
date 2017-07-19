@@ -29,10 +29,11 @@
         transform: translateX(-50%) scale(0.8);
         transform-origin: 50% 0;
         transition: transform .6s ease-out;
+        margin-bottom: 1rem;
         @mixin atMedium {
             left: auto;
             transform: translateX(0);
-            padding: 25px 36px;
+            margin-bottom: 1rem;
             .site-header--dark & {
                 transform: scale(.57);
             }
