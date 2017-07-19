@@ -4,6 +4,10 @@ extends layout.pug
 block custom-styles
     link(rel='stylesheet', href='/static/styles/login.css')
 
+block custom-scripts
+    
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='/static/scripts/loginValidate.js')
 
 block content
     .wrapper
@@ -12,7 +16,7 @@ block content
             .login-container
                 label
                 b Email
-                input.login-text(type='text', placeholder='Enter Email', name='email', required)
+                input#email.login-text(type='text', placeholder='Enter Email', name='email', required)
                 label
                 b Password
                 input.login-password(type='password', placeholder='Enter Password', name='password', required)  
