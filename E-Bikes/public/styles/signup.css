@@ -723,9 +723,8 @@ a {
 
 .site-header__my-cart {
         background: url(../../../static/images/myCart.jpg) no-repeat 0px center;
-        width: 35px;
-        height: 35px;
-        display: inline-block;
+        width: 38px;
+        height: 38px;
     }
 
 .site-footer {
