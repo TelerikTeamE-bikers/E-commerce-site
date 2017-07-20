@@ -1,10 +1,5 @@
-import $ from 'jquery';
-import Modal from './modules/modal';
+import MobileMenu from './modules/MobileMenu';
+import Modal from './modules/Modal';
 
-
-// console.log("here123");
-// console.log($('.modal').eq(1).html());
-// $('.modal').addClass('modal--is-visible');
-
-
+let mobileMenu = new MobileMenu();
 let modal = new Modal();

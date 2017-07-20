@@ -10330,25 +10330,71 @@ return jQuery;
 "use strict";
 
 
+var _MobileMenu = __webpack_require__(2);
+
+var _MobileMenu2 = _interopRequireDefault(_MobileMenu);
+
+var _Modal = __webpack_require__(3);
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mobileMenu = new _MobileMenu2.default();
+var modal = new _Modal2.default();
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _jquery = __webpack_require__(0);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _modal = __webpack_require__(2);
-
-var _modal2 = _interopRequireDefault(_modal);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// console.log("here123");
-// console.log($('.modal').eq(1).html());
-// $('.modal').addClass('modal--is-visible');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var MobileMenu = function () {
+    function MobileMenu() {
+        _classCallCheck(this, MobileMenu);
 
-var modal = new _modal2.default();
+        this.siteHeader = (0, _jquery2.default)('.site-header');
+        this.menuIcon = (0, _jquery2.default)('.site-header__menu-logo');
+        this.menuContent = (0, _jquery2.default)('.site-header__menu-content');
+        this.events(); // calling the method on the creation of object which is instance of the class
+    }
+
+    _createClass(MobileMenu, [{
+        key: 'events',
+        value: function events() {
+            this.menuIcon.click(this.toggleTheMenu.bind(this));
+        }
+    }, {
+        key: 'toggleTheMenu',
+        value: function toggleTheMenu() {
+            this.menuContent.toggleClass('site-header__menu-content--is-visible');
+            this.siteHeader.toggleClass('site-header--is-expanded');
+            this.menuIcon.toggleClass('site-header__menu-icon--close-x');
+        }
+    }]);
+
+    return MobileMenu;
+}();
+
+exports.default = MobileMenu;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -635,7 +635,7 @@ a {
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: #FFF;
+            background-color: #2f5572;
             -webkit-transform-origin: 0 0;
                     transform-origin: 0 0;
             -webkit-transition: -webkit-transform .3s ease-out;
@@ -650,7 +650,7 @@ a {
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: #FFF;
+            background-color: #2f5572;
             -webkit-transition: all .3s ease-out;
             transition: all .3s ease-out;
             -webkit-transform-origin: 0 50%;
@@ -664,7 +664,7 @@ a {
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: #FFF;
+            background-color: #2f5572;
             -webkit-transform-origin: 0 100%;
                     transform-origin: 0 100%;
             -webkit-transition: -webkit-transform .3s ease-out;
@@ -940,7 +940,7 @@ a {
 @media (min-width: 530px) {
 
 .large-hero__title {
-            font-size: 4.8rem
+            font-size: 3.8rem
     }
     }
 
