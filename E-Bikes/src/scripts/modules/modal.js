@@ -3,6 +3,7 @@ import $ from 'jquery';
 class Modal {
     constructor() {
         this.openModalButton = $('.open-modal');
+        console.log(this.openModalButton);
         this.modal = $('.modal');
         this.closeModalButton = $('.modal__close');
         this.events();
@@ -11,10 +12,6 @@ class Modal {
     events() {
         //clicking te open modal button
         this.openModalButton.click(this.openModal.bind(this));
-        // console.log(this.openModalButton);
-        // console.log(this.modal);
-        // console.log('TESTTT123')
-        // console.log(this.openModalButton.click);
 
         //clicking the x close modal button
         this.closeModalButton.click(this.closeModal.bind(this));
@@ -27,12 +24,10 @@ class Modal {
         if (e.keyCode == 27) {
             this.closeModal();
         }
-        console.log('Key press')
     }
 
     openModal() {
         this.modal.addClass('modal--is-visible');
-        // console.log('TESTTT Open modal');
         return false; // do let anchor tag (in this case the button)with # to go to the top of the page 
 
     }

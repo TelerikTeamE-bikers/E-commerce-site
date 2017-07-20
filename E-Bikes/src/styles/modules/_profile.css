@@ -1,0 +1,18 @@
+.profile {
+    display: inline-block;
+    float: left;
+    width: 33%;
+    padding: 0.7rem;
+    &__photo {
+        width: 100%;
+    }
+    &__icons-container {
+        text-align: center;
+    }
+    &__name {
+        text-align: center;
+    }
+    &__icons {
+        padding: 0.5rem;
+    }
+}
