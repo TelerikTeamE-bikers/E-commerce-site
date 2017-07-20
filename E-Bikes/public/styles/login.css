@@ -726,7 +726,9 @@ a {
         background: url(../../../static/images/myCart.jpg) no-repeat 0px center;
         width: 35px;
         height: 35px;
-        display: inline-block;
+        float: right;
+        padding-top: 30px;
+        margin-right: 10px;
     }
 
 .site-footer {
