@@ -14,14 +14,20 @@ block content
         br
         form.log-in-form(action='/auth/login', method='post')
             .login-container
-                label
-                b Email
-                input#email.login-text(type='text', placeholder='Enter Email', name='email', required)
-                label
-                b Password
-                input.login-password(type='password', placeholder='Enter Password', name='password', required)  
-                .container-button
-                    button.loginbtn(type='submit')  Login
+                .email-container
+                    label
+                    b Email
+                    input.login-text.email-validate(type='text', placeholder='Enter Email', name='email', required)
+                    span.error-email Please enter valid email!
+                    
+                .password-container
+                    label
+                    b Password
+                    input.login-password.password-validate(type='password', placeholder='Enter Password', name='password', required) 
+                    span.error-password Password should be equal to or longer than 4 characters and contain letters and numbers!
+                    br
                     .container-button
-                    input(type='checkbox', checked='checked')
-                    |  Remember me
+                        button.loginbtn(type='submit')  Login
+                        .container-button
+                        input(type='checkbox', checked='checked')
+                        |  Remember me

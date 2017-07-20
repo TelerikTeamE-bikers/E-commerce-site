@@ -924,6 +924,22 @@ input.valid {
     border: 4px solid green;
 }
 
+.error-email {
+    display: none;
+    margin-left: 10px;
+}
+
+.error-password {
+    display: none;
+    margin-left: 10px;
+}
+
+.error_show {
+    font-weight: bold;
+    color: red;
+    float: right;
+}
+
 /* Set a style for all buttons */
 
 .loginbtn {
