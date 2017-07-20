@@ -9,10 +9,10 @@ header.site-header
           .site-header__menu-logo__bottom
         .site-header__menu-content
           .site-header__btn-container
-            if user
+            if authenticated
               a.btn(href="/auth/logout") Log-Out
               span &nbsp
-              a.btn.open-modal.site-header__my-cart(href="/auth/my-cart")
+              a.btn.open-modal.site-header__my-cart(href="/auth/my-cart") My cart
             else
               a.btn(href="/auth/login") Log-In
               span &nbsp
