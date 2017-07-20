@@ -114,9 +114,12 @@
             transform: scale(1);
         }
     }
-    /*&__my-cart {
+    &__my-cart {
         background: url(../../../static/images/myCart.jpg) no-repeat 0px center;
-        width: 38px;
-        height: 38px;
-    }*/
+        width: 35px;
+        height: 35px;
+        float: right;
+        padding-top: 30px;
+        margin-right: 10px;
+    }
 }
