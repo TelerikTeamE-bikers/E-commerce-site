@@ -53,7 +53,7 @@
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: $mainBlue;
+            background-color: #FFF;
             transform-origin: 0 0;
             transition: transform .3s ease-out;
         }
@@ -63,7 +63,7 @@
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: $mainBlue;
+            background-color: #FFF;
             transition: all .3s ease-out;
             transform-origin: 0 50%;
         }
@@ -74,7 +74,7 @@
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: $mainBlue;
+            background-color: #FFF;
             transform-origin: 0 100%;
             transition: transform .3s ease-out;
         }
@@ -121,5 +121,6 @@
         float: right;
         padding-top: 30px;
         margin-right: 10px;
+        @atMedium {}
     }
 }
