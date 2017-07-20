@@ -37,11 +37,12 @@ module.exports = (config, constants, errorHandler, componentLoader) => {
     //app.use(flash())
     require('./modules/authentication-module')(app, unitOfWork, errorHandler);
 
-    // app.use((req, res, next) => {
-    //     res.locals.user = req.user; // for pug calling only user
-    //     res.locals.authenticated = req.isAuthenticated();
-    //     next();
-    // });
+    app.use((req, res, next) => {
+        res.locals.user = req.user; // for pug calling only user
+        res.locals.authenticated = req.isAuthenticated();
+        // console.log(req.isAuthenticated());
+        next();
+    });
 
     app.set('view engine', 'pug');
     app.set('views', './src/views');

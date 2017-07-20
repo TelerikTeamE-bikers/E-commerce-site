@@ -506,7 +506,7 @@ a {
     }
 
 .wrapper--narrow {
-        max-width: 470px;
+        max-width: 570px;
     }
 
 .wrapper--no-padding-until-medium {
@@ -884,3 +884,26 @@ a {
 .modal__close:hover {
             color: #d59541;
         }
+
+.profile {
+    display: inline-block;
+    float: left;
+    width: 33%;
+    padding: 0.7rem;
+}
+
+.profile__photo {
+        width: 100%;
+    }
+
+.profile__icons-container {
+        text-align: center;
+    }
+
+.profile__name {
+        text-align: center;
+    }
+
+.profile__icons {
+        padding: 0.5rem;
+    }

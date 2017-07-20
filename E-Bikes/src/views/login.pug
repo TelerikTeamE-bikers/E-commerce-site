@@ -4,11 +4,6 @@ extends layout.pug
 block custom-styles
     link(rel='stylesheet', href='/static/styles/login.css')
 
-block custom-scripts
-    
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='/static/scripts/loginValidate.js')
-
 block content
     .wrapper
         br
@@ -31,3 +26,7 @@ block content
                         .container-button
                         input(type='checkbox', checked='checked')
                         |  Remember me
+
+block custom-scripts
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='/static/scripts/loginValidate.js')

@@ -7,11 +7,6 @@ html(lang="en")
     link(rel='stylesheet', href='/static/styles/layout.css')
 
     block custom-styles
-
-    script(src='/static/scripts/layout.js')
-
-    block custom-scripts
-
     
   body
     include includes/header.pug
@@ -20,4 +15,7 @@ html(lang="en")
     br
     block content    
     include includes/footer.pug
-    include includes/modal.pug        
+    include includes/modal.pug     
+    script(src='/static/scripts/layout.js')
+
+    block custom-scripts   

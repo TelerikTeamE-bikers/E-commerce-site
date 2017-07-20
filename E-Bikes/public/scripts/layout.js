@@ -10373,6 +10373,7 @@ var Modal = function () {
         _classCallCheck(this, Modal);
 
         this.openModalButton = (0, _jquery2.default)('.open-modal');
+        console.log(this.openModalButton);
         this.modal = (0, _jquery2.default)('.modal');
         this.closeModalButton = (0, _jquery2.default)('.modal__close');
         this.events();
@@ -10383,10 +10384,6 @@ var Modal = function () {
         value: function events() {
             //clicking te open modal button
             this.openModalButton.click(this.openModal.bind(this));
-            // console.log(this.openModalButton);
-            // console.log(this.modal);
-            // console.log('TESTTT123')
-            // console.log(this.openModalButton.click);
 
             //clicking the x close modal button
             this.closeModalButton.click(this.closeModal.bind(this));
@@ -10400,13 +10397,11 @@ var Modal = function () {
             if (e.keyCode == 27) {
                 this.closeModal();
             }
-            console.log('Key press');
         }
     }, {
         key: 'openModal',
         value: function openModal() {
             this.modal.addClass('modal--is-visible');
-            // console.log('TESTTT Open modal');
             return false; // do let anchor tag (in this case the button)with # to go to the top of the page 
         }
     }, {

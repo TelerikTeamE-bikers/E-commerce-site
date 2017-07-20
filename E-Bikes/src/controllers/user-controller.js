@@ -45,14 +45,10 @@ module.exports = function(data) {
             });
         },
         signUpUser(req, res) {
-            return res.render('signup', {
-                user: req.user,
-            });
+            return res.render('signup', {});
         },
         logInUser(req, res) {
-            return res.render('login', {
-                user: req.user,
-            });
+            return res.render('login', {});
         },
         registerNewUser(req, res) {
             // console.log(req.body.email); 
@@ -72,7 +68,6 @@ module.exports = function(data) {
         loadProfile(req, res) {
             res.render('myProfile', {
                 email: req.user.email,
-                user: req.user, // req.user comes from passport
             });
         },
         loadUpdateProfile(req, res) {
