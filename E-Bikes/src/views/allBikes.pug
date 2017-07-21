@@ -4,14 +4,20 @@ block custom-styles
     link(rel='stylesheet', href='/static/styles/allBikes.css')
 
 block content
-  .wrapper
+  .wrapper.wrapper--t-padding
+    .flex__container-filter
+      span Filter by: 
+      select#filter.flex__item-filter
+        option(value="asc-price") Ascending price
+        option(value="dsc-price") Descending price
+        option(value="brand-name") Brand name
     ul.flex__container
-      each bike in bikeList
-        li.flex__item.product-item
-          //todo - how to save img in document in MongoDb
-          img.product-item__photo(src="../../static/images/product-item.jpg")
-          .product-item__title #{bike.brand} #{bike.model}
-          .product-item__price #{bike.price}&euro;
-          .flex__container-btn
-            .btn__add-to-cart.flex__item-btn Add to cart
-            .btn__product-details.flex__item-btn Details
+        each bike in bikeList
+          li.flex__item.product-item
+            //todo - how to save img in document in MongoDb
+            img.product-item__photo(src="../../static/images/product-item.jpg")
+            .product-item__title #{bike.brand} #{bike.model}
+            .product-item__price #{bike.price}&euro;
+            .flex__container-btn
+              a.btn__add-to-cart.flex__item-btn(href="#") Add to cart
+              a.btn__product-details.flex__item-btn(href="#") Details

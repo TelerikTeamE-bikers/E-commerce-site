@@ -1,10 +1,16 @@
 .product-item {
     &__title {
-        font-size: 1rem;
+        font-size: 0.85rem;
+        @mixin atSmall {
+            font-size: 1rem;
+        }
     }
     &__price {
         font-style: oblique;
-        font-size: 0.8rem;
         padding: 7px 0;
+        font-size: 0.75rem;
+        @mixin atSmall {
+            font-size: 0.8rem;
+        }
     }
 }

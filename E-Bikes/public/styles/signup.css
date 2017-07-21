@@ -492,6 +492,7 @@ a {
     }
 
 .btn__add-to-cart {
+        font-size: 0.75rem;
         background-color: #d59541;
         color: #FFF;
         text-decoration: none;
@@ -500,12 +501,27 @@ a {
         margin-right: 0.5 rem;
     }
 
+@media (min-width: 530px) {
+
+.btn__add-to-cart {
+            font-size: 0.9rem
+    }
+    }
+
 .btn__product-details {
+        font-size: 0.75rem;
         background-color: #2f5572;
         color: #FFF;
         text-decoration: none;
         padding: 0.35rem 0.6rem;
         display: inline-block;
+    }
+
+@media (min-width: 530px) {
+
+.btn__product-details {
+            font-size: 0.9rem
+    }
     }
 
 .wrapper {
@@ -563,6 +579,10 @@ a {
 .wrapper--b-margin {
             margin-bottom: 4rem
     }
+    }
+
+.wrapper--t-padding {
+        padding-top: 150px;
     }
 
 .site-header {

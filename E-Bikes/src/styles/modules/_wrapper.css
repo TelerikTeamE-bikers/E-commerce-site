@@ -35,4 +35,7 @@
             margin-bottom: 4rem;
         }
     }
+    &--t-padding {
+        padding-top: 150px;
+    }
 }

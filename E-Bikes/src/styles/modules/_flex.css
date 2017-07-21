@@ -1,22 +1,32 @@
 .flex {
     &__container {
-        padding: 150px 48px 50px 48px;
+        padding-bottom: 50px;
         list-style: none;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        @mixin atSmall {
+            padding: 0px 48px 50px 48px;
+        }
     }
     &__item {
-        background-color: rgba($mainBlue, 0.3);
+        background-color: #FFF;
         width: 200px;
-        height: 231px;
+        height: 228px;
         padding: 0px;
         margin: 16px 25px;
         text-align: center;
+        @mixin atSmall {
+            background-color: rgba($mainBlue, 0.3);
+        }
     }
     &__container-btn {
         display: flex;
         justify-content: space-between;
     }
     &__item-btn {}
+    &__container-filter {
+        display: flex;
+        justify-content: center;
+    }
 }

@@ -14,18 +14,26 @@
         }
     }
     &__add-to-cart {
+        font-size: 0.75rem;
         background-color: $mainOrange;
         color: #FFF;
         text-decoration: none;
         padding: 0.35rem 0.6rem;
         display: inline-block;
         margin-right: 0.5 rem;
+        @mixin atSmall {
+            font-size: 0.9rem;
+        }
     }
     &__product-details {
+        font-size: 0.75rem;
         background-color: $mainBlue;
         color: #FFF;
         text-decoration: none;
         padding: 0.35rem 0.6rem;
         display: inline-block;
+        @mixin atSmall {
+            font-size: 0.9rem;
+        }
     }
 }
