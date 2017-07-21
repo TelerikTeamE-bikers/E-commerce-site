@@ -5,7 +5,7 @@
 }
 
 .login-container {
-    padding: 16px;
+    padding: 3rem 1rem;
     @mixin atMedium {
         width: 40%;
         margin: 0 auto;

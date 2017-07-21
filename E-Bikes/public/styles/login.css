@@ -491,6 +491,23 @@ a {
     }
     }
 
+.btn__add-to-cart {
+        background-color: #d59541;
+        color: #FFF;
+        text-decoration: none;
+        padding: 0.35rem 0.6rem;
+        display: inline-block;
+        margin-right: 0.5 rem;
+    }
+
+.btn__product-details {
+        background-color: #2f5572;
+        color: #FFF;
+        text-decoration: none;
+        padding: 0.35rem 0.6rem;
+        display: inline-block;
+    }
+
 .wrapper {
     overflow: hidden;
     padding-left: 18px;
@@ -630,7 +647,7 @@ a {
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: #FFF;
+            background-color: #d59541;
             -webkit-transform-origin: 0 0;
                     transform-origin: 0 0;
             -webkit-transition: -webkit-transform .3s ease-out;
@@ -645,7 +662,7 @@ a {
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: #FFF;
+            background-color: #d59541;
             -webkit-transition: all .3s ease-out;
             transition: all .3s ease-out;
             -webkit-transform-origin: 0 50%;
@@ -659,7 +676,7 @@ a {
             left: 0;
             width: 20px;
             height: 3px;
-            background-color: #FFF;
+            background-color: #d59541;
             -webkit-transform-origin: 0 100%;
                     transform-origin: 0 100%;
             -webkit-transition: -webkit-transform .3s ease-out;
@@ -915,7 +932,7 @@ a {
 }
 
 .login-container {
-    padding: 16px;
+    padding: 3rem 1rem;
 }
 
 @media (min-width: 800px) {

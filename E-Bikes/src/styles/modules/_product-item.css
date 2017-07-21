@@ -1,0 +1,10 @@
+.product-item {
+    &__title {
+        font-size: 1rem;
+    }
+    &__price {
+        font-style: oblique;
+        font-size: 0.8rem;
+        padding: 7px 0;
+    }
+}

@@ -1,0 +1,22 @@
+.flex {
+    &__container {
+        padding: 150px 48px 50px 48px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    &__item {
+        background-color: rgba($mainBlue, 0.3);
+        width: 200px;
+        height: 231px;
+        padding: 0px;
+        margin: 16px 25px;
+        text-align: center;
+    }
+    &__container-btn {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item-btn {}
+}

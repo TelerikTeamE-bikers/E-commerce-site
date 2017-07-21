@@ -13,4 +13,19 @@
             font-size: 1.25rem;
         }
     }
+    &__add-to-cart {
+        background-color: $mainOrange;
+        color: #FFF;
+        text-decoration: none;
+        padding: 0.35rem 0.6rem;
+        display: inline-block;
+        margin-right: 0.5 rem;
+    }
+    &__product-details {
+        background-color: $mainBlue;
+        color: #FFF;
+        text-decoration: none;
+        padding: 0.35rem 0.6rem;
+        display: inline-block;
+    }
 }

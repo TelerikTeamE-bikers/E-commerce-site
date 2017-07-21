@@ -75,13 +75,5 @@ module.exports = function(data) {
                 user: req.user,
             });
         },
-        // registerExistingUser(req, res) {
-        //     console.log('Register new user');
-        //     passport.authenticate('local', {
-        //         failureRedirect: '/auth/login',
-        //     }, () => {
-        //         res.redirect('/auth/myProfile');
-        //     });
-        // },
     };
 };

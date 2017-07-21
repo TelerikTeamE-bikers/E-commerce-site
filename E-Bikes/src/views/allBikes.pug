@@ -1,13 +1,17 @@
 extends layout.pug
 
-//- block content
-//-   ul #collection
-//-     li= brand
-//-     li= model
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/allBikes.css')
 
 block content
-  table
-  each bike in bikeList
-    tr#bike_list_item    
-      td #{bike.brand}
-      td #{bike.model}
+  .wrapper
+    ul.flex__container
+      each bike in bikeList
+        li.flex__item.product-item
+          //todo - how to save img in document in MongoDb
+          img.product-item__photo(src="../../static/images/product-item.jpg")
+          .product-item__title #{bike.brand} #{bike.model}
+          .product-item__price #{bike.price}&euro;
+          .flex__container-btn
+            .btn__add-to-cart.flex__item-btn Add to cart
+            .btn__product-details.flex__item-btn Details

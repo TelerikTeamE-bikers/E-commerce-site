@@ -1,10 +1,7 @@
 const express = require('express');
-//const componentLoader = require('./componentLoader');
-//const errorHandler = require('./errorHandler');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-//const constants = require('../../common/constants');
 
 module.exports = (config, constants, errorHandler, componentLoader) => {
     const app = express();

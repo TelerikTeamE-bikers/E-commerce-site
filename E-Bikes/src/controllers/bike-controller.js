@@ -25,6 +25,10 @@ module.exports =
                         errorHandler.handleError(req, res, err);
                     });
 
+                // data.bike.addBike(req, res, {
+                //     brand: 'Trek',
+                //     model: 'Powerfly 11',
+                // });
                 //errorHandler.handleError(req, res, new Error("test error"), 500);
 
                 //}

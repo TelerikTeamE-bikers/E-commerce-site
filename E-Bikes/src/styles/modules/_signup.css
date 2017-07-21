@@ -42,7 +42,7 @@
 /* Add padding to container elements */
 
 .signup-container {
-    padding: 16px;
+    padding: 3rem 1rem;
     @mixin atMedium {
         width: 40%;
         margin: 0 auto;
