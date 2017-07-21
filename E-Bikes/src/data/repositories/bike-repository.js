@@ -48,7 +48,7 @@ module.exports = (contexts, constants, errorHandler) => {
                             .find()
                             .toArray()
                             .then((bikes) => {
-                                console.log(bikes)
+                                console.log(bikes);
                                 db.close();
                                 resolve(bikes || null);
                             })

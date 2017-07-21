@@ -1,12 +1,14 @@
 const express = require('express');
 
 module.exports = (app, controllers) => {
-    let router = new express.Router();
-    let controller = controllers.bike;
+    const router = new express.Router();
+    const controller = controllers.bike;
 
-    router.get('/allbikes', controller.getAll);
+    router.get('/allbikes', (req, res) => {
+        return controller.getAll(req, res);
+    });
 
-    //app.use('/', router);
+    // app.use('/', router);
     app.use('/bike', router);
 
     return router;

@@ -7,7 +7,7 @@ module.exports =
     function(data) {
         return {
             getAll(req, res) {
-                console.log("all bikes page");
+                console.log('all bikes page');
 
                 //const bike = bikeModel.getBike('brand 1', 'model 1');
                 //console.log(bike);

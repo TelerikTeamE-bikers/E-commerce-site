@@ -1,12 +1,16 @@
 const express = require('express');
 
 module.exports = (app, controllers) => {
-    let router = new express.Router();
-    let controller = controllers.home;
+    const router = new express.Router();
+    const controller = controllers.home;
 
     router
-        .get('/', controller.loadHome)
-        .get('/home', controller.loadHome);
+        .get('/', (req, res) => {
+            return controller.loadHome(req, res);
+        })
+        .get('/home', (req, res) => {
+            controller.loadHome(req, res);
+        });
 
     app.use('/', router);
 

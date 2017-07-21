@@ -7,9 +7,15 @@ module.exports = (app, controllers) => {
     const authPaths = ['/myProfile', '/updateProfile', '/logout'];
 
     router
-        .get('/signup', controller.signUpUser)
-        .get('/login', controller.logInUser)
-        .post('/signup', controller.registerNewUser)
+        .get('/signup', (req, res) => {
+            return controller.signUpUser(req, res);
+        })
+        .get('/login', (req, res) => {
+            return controller.logInUser(req, res);
+        })
+        .post('/signup', (req, res) => {
+            return controller.registerNewUser;
+        })
         .post('/login',
             passport.authenticate('local', {
                 successRedirect: '/auth/myProfile',
@@ -24,8 +30,12 @@ module.exports = (app, controllers) => {
             }
             next();
         })
-        .get('/myProfile', controller.loadProfile)
-        .get('/updateProfile', controller.loadUpdateProfile)
+        .get('/myProfile', (req, res) => {
+            return controller.loadProfile(req, res);
+        })
+        .get('/updateProfile', (req, res) => {
+            return controller.loadUpdateProfile(req, res);
+        })
         .get('/logout', function(req, res) {
             req.logout();
             res.redirect('/');
