@@ -8,16 +8,27 @@ block content
     .wrapper
         form.sign-up-form(action='/auth/signup', method='post')
             .signup-container
-                label
-                b Email
-                input.singup-text(type='text', placeholder='Enter Email', name='email')
-                label
-                b Password
-                input.singup-password(type='password', placeholder='Enter Password', name='password', required)
-                label
-                b Repeat Password
-                input.singup-password(type='password', placeholder='Repeat Password', name='password-repeat')
-                input(type='checkbox', checked='checked')
-                |  Remember me
-                .container-button
-                button.signupbtn(type='submit') Sign Up
+                .email-container
+                    label
+                    b Email
+                    input.singup-text.email-validate(type='text', placeholder='Enter Email', name='email')
+                    span.error-email Please enter valid email!
+
+                .password-container  
+                    label
+                    b Password
+                    input.singup-password.password-validate(type='password', placeholder='Enter Password', name='password', required)
+                    span.error-password Password should be equal to or longer than 4 characters and contain letters and numbers!
+                    label
+                    b Repeat Password
+                    input.singup-password.password-validate(type='password', placeholder='Repeat Password', name='password-repeat')
+                    span.error-password Password should be equal to or longer than 4 characters and contain letters and numbers!
+                    span.error-difpass The passwords you have added are not identical!
+                    input(type='checkbox', checked='checked')
+                    |  Remember me
+                    .container-button
+                    button.signupbtn(type='submit') Sign Up
+
+block custom-scripts
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='/static/scripts/signupValidate.js')
