@@ -1,2 +1,11 @@
-To Start Mongo from CMD:
-	C:\Program Files\MongoDB\Server\3.4\bin>mongod.exe --dbpath F:/Development/MongoData
+Automatic start:
+   -Edit LaunchConfiguration/Configuration.txt 
+	1.Write at first line location of mongod.exe
+	2.Write at second line location of mongodata folder
+	3.Write at third line the name of project folder
+
+Manual Start:
+1.Run Mongo from CMD:
+	C:\Program Files\MongoDB\Server\3.4\bin>mongod.exe
+	--dbpath F:/Development/MongoData
+2.Run app.js
