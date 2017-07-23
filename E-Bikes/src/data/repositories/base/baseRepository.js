@@ -1,4 +1,4 @@
-const { MongoClient, ObectID } = require('mongodb');
+const { MongoClient, ObjectID } = require('mongodb');
 
 class BaseMongoDbData {
     constructor(dbContext, modelClass, dbSetName, factory, errorHandler) {
@@ -6,16 +6,16 @@ class BaseMongoDbData {
         this.modelClass = modelClass;
         this.factory = factory;
         this.errorHandler = errorHandler;
-        this.dbSet = dbContext.collection(dbSetName);
+        this.collection = dbContext.collection(dbSetName);
     }
 
     getAll() {
         return new Promise((resolve, reject) => {
-            this.dbSet.find()
+            this.collection.find()
                 .toArray()
                 .then((models) => {
 
-                    let result = models.map((model) =>
+                    const result = models.map((model) =>
                         this.factory.createModel(model, this.modelClass)
                     );
 
@@ -24,24 +24,24 @@ class BaseMongoDbData {
                     resolve(result || null);
                 }).catch((err) => {
                     console.log(err)
-                    //errorHandler.handleError(req, res, err, 444);
+                        //errorHandler.handleError(req, res, err, 444);
                 });
         });
     }
 
     findById(id) {
-        return this.dbSet.findOne({
+        return this.collection.findOne({
             _id: new ObjectID(id),
         });
     }
 
     filterBy(props) {
-        return this.dbSet.find(props)
+        return this.collection.find(props)
             .toArray();
     }
 
     updateById(model) {
-        return this.dbSet.updateOne({
+        return this.collection.updateOne({
             _id: model._id,
         }, model);
     }
