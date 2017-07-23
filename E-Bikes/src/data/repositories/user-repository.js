@@ -2,8 +2,8 @@ const BaseData = require('./base/baseRepository');
 const User = require('../../models/dbModels/user-dbModel');
 
 class UsersData extends BaseData {
-    constructor(db) {
-        super(db, User, User);
+    constructor(dbContext, constants, factory, errorHandler) {
+        super(dbContext, User, constants.BIKES_COLLECTION, factory, errorHandler);
     }
 
     findByUsername(username) {
