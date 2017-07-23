@@ -1,30 +1,23 @@
 const { MongoClient, ObectID } = require('mongodb');
 
 class BaseMongoDbData {
-    constructor(dbContext, modelClass, dbSetName, errorHandler) {
+    constructor(dbContext, modelClass, dbSetName, factory, errorHandler) {
         this.db = dbContext;
         this.modelClass = modelClass;
+        this.factory = factory;
         this.errorHandler = errorHandler;
         this.dbSet = dbContext.collection(dbSetName);
     }
 
     getAll() {
-        // console.log("db = " + this.db)
-        // console.log()
-
-
         return new Promise((resolve, reject) => {
          this.dbSet.find()
             .toArray()
             .then((models) => {
 
-                // if (this.modelClass.toViewModel) {
-                //     return models.map(
-                //         (model) => this.modelClass.toViewModel(model)
-                //     );
-                // }
-
-                resolve(models || null);
+                let result = models.map((model) => this.factory.createModel(this.modelClass, 'bikedbmodel'));
+                
+                resolve(result || null);
             }).catch((err) => {
                 console.log(err)
                 //errorHandler.handleError(req, res, err, 444);
