@@ -26,7 +26,6 @@ engine.init(config, constants, errorHandler, componentLoader)
 
             // Handle chat event
             websocket.on('chat', (data) => {
-                console.log('Test na SOCKET.On');
                 io.sockets.emit('chat', data);
             });
 
