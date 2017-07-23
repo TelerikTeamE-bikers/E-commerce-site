@@ -7,14 +7,14 @@ module.exports = {
         switch (modelClass.name.toLowerCase()) {
             case Bike.name.toLowerCase():
                 //return this.createBike(model);
-                return this.createModel(model, modelClass);
+                return this.create(model, modelClass);
             case User.name.toLowerCase():
                 //return this.createUser(model);
-                return this.createModel(model, modelClass);
+                return this.create(model, modelClass);
         }
     },
 
-    createModel(model, modelClass) {
+    create(model, modelClass) {
         let result = new modelClass();
 
         Object.keys(model)
