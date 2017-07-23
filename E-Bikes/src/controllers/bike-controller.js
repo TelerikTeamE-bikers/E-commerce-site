@@ -13,23 +13,7 @@ module.exports =
                 //console.log(bike);
                 //data.addBike(bike);
 
-                //let bikes;
-
-                /////
-                // data.bike.getAllBikes(req, res, errorHandler)
-                //     .then((bikes) => {
-                //         res.render('allBikes', {
-                //             'bikeList': bikes,
-                //             user: req.user,
-                //         });
-                //     }).catch((err) => {
-                //         errorHandler.handleError(req, res, err);
-                //     });
-                //////
-
-                //console.log(data)
-                
-                 data.bike2.getAll()
+                data.bike.getAll()
                     .then((bikes) => {
                         res.render('allBikes', {
                             'bikeList': bikes,

@@ -34,11 +34,11 @@ module.exports = {
 
         return controllers;
     },
-    initializeRepositories(context, constants, errorHandler) {
+    initializeRepositories(context, constants, factory, errorHandler) {
         const repositories = {};
 
         fs.readdirSync('./src/data/repositories')
-            .filter((x) => x.includes('2-repository'))
+            .filter((x) => x.includes('-repository'))
             .forEach((file) => {
                 // console.log("f: ", file)
                 let Repoitory = require(path.join('../data/repositories', file));
@@ -46,6 +46,7 @@ module.exports = {
                 const repositoryModule = new Repoitory
                     (context,
                     constants,
+                    factory,
                     errorHandler);
                 // console.log(1, controllerModule)
                 console.log('Loading repository:', '../data/repositories/' + file);
@@ -67,13 +68,29 @@ module.exports = {
                 const contextModule = require(path.join('../data/dbContexts', file));
                 console.log('Loading context:', '../data/dbContexts/' + file);
 
-                contexts[file.substring(0, file.indexOf('-'))] =
-                    contextModule;
+                contexts[file.substring(0, file.indexOf('-'))] = contextModule;
             });
 
         console.log("All contexts loaded.");
         console.log();
 
         return contexts;
+    },
+    initializeFactories(constants) {
+        const factories = {};
+
+        fs.readdirSync('./src/factories')
+            .filter((x) => x.includes('-factory'))
+            .forEach((file) => {
+                const factoryModule = require(path.join('../factories/', file));
+                console.log('Loading context:', '../data/dbContexts/' + file);
+
+                factories[file.substring(0, file.indexOf('-'))] = factoryModule;
+            });
+
+        console.log("All factories loaded.");
+        console.log();
+
+        return factories;
     }
 };

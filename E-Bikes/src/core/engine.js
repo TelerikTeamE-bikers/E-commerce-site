@@ -38,8 +38,16 @@ module.exports = {
                     );
                 })
                 .then(() => componentLoader.initializeContexts(constants))
-                .then((contexts)=> contexts.mongo.init(constants.DB_URL))
-                .then((context) => componentLoader.initializeRepositories(context, constants, errorHandler))
+                .then((contexts) => contexts.mongo.init(constants.DB_URL))
+                .then((context) => {
+                    let factories = componentLoader.initializeFactories(constants);
+                    let unitOfWork = componentLoader.initializeRepositories(context,
+                        constants,
+                        factories.dataModels,
+                        errorHandler);
+
+                    return unitOfWork;
+                })
                 .then((unitOfWork) => {
                     //app.use(flash())
                     require('./modules/authentication-module')(app, unitOfWork, errorHandler);
@@ -57,7 +65,7 @@ module.exports = {
                     const controllers = componentLoader.initializeControllers(unitOfWork);
                     componentLoader.initializeRoutes(app, controllers);
 
-                    errorHandler.handleErrors(app);
+                    //errorHandler.handleErrors(app);
 
                     resolve(app);
                 });
