@@ -945,41 +945,39 @@ a {
         padding: 0.5rem;
     }
 
-/* Default Styles
---------------------------------------------------- */
-
 label {
-        color: #000;
-        font-weight: bold;
-    }
+    color: #000;
+    font-weight: bold;
+}
 
 #home-content {
-        background-color: #eee;
-        text-align: left;
-        overflow: auto;
-        position: relative;
-    }
+    background-color: #eee;
+    text-align: left;
+    overflow: auto;
+    position: relative;
+    margin: 150px 0 50px 0;
+}
 
 #contact-details .header_1 {
-        float: left;
-        width: 450px;
-        text-align: center;
-        margin: 40px 0px 40px 20px;
-    }
+    float: left;
+    width: 450px;
+    text-align: center;
+    margin: 40px 0px 40px 20px;
+}
 
 #contact-details .header_1 img {
-        border: #fff solid 4px;
-        padding: 16px;
-        margin: 10px 0px 0px 0px;
-    }
+    border: #fff solid 4px;
+    padding: 16px;
+    margin: 10px 0px 0px 0px;
+}
 
 .submitBTN {
-        float: right;
-        margin-right: 30%;
-        margin-top: 10px;
-    }
+    float: right;
+    margin-right: 30%;
+    margin-top: 10px;
+}
 
 .uploadBTN {
-        float: left;
-        margin: 00px 10px 00px 00px;
-    }
+    float: left;
+    margin: 00px 10px 00px 00px;
+}
