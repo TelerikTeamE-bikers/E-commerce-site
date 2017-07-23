@@ -1,25 +1,54 @@
 const Bike = require('../models/dbModels/bike-dbModel');
+const User = require('../models/dbModels/user-dbModel');
 
 module.exports = {
 
-    createModel(model) {
-        console.log(Bike)
-        console.log("BikeType = " + Bike.name.toLowerCase())
-        switch(model.name.toLowerCase()){
+    createModel(model, modelClass) {
+        switch (modelClass.name.toLowerCase()) {
             case Bike.name.toLowerCase():
-            return this.createBike(model);
+                //return this.createBike(model);
+                return this.createModel(model, modelClass);
+            case User.name.toLowerCase():
+                //return this.createUser(model);
+                return this.createModel(model, modelClass);
         }
     },
 
-    createBike(model) {
-        const result = new Bike();
+    createModel(model, modelClass) {
+        let result = new modelClass();
 
         Object.keys(model)
             .forEach((prop) => {
-                result[prop] = model[prop];S
+                result[prop] = model[prop];
             });
 
         return result;
     },
 
+    createBike(model) {
+        console.log("M: " + model)
+        const result = new Bike(
+            model.brand,
+            model.model,
+            model.price
+        );
+
+        // Object.keys(model)
+        //     .forEach((prop) => {
+        //         result[prop] = model[prop];
+        //     });
+
+        return result;
+    },
+
+    createUser(model) {
+        const result = new User();
+
+        Object.keys(model)
+            .forEach((prop) => {
+                result[prop] = model[prop];
+            });
+
+        return result;
+    }
 };

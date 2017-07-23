@@ -50,8 +50,11 @@ class UserDbModel {
     }
 }
 
-module.exports = {
-    getUser(username, password, shoppingCart, shoppingHistory) {
-        return new UserDbModel(username, password, shoppingCart, shoppingHistory);
-    },
-};
+module.exports =
+//  {
+//     getUser(username, password, shoppingCart, shoppingHistory) {
+//         return new UserDbModel(username, password, shoppingCart, shoppingHistory);
+//     },
+// };
+
+UserDbModel;

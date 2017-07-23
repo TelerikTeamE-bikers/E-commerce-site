@@ -11,17 +11,21 @@ class BaseMongoDbData {
 
     getAll() {
         return new Promise((resolve, reject) => {
-         this.dbSet.find()
-            .toArray()
-            .then((models) => {
+            this.dbSet.find()
+                .toArray()
+                .then((models) => {
 
-                let result = models.map((model) => this.factory.createModel(this.modelClass, 'bikedbmodel'));
-                
-                resolve(result || null);
-            }).catch((err) => {
-                console.log(err)
-                //errorHandler.handleError(req, res, err, 444);
-            });
+                    let result = models.map((model) =>
+                        this.factory.createModel(model, this.modelClass)
+                    );
+
+                    console.log(result);
+
+                    resolve(result || null);
+                }).catch((err) => {
+                    console.log(err)
+                    //errorHandler.handleError(req, res, err, 444);
+                });
         });
     }
 
