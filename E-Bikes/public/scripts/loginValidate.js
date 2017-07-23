@@ -1,3 +1,5 @@
+/* global $ */
+
 $(document).ready(function() {
     // email input validation
     const emailInput = $('.email-validate');
@@ -37,7 +39,7 @@ $(document).ready(function() {
         }
     }
 
-    // Validating submited log-in form 
+    // Validating submited log-in form
     $('.loginbtn').click(function(event) {
         let errorFree;
         if (emailInput.hasClass('valid') && passwInput.hasClass('valid')) {
