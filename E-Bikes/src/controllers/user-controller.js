@@ -51,35 +51,35 @@ module.exports = function(data) {
             return res.render('login', {});
         },
         registerNewUser(req, res) {
-            const bodyUser = req.body;
-            console.log(req.body.email);
-            data.user.findByUsername(bodyUser)
-                .then((dbUser) => {
-                    if (dbUser) {
-                        throw new Error('User already exists');
-                    }
+            // const bodyUser = req.body;
+            // console.log(req.body.email);
+            // data.user.findByUsername(bodyUser)
+            //     .then((dbUser) => {
+            //         if (dbUser) {
+            //             throw new Error('User already exists');
+            //         }
 
-                    return data.user.create(bodyUser);
-                }).then((dbUser) => {
-                    req.login(dbUser, () => {
-                        console.log(dbUser + 'test passport');
-                        res.redirect('/auth/myProfile');
-                    });
-                }).catch((err) => {
-                    req.flash('error', err);
-                });
-            // MongoClient.connect(constants.DB_URL, (err, db) => {
-            //     const user = {
-            //         email: req.body.email,
-            //         password: req.body.password,
-            //     };
-            //     db.collection('users').insertOne(user, (e, results) => {
-            //         req.login(user, () => {
-            //             console.log(user + 'test passport');
+            //         return data.user.create(bodyUser);
+            //     }).then((dbUser) => {
+            //         req.login(dbUser, () => {
+            //             console.log(dbUser + 'test passport');
             //             res.redirect('/auth/myProfile');
             //         });
+            //     }).catch((err) => {
+            //         req.flash('error', err);
             //     });
-            // });
+            MongoClient.connect(constants.DB_URL, (err, db) => {
+                const user = {
+                    email: req.body.email,
+                    password: req.body.password,
+                };
+                db.collection('users').insertOne(user, (e, results) => {
+                    req.login(user, () => {
+                        console.log(user + 'test passport');
+                        res.redirect('/auth/myProfile');
+                    });
+                });
+            });
         },
         loadProfile(req, res) {
             res.render('myProfile', {

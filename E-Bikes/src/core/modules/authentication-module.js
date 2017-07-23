@@ -12,7 +12,7 @@ module.exports = (app, data, errorHandler) => {
             //passReqToCallback: true
         },
         (email, password, done) => {
-            data.user.findUserByCredentials(email, password)
+            data.user.findByUsername(email, password)
                 .then((user) => {
                     // console.log(user);
                     if (user !== null) {
