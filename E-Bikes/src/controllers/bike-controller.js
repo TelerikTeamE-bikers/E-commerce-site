@@ -15,14 +15,29 @@ module.exports =
 
                 //let bikes;
 
-                data.bike.getAllBikes(req, res, errorHandler)
+                /////
+                // data.bike.getAllBikes(req, res, errorHandler)
+                //     .then((bikes) => {
+                //         res.render('allBikes', {
+                //             'bikeList': bikes,
+                //             user: req.user,
+                //         });
+                //     }).catch((err) => {
+                //         errorHandler.handleError(req, res, err);
+                //     });
+                //////
+
+                //console.log(data)
+                
+                 data.bike2.getAll()
                     .then((bikes) => {
                         res.render('allBikes', {
                             'bikeList': bikes,
                             user: req.user,
                         });
                     }).catch((err) => {
-                        errorHandler.handleError(req, res, err);
+                        console.log(err);
+                        //errorHandler.handleError(req, res, err);
                     });
 
                 // data.bike.addBike(req, res, {
