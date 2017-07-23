@@ -1,4 +1,22 @@
-const { MongoClient, ObectId } = require('mongodb');
+// const BaseData = require('./base/base-repository');
+// const User = require('../../models/dbModels/user-dbModel');
+
+// class UsersData extends BaseData {
+//     constructor(db) {
+//         super(db, User, User);
+//     }
+
+//     findByUsername(username) {
+//         return this
+//             // i	Case-insensitive search.
+//             .filterBy({ username: new RegExp(username, 'i') })
+//             .then(([user]) => user);
+//     }
+// }
+
+// module.exports = UsersData;
+
+const { MongoClient, ObjectID } = require('mongodb');
 const userDbModel = require('../../models/dbModels/user-dbModel');
 const cartDbModel = require('../../models/dbModels/user-dbModel');
 
@@ -50,7 +68,7 @@ module.exports = (contexts, constants, errorHandler) => {
                 context.connectToServer()
                     .then((db) => {
                         db.collection(constants.USERS_COLLECTION)
-                            .findOne({ _id: new ObjectId(id) })
+                            .findOne({ _id: new ObjectID(id) })
                             .then((user) => {
                                 db.close();
                                 resolve(user || null);
@@ -97,5 +115,5 @@ module.exports = (contexts, constants, errorHandler) => {
         //             });
         //     });
         // }
-    }
+    };
 };

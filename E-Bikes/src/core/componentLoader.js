@@ -35,36 +35,35 @@ module.exports = {
         return controllers;
     },
     initializeRepositories(contexts, constants, errorHandler) {
-        let repositories = {};
+        const repositories = {};
 
         fs.readdirSync('./src/data/repositories')
-            .filter(x => x.includes('-repository'))
-            .forEach(file => {
-                //console.log("f: ", file)
-                let repositoryModule = require(path.join('../data/repositories', file))
+            .filter((x) => x.includes('-repository'))
+            .forEach((file) => {
+                // console.log("f: ", file)
+                const repositoryModule = require(path.join('../data/repositories', file))
                     (contexts,
-                    constants,
-                    errorHandler);
-                //console.log(1, controllerModule)
-                console.log("Loading repository:", '../data/repositories/' + file);
+                        constants,
+                        errorHandler);
+                // console.log(1, controllerModule)
+                console.log('Loading repository:', '../data/repositories/' + file);
 
                 repositories[file.substring(0, file.indexOf('-'))] = repositoryModule;
             });
 
-        //console.log(2, controllers)
-        console.log("All repositories loaded.");
-        console.log();
+        console.log('All repositories loaded.', repositories);
+
 
         return repositories;
     },
     initializeContexts() {
-        let contexts = {};
+        const contexts = {};
 
         fs.readdirSync('./src/data/dbContexts')
-            .filter(x => x.includes('-dbContext'))
-            .forEach(file => {
-                let contextModule = require(path.join('../data/dbContexts', file));
-                console.log("Loading context:", '../data/dbContexts/' + file);
+            .filter((x) => x.includes('-dbContext'))
+            .forEach((file) => {
+                const contextModule = require(path.join('../data/dbContexts', file));
+                console.log('Loading context:', '../data/dbContexts/' + file);
 
                 contexts[file.substring(0, file.indexOf('-'))] = contextModule;
             });

@@ -14,7 +14,7 @@ module.exports = (app, controllers) => {
             return controller.logInUser(req, res);
         })
         .post('/signup', (req, res) => {
-            return controller.registerNewUser;
+            return controller.registerNewUser(req, res);
         })
         .post('/login',
             passport.authenticate('local', {
