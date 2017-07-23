@@ -13,9 +13,9 @@ module.exports = {
                 return this.create(model, modelClass);
         }
     },
-
-    create(model, modelClass) {
-        let result = new modelClass();
+    // we will use this at the momenta
+    create(model, ModelClass) {
+        const result = new ModelClass();
 
         Object.keys(model)
             .forEach((prop) => {

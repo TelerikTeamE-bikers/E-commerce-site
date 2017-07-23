@@ -21,15 +21,15 @@ engine.init(config, constants, errorHandler, componentLoader)
         // Socket setup
         const io = socket(server);
 
-        io.on('connection', (websocket) => {
+        io.on('connection', (socket) => {
             console.log('Websocket connection has been made', socket.id);
 
             // Handle chat event
-            websocket.on('chat', (data) => {
+            socket.on('chat', (data) => {
                 io.sockets.emit('chat', data);
             });
 
-            websocket.on('typing', (data) => {
+            socket.on('typing', (data) => {
                 socket.broadcast.emit('typing', data);
             });
         });

@@ -14,9 +14,8 @@ class BaseMongoDbData {
             this.collection.find()
                 .toArray()
                 .then((models) => {
-
                     const result = models.map((model) =>
-                        this.factory.createModel(model, this.modelClass)
+                        this.factory.create(model, this.modelClass)
                     );
 
                     console.log(result);

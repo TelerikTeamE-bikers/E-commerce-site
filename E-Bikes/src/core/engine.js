@@ -13,7 +13,7 @@ module.exports = {
             const app = express();
 
             async()
-                .then(() => {
+            .then(() => {
                     process.env.ENV_MODE = config.Environment;
 
                     if (process.env.ENV_MODE === 'PRODUCTION') {
@@ -27,6 +27,7 @@ module.exports = {
                             extended: true
                         })
                     );
+                    app.use(require('connect-flash')());
                     app.use(bodyParser.json());
                     app.use(cookieParser());
                     app.use(
