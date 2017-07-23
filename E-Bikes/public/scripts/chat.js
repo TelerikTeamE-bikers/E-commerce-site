@@ -34,5 +34,5 @@ socket.on('chat', (data) => {
 });
 
 socket.on('typing', (data) => {
-    $feedback.html('<p><em>' + data.handle + 'is typing a message ..</em></p>');
+    $feedback.html('<p><em>' + data.handle + ' is typing a message ..</em></p>');
 });

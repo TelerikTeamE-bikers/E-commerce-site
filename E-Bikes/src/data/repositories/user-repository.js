@@ -1,4 +1,4 @@
-// const BaseData = require('./base/base-repository');
+// const BaseData = require('./base/baseRepository');
 // const User = require('../../models/dbModels/user-dbModel');
 
 // class UsersData extends BaseData {
