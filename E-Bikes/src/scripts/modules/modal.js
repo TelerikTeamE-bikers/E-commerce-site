@@ -3,7 +3,6 @@ import $ from 'jquery';
 class Modal {
     constructor() {
         this.openModalButton = $('.open-modal');
-        console.log(this.openModalButton);
         this.modal = $('.modal');
         this.closeModalButton = $('.modal__close');
         this.events();

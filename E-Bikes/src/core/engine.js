@@ -1,3 +1,5 @@
+/* globals process */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -24,25 +26,29 @@ module.exports = {
 
                     app.use(
                         bodyParser.urlencoded({
-                            extended: true
+                            extended: true,
                         })
                     );
-                    app.use(require('connect-flash')());
                     app.use(bodyParser.json());
                     app.use(cookieParser());
                     app.use(
                         session({
                             secret: 'ebikes',
                             resave: true,
-                            saveUninitialized: true
+                            saveUninitialized: true,
                         })
                     );
+                    app.use(require('connect-flash')());
+                    app.use((req, res, next) => {
+                        res.locals.messages = require('express-messages')(req, res);
+                        next();
+                    });
                 })
                 .then(() => componentLoader.initializeContexts(constants))
                 .then((contexts) => contexts.mongo.init(constants.DB_URL))
                 .then((context) => {
-                    let factories = componentLoader.initializeFactories(constants);
-                    let unitOfWork = componentLoader.initializeRepositories(context,
+                    const factories = componentLoader.initializeFactories(constants);
+                    const unitOfWork = componentLoader.initializeRepositories(context,
                         constants,
                         factories.dataModels,
                         errorHandler);

@@ -10419,7 +10419,6 @@ var Modal = function () {
         _classCallCheck(this, Modal);
 
         this.openModalButton = (0, _jquery2.default)('.open-modal');
-        console.log(this.openModalButton);
         this.modal = (0, _jquery2.default)('.modal');
         this.closeModalButton = (0, _jquery2.default)('.modal__close');
         this.events();

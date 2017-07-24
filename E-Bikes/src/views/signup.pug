@@ -5,6 +5,7 @@ block custom-styles
 
 
 block content
+    != messages()
     .wrapper
         form.sign-up-form(action='/auth/signup', method='post')
             .signup-container

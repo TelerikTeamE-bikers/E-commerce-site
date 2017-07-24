@@ -20,7 +20,7 @@ module.exports = (app, controllers) => {
             passport.authenticate('local', {
                 successRedirect: '/auth/myProfile',
                 failureRedirect: '/auth/signup',
-                //failureFlash: true
+                failureFlash: true,
             })
         )
         .all(authPaths, (req, res, next) => {
