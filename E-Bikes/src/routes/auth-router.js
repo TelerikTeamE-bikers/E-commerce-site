@@ -8,10 +8,10 @@ module.exports = (app, controllers) => {
 
     router
         .get('/signup', (req, res) => {
-            return controller.signUpUser(req, res);
+            return controller.getSignUpForm(req, res);
         })
         .get('/login', (req, res) => {
-            return controller.logInUser(req, res);
+            return controller.getLogInForm(req, res);
         })
         .post('/signup', (req, res) => {
             return controller.registerNewUser(req, res);
@@ -31,10 +31,10 @@ module.exports = (app, controllers) => {
             next();
         })
         .get('/myProfile', (req, res) => {
-            return controller.loadProfile(req, res);
+            return controller.getProfile(req, res);
         })
         .get('/updateProfile', (req, res) => {
-            return controller.loadUpdateProfile(req, res);
+            return controller.getUpdateProfile(req, res);
         })
         .get('/logout', function(req, res) {
             req.logout();

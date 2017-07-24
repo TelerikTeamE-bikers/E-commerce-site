@@ -16,6 +16,17 @@ class UsersData extends BaseData {
         //         .then(([user]) => resolve(user));
         // });
     }
+
+    findUserByCredentials(email, password) {
+        return new Promise((resolve, reject) => {
+            this.collection.findOne({ email, password }, (err, user) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(user);
+            });
+        });
+    }
 }
 
 module.exports = UsersData;

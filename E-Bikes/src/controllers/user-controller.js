@@ -44,10 +44,10 @@ module.exports = function(data) {
                 errorHandler.handleError(req, res, err);
             });
         },
-        signUpUser(req, res) {
+        getSignUpForm(req, res) {
             return res.render('signup', {});
         },
-        logInUser(req, res) {
+        getLogInForm(req, res) {
             return res.render('login', {});
         },
         registerNewUser(req, res) {
@@ -68,12 +68,12 @@ module.exports = function(data) {
                     req.flash('error', err);
                 });
         },
-        loadProfile(req, res) {
+        getProfile(req, res) {
             res.render('myProfile', {
                 email: req.user.email,
             });
         },
-        loadUpdateProfile(req, res) {
+        getUpdateProfile(req, res) {
             res.render('updateProfile', {
                 user: req.user,
             });

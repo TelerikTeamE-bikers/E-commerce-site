@@ -12,9 +12,9 @@ module.exports = (app, data, errorHandler) => {
             //passReqToCallback: true
         },
         (email, password, done) => {
-            data.user.findByUsername(email)
+            data.user.findUserByCredentials(email, password)
                 .then((user) => {
-                    // console.log(user);
+                    console.log(user);
                     if (user !== null) {
                         return done(null, user);
                     }
@@ -45,12 +45,13 @@ module.exports = (app, data, errorHandler) => {
     });
 
     passport.deserializeUser((id, done) => {
-        MongoClient.connect(constants.DB_URL, (err, db) => {
-            db.collection('users').findOne({
-                _id: new ObjectId(id),
-            }).then((user) => {
-                done(null, user);
-            });
-        });
+        data.user.findById(id)
+            .then((user) => {
+                if (user) {
+                    return done(null, user);
+                }
+                return done(null, false);
+            })
+            .catch((error) => done(error, false));
     });
 };

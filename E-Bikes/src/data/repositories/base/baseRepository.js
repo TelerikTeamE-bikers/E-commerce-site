@@ -46,15 +46,13 @@ class BaseMongoDbData {
     }
 
     create(model) {
-        // if (!this._isModelValid(model)) {
-        //     return Promise.reject('Validation failed!');
-        // }
-        return new Promise((resolve, reject) => {
-            this.collection.insertOne(model);
-            resolve(model);
-        });
-        // .then(() => {
-        //     return model;
+        return this.collection.insert(model)
+            .then(() => {
+                return model;
+            });
+        // return new Promise((resolve, reject) => {
+        //     this.collection.insertOne(model);
+        //     resolve(model);
         // });
     }
 
@@ -62,8 +60,6 @@ class BaseMongoDbData {
     //     // ot kyde idva ModelClass.name ???
     //     return this.modelClass.name.toLowerCase() + 's';
     // }
-
-
 }
 
 module.exports = BaseMongoDbData;

@@ -31,13 +31,14 @@ module.exports = {
                     );
                     app.use(bodyParser.json());
                     app.use(cookieParser());
-                    app.use(
-                        session({
-                            secret: 'ebikes',
-                            resave: true,
-                            saveUninitialized: true,
-                        })
-                    );
+                    // //we use it in authentication-module
+                    // app.use(
+                    //     session({
+                    //         secret: 'ebikes',
+                    //         resave: true,
+                    //         saveUninitialized: true,
+                    //     })
+                    // );
                     app.use(require('connect-flash')());
                     app.use((req, res, next) => {
                         res.locals.messages = require('express-messages')(req, res);
