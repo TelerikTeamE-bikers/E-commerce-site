@@ -1,11 +1,8 @@
-const errorHandler = require('../core/errorHandler');
 const userDomainModel = require('../models/domainModels/user-domainModel');
 const bikeDomainModel = require('../models/domainModels/bike-domainModel');
-const { MongoClient } = require('mongodb');
-const constants = require('../common/constants');
 const passport = require('passport');
 
-module.exports = function(data) {
+module.exports = function(data, constants, errorHandler) {
     return {
         registerUser(req, res) {
             // let user = userDomainModel.getUser("go6o", "123");
