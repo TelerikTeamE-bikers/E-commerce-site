@@ -1,4 +1,5 @@
 const { MongoClient, ObjectID } = require('mongodb');
+const { SHA256 } = require('crypto-js');
 
 class BaseMongoDbData {
     constructor(dbContext, modelClass, dbSetName, factory, errorHandler) {

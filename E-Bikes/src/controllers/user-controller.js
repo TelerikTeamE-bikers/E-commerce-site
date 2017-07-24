@@ -4,6 +4,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const { MongoClient } = require('mongodb');
 const constants = require('../common/constants');
 const passport = require('passport');
+const { SHA256 } = require('crypto-js');
 
 module.exports = function(data) {
     return {
@@ -51,6 +52,9 @@ module.exports = function(data) {
             return res.render('login', {});
         },
         registerNewUser(req, res) {
+            req.body.password = SHA256(req.body.password).toString();
+            req.body.password_repeat = SHA256(req.body.password_repeat).toString();
+
             const bodyUser = req.body;
             data.user.findByUsername(bodyUser.email)
                 .then((dbUser) => {
