@@ -1,7 +1,4 @@
 const bikeModel = require('../models/viewModels/bike-viewModel');
-//const data = require('../data/data');
-const errorHandler = require('../core/errorHandler');
-//const validator = require('../common/validator');
 
 module.exports =
     function(data) {
