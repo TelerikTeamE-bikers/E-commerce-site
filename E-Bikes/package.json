@@ -2,7 +2,7 @@
     "name": "E-commerce-site",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "launcher.js",
     "scripts": {
         "test": "mocha ./src/**/*.test.js"
     },
