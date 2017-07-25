@@ -19,7 +19,7 @@ module.exports = (app, controllers) => {
         .post('/login',
             passport.authenticate('local', {
                 successRedirect: '/auth/myProfile',
-                failureRedirect: '/auth/signup',
+                failureRedirect: '/auth/login',
                 failureFlash: true,
             })
         )

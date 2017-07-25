@@ -24,7 +24,6 @@ module.exports = function(data, constants, errorHandler) {
                     return data.user.create(bodyUser);
                 }).then((dbUser) => {
                     req.login(dbUser, () => {
-                        // console.log(dbUser.email + 'test passport');
                         req.flash('success', 'Successful registration');
                         res.redirect('/auth/myProfile');
                     });

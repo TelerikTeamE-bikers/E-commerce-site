@@ -9,6 +9,7 @@ block content
         br
         form.log-in-form(action='/auth/login', method='post')
             .login-container
+                != messages()
                 .email-container
                     label
                     b Email

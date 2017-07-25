@@ -963,6 +963,10 @@ a {
 }
     }
 
+.error {
+    color: red;
+}
+
 /* Full-width inputs */
 
 .login-text,
