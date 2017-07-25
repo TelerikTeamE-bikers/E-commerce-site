@@ -13,7 +13,7 @@ block content
         option(value="brand-name") Brand name
     ul.flex__container
         each bike in bikeList
-          li.flex__item.product-item
+          li.flex__item.product-item #{bike._id}
             //todo - how to save img in document in MongoDb
             //img.product-item__photo(src="../../static/images/product-item.jpg")
             img.product-item__photo(src="data:image/jpg;base64," + bike.picture)

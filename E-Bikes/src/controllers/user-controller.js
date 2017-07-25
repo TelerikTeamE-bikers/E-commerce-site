@@ -42,5 +42,13 @@ module.exports = function(data, constants, errorHandler) {
                 user: req.user,
             });
         },
+        updateProfile(req, res) {
+            // todo chaining
+            const bodyUser = req.body;
+            bodyUser._id = req.user._id;
+            data.user.updateById(bodyUser);
+            console.log(bodyUser.email + bodyUser.address + bodyUser.phone + req.user._id + 'test put request');
+            res.redirect('/auth/myProfile');
+        },
     };
 };

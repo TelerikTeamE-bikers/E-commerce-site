@@ -57,6 +57,7 @@ class BaseMongoDbData {
         // });
     }
 
+
     // _getCollectionName() {
     //     // ot kyde idva ModelClass.name ???
     //     return this.modelClass.name.toLowerCase() + 's';

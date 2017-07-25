@@ -31,6 +31,18 @@ class UsersData extends BaseData {
             });
         });
     }
+    updateById(model) {
+        return this.collection.findOneAndUpdate({
+            _id: model._id,
+        }, {
+            $set: {
+                email: model.email,
+                address: model.address,
+                phone: model.phone,
+            },
+        }, {
+            returnOriginal: false,
+        });
+    }
 }
-
 module.exports = UsersData;
