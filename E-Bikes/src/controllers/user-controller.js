@@ -19,17 +19,18 @@ module.exports = function(data, constants, errorHandler) {
             data.user.findByUsername(bodyUser.email)
                 .then((dbUser) => {
                     if (dbUser) {
-                        throw new Error('User already exists');
+                        throw new Error('User already exists. Please try with another email');
                     }
                     return data.user.create(bodyUser);
                 }).then((dbUser) => {
                     req.login(dbUser, () => {
                         // console.log(dbUser.email + 'test passport');
+                        req.flash('success', 'Successful registration');
                         res.redirect('/auth/myProfile');
                     });
                 }).catch((err) => {
-                    console.log(err);
-                    req.flash('error', err);
+                    req.flash('error', err.message);
+                    res.redirect('/auth/signUp');
                 });
         },
         getProfile(req, res) {

@@ -31,18 +31,6 @@ class UsersData extends BaseData {
             });
         });
     }
-
-    // createUser(user) {
-    //     user = {
-    //         email: user.email,
-    //         password: SHA256(user.password),
-    //     };
-
-    //     return this.collection.insert(user)
-    //         .then(() => {
-    //             return user;
-    //         });
-    // }
 }
 
 module.exports = UsersData;

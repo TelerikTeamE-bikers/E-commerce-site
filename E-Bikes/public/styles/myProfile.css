@@ -948,6 +948,10 @@ a {
 /* Default Styles
 --------------------------------------------------- */
 
+.success {
+    color: green;
+}
+
 .home-a:link {
     text-decoration: underline;
     color: #000;

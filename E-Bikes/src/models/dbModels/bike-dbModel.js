@@ -34,11 +34,10 @@ class BikeDbModel {
     }
 }
 
-module.exports = 
-//{
+module.exports =
+    // {
     // getBike(brand, model, price) {
     //     return new BikeDbModel(brand, model, price);
     // },
-//}
-BikeDbModel
-;
+    // }
+    BikeDbModel;

@@ -14,7 +14,7 @@ module.exports =
                     .then((bikes) => {
                         res.render('allBikes', {
                             'bikeList': bikes,
-                            user: req.user,
+                            // user: req.user,
                         });
                     }).catch((err) => {
                         console.log(err);
