@@ -14,11 +14,11 @@ block content
                     p
                     // Begin Contact Section
                     section#contact-details
-                        
                         .header_1
                             img(src='/static/images/defaultProfilePic.png', width='250', height='250', alt='Your Name')
                         
                         .header_2
+                            != messages()
                             h1
                                 span Todor Dinkov
                                                             
@@ -49,6 +49,7 @@ block content
                                 .container-button
                                     form(action='./updateProfile')
                                         input.changeDetails(type='submit', value='Change Details', title="Press to change user details")
+                                    
    
                                         
                     .clear  

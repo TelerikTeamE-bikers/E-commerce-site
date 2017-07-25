@@ -949,6 +949,10 @@ a {
     margin-top: 3rem;
 }
 
+.error {
+    color: red;
+}
+
 /* Full-width input fields */
 
 .singup-text,

@@ -32,13 +32,13 @@ module.exports = {
                     app.use(bodyParser.json());
                     app.use(cookieParser());
                     // //we use it in authentication-module
-                    // app.use(
-                    //     session({
-                    //         secret: 'ebikes',
-                    //         resave: true,
-                    //         saveUninitialized: true,
-                    //     })
-                    // );
+                    app.use(
+                        session({
+                            secret: 'ebikes',
+                            resave: true,
+                            saveUninitialized: true,
+                        })
+                    );
                     app.use(require('connect-flash')());
                     app.use((req, res, next) => {
                         res.locals.messages = require('express-messages')(req, res);
@@ -49,16 +49,16 @@ module.exports = {
                 .then((contexts) => contexts.mongo.init(constants.DB_URL))
                 .then((context) => {
                     const factories = componentLoader.initializeFactories(constants);
-                    const unitOfWork = componentLoader.initializeRepositories(context,
+                    const data = componentLoader.initializeRepositories(context,
                         constants,
                         factories.dataModels,
                         errorHandler);
 
-                    return unitOfWork;
+                    return data;
                 })
-                .then((unitOfWork) => {
+                .then((data) => {
                     //app.use(flash())
-                    require('./modules/authentication-module')(app, unitOfWork, errorHandler);
+                    require('./modules/authentication')(app, data, errorHandler);
 
                     app.use((req, res, next) => {
                         res.locals.user = req.user; // for pug calling only user
@@ -70,12 +70,16 @@ module.exports = {
                     app.set('view engine', 'pug');
                     app.set('views', './src/views');
 
-                    const controllers = componentLoader.initializeControllers(unitOfWork);
+                    const controllers = componentLoader
+                        .initializeControllers(data, constants, errorHandler);
                     componentLoader.initializeRoutes(app, controllers);
 
                     //errorHandler.handleErrors(app);
 
                     resolve(app);
+                })
+                .catch((err) => {
+                    console.log(err);
                 });
         });
     }

@@ -1,5 +1,6 @@
 const BaseData = require('./base/baseRepository');
 const User = require('../../models/dbModels/user-dbModel');
+const { SHA256 } = require('crypto-js');
 
 class UsersData extends BaseData {
     constructor(dbContext, constants, factory, errorHandler) {
@@ -19,7 +20,10 @@ class UsersData extends BaseData {
 
     findUserByCredentials(email, password) {
         return new Promise((resolve, reject) => {
-            this.collection.findOne({ email, password }, (err, user) => {
+            this.collection.findOne({
+                email: email,
+                password: SHA256(password).toString(),
+            }, (err, user) => {
                 if (err) {
                     return reject(err);
                 }

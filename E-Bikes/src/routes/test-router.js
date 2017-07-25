@@ -2,10 +2,10 @@ const express = require('express');
 
 module.exports = (app, controllers) => {
     let router = new express.Router();
-    let controller = controllers.user;
+    let controller = controllers.bike;
 
     router
-        .get('/testroute', controller.registerUser);
+        .get('/testr', controller.addBike);
 
     app.use('/', router);
 

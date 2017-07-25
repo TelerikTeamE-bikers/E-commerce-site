@@ -1,8 +1,8 @@
 const constants = require('./src/common/constants');
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('./configuration/config.json', 'utf8'));
-const componentLoader = require('./src/core/componentLoader');
-const errorHandler = require('./src/core/errorHandler');
+const componentLoader = require('./src/core/modules/componentLoader');
+const errorHandler = require('./src/core/modules/errorHandler');
 const socket = require('socket.io');
 const engine = require('./src/core/engine');
 

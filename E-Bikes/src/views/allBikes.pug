@@ -15,7 +15,8 @@ block content
         each bike in bikeList
           li.flex__item.product-item
             //todo - how to save img in document in MongoDb
-            img.product-item__photo(src="../../static/images/product-item.jpg")
+            //img.product-item__photo(src="../../static/images/product-item.jpg")
+            img.product-item__photo(src="data:image/jpg;base64," + bike.picture)
             .product-item__title #{bike.brand} #{bike.model}
             .product-item__price #{bike.price}&euro;
             .flex__container-btn

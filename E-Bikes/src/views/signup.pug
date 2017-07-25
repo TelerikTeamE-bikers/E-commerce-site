@@ -5,10 +5,11 @@ block custom-styles
 
 
 block content
-    != messages()
+    
     .wrapper
         form.sign-up-form(action='/auth/signup', method='post')
             .signup-container
+                != messages()
                 .email-container
                     label
                     b Email
@@ -22,7 +23,7 @@ block content
                     span.error-password Password should be equal to or longer than 4 characters and contain letters and numbers!
                     label
                     b Repeat Password
-                    input.singup-password.password-validate(type='password', placeholder='Repeat Password', name='password-repeat')
+                    input.singup-password.password-validate(type='password', placeholder='Repeat Password', name='password_repeat')
                     span.error-password Password should be equal to or longer than 4 characters and contain letters and numbers!
                     span.error-difpass The passwords you have added are not identical!
                     input(type='checkbox', checked='checked')

@@ -13,7 +13,7 @@ module.exports = {
                 return this.create(model, modelClass);
         }
     },
-    // we will use this at the momenta
+
     create(model, ModelClass) {
         const result = new ModelClass();
 
@@ -32,11 +32,6 @@ module.exports = {
             model.model,
             model.price
         );
-
-        // Object.keys(model)
-        //     .forEach((prop) => {
-        //         result[prop] = model[prop];
-        //     });
 
         return result;
     },
