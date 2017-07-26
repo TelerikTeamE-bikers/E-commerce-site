@@ -4,7 +4,7 @@ const passport = require('passport');
 module.exports = (app, controllers) => {
     const router = new express.Router();
     const controller = controllers.user;
-    const authPaths = ['/myProfile', '/updateProfile', '/logout'];
+    const authPaths = ['/myProfile', '/updateProfile', '/logout', '/myCart'];
 
     router
         .get('/signup', (req, res) => {
@@ -39,6 +39,9 @@ module.exports = (app, controllers) => {
         .get('/logout', function(req, res) {
             req.logout();
             res.redirect('/');
+        })
+        .get('/myCart', (req, res) => {
+            return controller.getMyCart(req, res);
         });
 
     app.use('/auth', router);

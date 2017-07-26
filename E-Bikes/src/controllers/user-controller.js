@@ -43,5 +43,10 @@ module.exports = function(data, constants, errorHandler) {
                 user: req.user,
             });
         },
+        getMyCart(req, res) {
+            res.render('myCart', {
+                user: req.user,
+            });
+        },
     };
 };

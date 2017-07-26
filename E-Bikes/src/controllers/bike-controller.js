@@ -2,7 +2,7 @@ const BikeModel = require('../models/dbModels/bike-dbModel');
 const fs = require('fs');
 
 module.exports =
-    function (data) {
+    function(data) {
         return {
             getAll(req, res) {
                 console.log('all bikes page');
@@ -35,14 +35,30 @@ module.exports =
                     });
 
                 console.log(c.buffer)
-                //fs.writeFile("D:\kur.jpg", c)
+                    //fs.writeFile("D:\kur.jpg", c)
 
                 var newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
 
-                res.render('allBikes', {
-                    'bikeList': [newBike, newBike],
-                    user: req.user
-                });
+                data.bike.create(newBike)
+                    .then((bike) => {
+                        console.log('New bike saved ' + bike);
+
+                        // res.render('allBikes', {
+                        //     'bikeList': [newBike, newBike],
+                        //     user: req.user
+                        // });
+
+                        data.bike.getAll()
+                            .then((bikes) => {
+                                res.render('allBikes', {
+                                    'bikeList': bikes,
+                                    // user: req.user,
+                                });
+                            }).catch((err) => {
+                                console.log(err);
+                                //errorHandler.handleError(req, res, err);
+                            });
+                    });
             }
         }
     }

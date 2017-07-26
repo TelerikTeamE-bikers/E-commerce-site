@@ -19,7 +19,7 @@ class BaseMongoDbData {
                         this.factory.create(model, this.modelClass)
                     );
 
-                    console.log(result);
+                    //console.log(result);
 
                     resolve(result || null);
                 }).catch((err) => {
