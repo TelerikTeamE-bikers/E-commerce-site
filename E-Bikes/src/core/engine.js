@@ -54,11 +54,11 @@ module.exports = {
                         factories.dataModels,
                         errorHandler);
 
-                    return data;
+                    return {data: data, factories: factories};
                 })
-                .then((data) => {
+                .then((result) => {
                     //app.use(flash())
-                    require('./modules/authentication')(app, data, errorHandler);
+                    require('./modules/authentication')(app, result.data, errorHandler);
 
                     app.use((req, res, next) => {
                         res.locals.user = req.user; // for pug calling only user
@@ -71,7 +71,7 @@ module.exports = {
                     app.set('views', './src/views');
 
                     const controllers = componentLoader
-                        .initializeControllers(data, constants, errorHandler);
+                        .initializeControllers(result.data, result.factories, constants, errorHandler);
                     componentLoader.initializeRoutes(app, controllers);
 
                     //errorHandler.handleErrors(app);

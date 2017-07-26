@@ -3,7 +3,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
 const { SHA256 } = require('crypto-js');
 
-module.exports = function(data, constants, errorHandler) {
+module.exports = function (data, factories, constants, errorHandler) {
     return {
         getSignUpForm(req, res) {
             return res.render('signup', {});
@@ -72,5 +72,65 @@ module.exports = function(data, constants, errorHandler) {
                     res.redirect('/auth/updateProfile');
                 });
         },
+        buyBikes(req, res) {
+            let bodyUser = req.user;
+            console.log(req.user)
+
+            // if (!bodyUser) {
+            //     //if (bodyUser === null || bodyUser === undefined) {
+            //     return res.status(401).send();
+            // }
+            // else {
+            //     data.user.findByUsername(bodyUser.email)
+            //         .then((dbUser) => {
+            //             if (dbUser.password !== bodyUser) {
+            //                 return res.status(400).send('Current password does not match');
+            //             }
+
+
+            let items = req.body.items;
+            //let bikes = [];
+
+            if (Array.isArray(items)) {
+                console.log(1)
+                // items.forEach((item) => {
+
+                //     console.log(2)
+                //     data.bike.findById(item)
+                //         .then((bike) => {
+                //             //bikes.push([factories.dataModels.create(bike, bikeDomainModel)]);
+                //             bikes.push(bike);
+                //             console.log(`b: ${bikes}`)
+                //         });
+                // })
+
+                // data.bike.getAllById(items)
+                //     .then((bikes) => {
+                //         console.log(bikes);
+                //         return res.status(200).send(`${bikes}`);
+                //     }).catch((err) => {
+                //         console.log(err);
+                //         //errorHandler.handleError(req, res, err);
+                //     });
+
+                data.bike.getAllById(items)
+                    .then((bikes) => {
+                        console.log(bikes);
+                        return res.status(200).send(`${bikes}`);
+                    }).catch((err) => {
+                        console.log(err);
+                        //errorHandler.handleError(req, res, err);
+                    });
+
+
+            }
+
+
+
+            // console.log(bikes);
+            // return res.status(200).send(`${bikes}`);
+            //         });
+            // }
+        }
     };
 };

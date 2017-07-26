@@ -45,7 +45,10 @@ module.exports = (app, controllers) => {
         })
         .post('/updateProfile', (req, res) => {
             return controller.updateProfile(req, res);
-        });
+        })
+        .post('/buyBikes', (req, res) => {
+            return controller.buyBikes(req, res);
+         });
 
     app.use('/auth', router);
     // app.use('/', router);

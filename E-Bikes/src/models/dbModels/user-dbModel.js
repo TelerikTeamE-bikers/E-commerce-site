@@ -3,11 +3,20 @@ const constants = require('../../common/constants');
 //const validator = require('../common/validator');
 
 class UserDbModel {
-    constructor(username, password, shoppingCart, shoppingHistory) {
+    constructor(id, username, password, shoppingCart, shoppingHistory) {
+        this._id = id;
         this.username = username;
         this.password = password;
         this._shoppingCart = shoppingCart;
         this._shoppingHistory = shoppingHistory;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
     }
 
     get username() {

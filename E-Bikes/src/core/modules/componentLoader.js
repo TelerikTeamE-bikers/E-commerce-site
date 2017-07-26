@@ -14,7 +14,7 @@ module.exports = {
         console.log('All routers loaded.');
         console.log();
     },
-    initializeControllers(data) {
+    initializeControllers(data, factories) {
         const controllers = {};
 
         fs.readdirSync('./src/controllers')

@@ -16,12 +16,15 @@ module.exports = {
 
     create(model, ModelClass) {
         const result = new ModelClass();
+        result.id = model._id;
 
         Object.keys(model)
             .forEach((prop) => {
                 result[prop] = model[prop];
             });
 
+            console.log("M1: " + model._id)
+            console.log("M2: " + result.id)
         return result;
     },
 
