@@ -3,6 +3,11 @@ label {
     font-weight: bold;
 }
 
+.legend {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
 #home-content {
     background-color: #eee;
     text-align: left;
@@ -33,4 +38,10 @@ label {
 .uploadBTN {
     float: left;
     margin: 00px 10px 00px 00px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    list-style-type: none;
 }

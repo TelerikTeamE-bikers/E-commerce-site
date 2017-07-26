@@ -24,7 +24,6 @@ module.exports = function(data, constants, errorHandler) {
                     return data.user.create(bodyUser);
                 }).then((dbUser) => {
                     req.login(dbUser, () => {
-                        // console.log(dbUser.email + 'test passport');
                         req.flash('success', 'Successful registration');
                         res.redirect('/auth/myProfile');
                     });
@@ -34,19 +33,39 @@ module.exports = function(data, constants, errorHandler) {
                 });
         },
         getProfile(req, res) {
-            res.render('myProfile', {
-                email: req.user.email,
-            });
+            data.user.findByUsername(req.user.email)
+                .then((dbUser) => {
+                    res.render('myProfile', {
+                        email: dbUser.email,
+                        address: dbUser.address,
+                        phone: dbUser.phone,
+                        name: dbUser.name,
+                    });
+                });
         },
         getUpdateProfile(req, res) {
             res.render('updateProfile', {
                 user: req.user,
             });
         },
-        getMyCart(req, res) {
-            res.render('myCart', {
-                user: req.user,
-            });
+        updateProfile(req, res) {
+            //todo if some inputs are empty not to write it in DB???
+            const bodyUser = req.body;
+            bodyUser._id = req.user._id;
+
+            data.user.findByUsername(bodyUser.email)
+                .then((dbUser) => {
+                    if (dbUser) {
+                        throw new Error('Email already exists. Please try with another email!');
+                    }
+                    return data.user.updateById(bodyUser);
+                }).then((updatedUser) => {
+                    req.flash('success', 'You successfully update your profile');
+                    res.redirect('/auth/myProfile');
+                }).catch((err) => {
+                    req.flash('error', err.message);
+                    res.redirect('/auth/updateProfile');
+                });
         },
     };
 };

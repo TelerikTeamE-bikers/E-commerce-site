@@ -13,4 +13,18 @@
             font-size: 0.8rem;
         }
     }
+    &__description {
+        font-size: 0.7rem;
+        text-align: justify;
+        padding: 0 10px;
+        @mixin atSmall {
+            font-size: 0.9rem;
+        }
+    }
+    &__title-big {
+        font-size: 1.2rem;
+        @mixin atSmall {
+            font-size: 1.4rem;
+        }
+    }
 }

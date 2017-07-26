@@ -18,10 +18,9 @@ module.exports = (app, data, errorHandler) => {
                     if (user !== null) {
                         return done(null, user);
                     }
-                    return done(null, false, { message: 'User not found' });
+                    return done(null, false, { message: 'User not found or wrong password' });
                 }).catch((err) => {
                     console.log(err);
-                    // errorHandler.handleError(req, res, err, 444);
                 });
         }));
 

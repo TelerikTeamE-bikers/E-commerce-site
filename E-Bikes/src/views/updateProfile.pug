@@ -10,39 +10,36 @@ block content
             br
             #home-content
                 section#contact-details
-                    fieldset 
-                        .header_1
-                            img(src='/static/images/defaultProfilePic.png', width='250', height='250', alt='Your Name')                                
-                        .form-group
-                            label Email Address:              
-                            
-                        input(name='textinput', type='text', placeholder='trade show name')
-                        // Text input
-                  
-                        p
-                        .form-group
-                            label Address:      
-                          
-                        input(name='textinput', type='text', placeholder='Enter Your Address')
-                        // Text input
-                        p
-                        .form-group
-                            label Phone
-                            
-                        input(name='textinput', type='text', placeholder='0000-000')
-                        // Select Basic
-                        p
-                        .form-group
-                            label Sex:
-                        select(name='selectbasic')
-                            option(value='1') Male
-                            option(value='2') Female
-                        p
-                        .form-group.uploadBTN
-                            label Upload Photo:            
-                        p     
-                        input.btn-primary(name='filebutton', type='file')
-                        button.btn.submitBTN(name='singlebutton') Submit
+                    != messages()
+                    form(action="/auth/updateProfile" method="post")
+                        fieldset
+                                legend.legend Personal information
+                                .header_1
+                                    img(src='/static/images/defaultProfilePic.png', width='250', height='250', alt='Your Name')
+
+                                .form-group
+                                    label First and Last name:                  
+                                input(name='name', type='text', placeholder='Enter your name')
+                                p                               
+                                .form-group
+                                    label Email Address:                  
+                                input(name='email', type='text', placeholder='Enter your new email')
+                                p
+                                .form-group
+                                    label Address:      
+                                input(name='address', type='text', placeholder='Enter Your Address')
+                                p
+                                .form-group
+                                    label Phone
+                                input(name='phone', type='text', placeholder='+359 8888 888 888')
+                                // Select Basic
+
+                                p
+                                .form-group.uploadBTN
+                                    label Upload Photo:            
+                                p     
+                                input.btn-primary(name='filebutton', type='file')
+                                button.btn.submitBTN(type="submit", value="Submit", name='singlebutton') Submit
 
 
 

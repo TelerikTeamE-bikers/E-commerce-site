@@ -39,26 +39,31 @@ module.exports =
 
                 var newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
 
-                data.bike.create(newBike)
+                res.render('allBikes', {
+                    'bikeList': [newBike, newBike],
+                    user: req.user,
+                });
+            },
+
+            getBikeDetails(req, res) {
+                const id = req.params.id;
+                if (!data.bike.isValidObject(id)) {
+                    return res.status(404).send();
+                }
+                data.bike.findById(id)
                     .then((bike) => {
-                        console.log('New bike saved ' + bike);
-
-                        // res.render('allBikes', {
-                        //     'bikeList': [newBike, newBike],
-                        //     user: req.user
-                        // });
-
-                        data.bike.getAll()
-                            .then((bikes) => {
-                                res.render('allBikes', {
-                                    'bikeList': bikes,
-                                    // user: req.user,
-                                });
-                            }).catch((err) => {
-                                console.log(err);
-                                //errorHandler.handleError(req, res, err);
-                            });
+                        if (!bike) {
+                            return res.status(404).send();
+                        }
+                        return res.render('detailsBike', {
+                            brand: bike.brand,
+                            model: bike.model,
+                            price: bike.price,
+                            picture: bike.picture,
+                        });
+                    }).catch((err) => {
+                        res.status(400).send(err);
                     });
-            }
-        }
-    }
+            },
+        };
+    };

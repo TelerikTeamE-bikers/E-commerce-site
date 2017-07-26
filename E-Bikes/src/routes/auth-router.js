@@ -19,7 +19,7 @@ module.exports = (app, controllers) => {
         .post('/login',
             passport.authenticate('local', {
                 successRedirect: '/auth/myProfile',
-                failureRedirect: '/auth/signup',
+                failureRedirect: '/auth/login',
                 failureFlash: true,
             })
         )
@@ -36,12 +36,15 @@ module.exports = (app, controllers) => {
         .get('/updateProfile', (req, res) => {
             return controller.getUpdateProfile(req, res);
         })
-        .get('/logout', function(req, res) {
+        .get('/logout', (req, res) => {
             req.logout();
             res.redirect('/');
         })
         .get('/myCart', (req, res) => {
             return controller.getMyCart(req, res);
+        })
+        .post('/updateProfile', (req, res) => {
+            return controller.updateProfile(req, res);
         });
 
     app.use('/auth', router);
