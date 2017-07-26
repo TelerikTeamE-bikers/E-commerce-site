@@ -24,7 +24,10 @@ header.site-header
                 a(href="/bike/allbikes") All Bikes
               li
                 a#features-link(href="/bike-spare-parts") Parts & Spares
-              li
-                a#accessories-link(href="/accessories") Accessories
-              li
-                a#testimonials-link(href="/testimonials") Testimonials
+              if authenticated
+                li
+                  a#testimonials-link(href="/auth/myProfile") My profile
+              else
+                li
+                  a#testimonials-link(href="/testimonials") Testimonials
+                

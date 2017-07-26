@@ -986,3 +986,9 @@ label {
     float: left;
     margin: 00px 10px 00px 00px;
 }
+
+.error {
+    color: red;
+    text-align: center;
+    list-style-type: none;
+}

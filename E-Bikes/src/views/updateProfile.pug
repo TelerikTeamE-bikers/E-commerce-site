@@ -10,14 +10,19 @@ block content
             br
             #home-content
                 section#contact-details
+                    != messages()
                     form(action="/auth/updateProfile" method="post")
                         fieldset
                                 legend.legend Personal information
                                 .header_1
-                                    img(src='/static/images/defaultProfilePic.png', width='250', height='250', alt='Your Name')                                
+                                    img(src='/static/images/defaultProfilePic.png', width='250', height='250', alt='Your Name')
+
                                 .form-group
-                                    label Email Address:              
-                                    
+                                    label First and Last name:                  
+                                input(name='name', type='text', placeholder='Enter your name')
+                                p                               
+                                .form-group
+                                    label Email Address:                  
                                 input(name='email', type='text', placeholder='Enter your new email')
                                 p
                                 .form-group

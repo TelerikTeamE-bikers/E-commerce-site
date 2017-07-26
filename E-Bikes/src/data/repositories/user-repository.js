@@ -39,6 +39,7 @@ class UsersData extends BaseData {
                 email: model.email,
                 address: model.address,
                 phone: model.phone,
+                name: model.name,
             },
         }, {
             returnOriginal: false,

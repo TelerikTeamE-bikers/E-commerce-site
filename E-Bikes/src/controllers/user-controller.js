@@ -33,9 +33,15 @@ module.exports = function(data, constants, errorHandler) {
                 });
         },
         getProfile(req, res) {
-            res.render('myProfile', {
-                email: req.user.email,
-            });
+            data.user.findByUsername(req.user.email)
+                .then((dbUser) => {
+                    res.render('myProfile', {
+                        email: dbUser.email,
+                        address: dbUser.address,
+                        phone: dbUser.phone,
+                        name: dbUser.name,
+                    });
+                });
         },
         getUpdateProfile(req, res) {
             res.render('updateProfile', {
@@ -43,12 +49,23 @@ module.exports = function(data, constants, errorHandler) {
             });
         },
         updateProfile(req, res) {
-            // todo chaining
+            //todo if some inputs are empty not to write it in DB???
             const bodyUser = req.body;
             bodyUser._id = req.user._id;
-            data.user.updateById(bodyUser);
-            console.log(bodyUser.email + bodyUser.address + bodyUser.phone + req.user._id + 'test put request');
-            res.redirect('/auth/myProfile');
+
+            data.user.findByUsername(bodyUser.email)
+                .then((dbUser) => {
+                    if (dbUser) {
+                        throw new Error('Email already exists. Please try with another email!');
+                    }
+                    return data.user.updateById(bodyUser);
+                }).then((updatedUser) => {
+                    req.flash('success', 'You successfully update your profile');
+                    res.redirect('/auth/myProfile');
+                }).catch((err) => {
+                    req.flash('error', err.message);
+                    res.redirect('/auth/updateProfile');
+                });
         },
     };
 };

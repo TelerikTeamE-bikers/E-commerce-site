@@ -20,18 +20,16 @@ block content
                         .header_2
                             != messages()
                             h1
-                                span Todor Dinkov
+                                span= name
                                                             
                             ul.info_1 
                                 li.address Address:   
-                                    a.home-a(href='mailto:your-email@gmail.com', title='View a Map') 555 Street Address, Toledo, Ohio, 43606 U.S.A.
+                                    a.home-a= address
                             ul.info_2
                                 li.phone Phone:  
-                                    a.home-a(href='mailto:your-email@gmail.com', title='Call us!') (000) 000-0000
+                                    a.home-a= phone
                                 li.email Email address: 
                                     a.home-a= email
-                                li.site_url Website:  
-                                    a.home-a(href='http://www.webcodepro.net/about.php', title='www.your-website.com') www.your-website.com
                                 li.twitter Purchase History:  
                                         .history_modal
                                             input#history_modal__trigger(type='checkbox')
