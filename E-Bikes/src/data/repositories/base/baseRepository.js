@@ -57,6 +57,12 @@ class BaseMongoDbData {
         // });
     }
 
+    isValidObject(id) {
+        if (!ObjectID.isValid(id)) {
+            return false;
+        }
+        return true;
+    }
 
     // _getCollectionName() {
     //     // ot kyde idva ModelClass.name ???

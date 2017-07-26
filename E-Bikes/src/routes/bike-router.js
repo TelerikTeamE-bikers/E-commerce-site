@@ -8,6 +8,9 @@ module.exports = (app, controllers) => {
         return controller.getAll(req, res);
     });
 
+    router.get('/allbikes/:id', (req, res) => {
+        return controller.getBikeDetails(req, res);
+    });
     // app.use('/', router);
     app.use('/bike', router);
 

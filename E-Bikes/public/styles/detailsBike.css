@@ -967,8 +967,8 @@ a {
 
 .flex__item {
         background-color: #FFF;
-        width: 200px;
-        height: 228px;
+        width: 400px;
+        height: 300px;
         padding: 0px;
         margin: 16px 25px;
         text-align: center;
@@ -979,26 +979,6 @@ a {
 .flex__item {
             background-color: rgba(47,85,114, 0.3)
     }
-    }
-
-.flex__container-btn {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
-    }
-
-.flex__item-btn {}
-
-.flex__container-filter {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
     }
 
 .product-item__title {

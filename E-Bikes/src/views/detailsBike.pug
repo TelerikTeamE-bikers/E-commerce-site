@@ -1,0 +1,16 @@
+extends layout.pug
+
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/detailsBike.css')
+
+
+block content
+    .wrapper.wrapper--t-padding
+        ul.flex__container
+            li.flex__item
+                img.product-item__photo(src="../../static/images/product-item.jpg")
+            li.flex__item
+                p.product-item__title-big= `${brand} ${model}`
+                p.product-item__subtitle Technical information
+                    .product-item__description  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius tempora eos tempore et maiores minus cum pariatur quae natus impedit modi nostrum, eaque assumenda vitae, ad similique, magnam necessitatibus error optio accusantium magni, voluptatem! Quis magnam, sunt autem eos magni similique, beatae commodi animi, repellendus hic ea voluptates aspernatur deserunt aliquam tempora, iusto error reiciendis dignissimos molestiae a iure harum amet. Cupiditate qui ipsa expedita inventore.
+                p.product-item__price #{price} &euro;
