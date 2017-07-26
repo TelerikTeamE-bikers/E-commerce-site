@@ -1,11 +1,15 @@
 extends layout.pug
 
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/allBikes.css')
+    
 block content
     .wrapper
         .flex__container-filter
         .cart-display You have purchased 0 items
         #showPurchases here 
-        a.btn(href="") Purchase
+        .flex__container-btn
+              a.btn__purchase.flex__item-btn(href="#") Purchase
         br
 
 block custom-scripts

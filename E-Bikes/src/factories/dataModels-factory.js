@@ -23,9 +23,7 @@ module.exports = {
                 result[prop] = model[prop];
             });
 
-            console.log("M1: " + model._id)
-            console.log("M2: " + result.id)
-        return result;
+            return result;
     },
 
     createBike(model) {

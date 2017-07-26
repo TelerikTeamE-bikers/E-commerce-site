@@ -38,7 +38,6 @@ class BaseMongoDbData {
                 this.findById(item)
                     .then((obj) => {
                         result.push([obj])
-                        console.log(obj)
                         itemsProcessed++;
                         if (itemsProcessed === items.length) {
                             resolve(result);
