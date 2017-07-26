@@ -48,6 +48,11 @@ module.exports = function(data, constants, errorHandler) {
                 user: req.user,
             });
         },
+        getMyCart(req, res) {
+            res.render('myCart', {
+                user: req.user,
+            });
+        },
         updateProfile(req, res) {
             //todo if some inputs are empty not to write it in DB???
             const bodyUser = req.body;
