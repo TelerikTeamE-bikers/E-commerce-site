@@ -28,7 +28,7 @@ class ShoppingCart {
     }
 
     initItems() {
-        let items = sessionStorage.getItem(this._name);
+        const items = sessionStorage.getItem(this._name);
         console.log(items);
 
         if (items !== null) {
@@ -37,6 +37,7 @@ class ShoppingCart {
         }
 
         console.log(this._items);
+        return items;
 
     }
 
