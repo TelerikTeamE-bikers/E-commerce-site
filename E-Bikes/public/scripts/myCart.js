@@ -5,8 +5,15 @@ $(document).ready(function() {
 
     let output = '';
     for (let i in storageArr) {
-        output += '<li>' + storageArr[i] + '</li>' +
-            '<button>' + 'delete' + '</button>';
+        output += '<li>' + 'Order' + i + '&nbsp' + storageArr[i] +
+            '<button>' + 'delete' + '</button>' + '</li>';
     }
     listOrderedBikes.html(output);
+
+
+    $('button').click(function() {
+        $(this).parent().remove();
+        console.log(i)
+
+    })
 });
