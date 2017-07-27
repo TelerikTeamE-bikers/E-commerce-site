@@ -1,0 +1,23 @@
+extends layout.pug
+
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/allBikes.css')
+
+block content
+  .wrapper.wrapper--t-padding
+    ul.flex__container
+        each bike in model
+          li.flex__item.product-item
+            //todo - how to save img in document in MongoDb
+            //img.product-item__photo(src="../../static/images/product-item.jpg")
+            img.product-item__photo(src="data:image/jpg;base64," + bike.picture)
+            .product-item__title #{bike.brand} #{bike.model}
+            .product-item__price #{bike.price}&euro;
+            .product-item__id #{bike.id}
+            .flex__container-btn
+              a.btn__add-to-cart.flex__item-btn(href="#") Add to cart
+              a.btn__product-details.flex__item-btn(href=`/bike/allbikes/${bike._id}`) Details
+
+//- block custom-scripts
+//-   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+//-   script(src='/static/scripts/allBikes.js')

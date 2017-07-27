@@ -47,7 +47,7 @@ class UsersData extends BaseData {
     }
     addItemsToOrdersHistory(userId, items) {
         items.forEach((item) => {
-            this.collection.update({ _id: userId }, { $push: { ordersHistory: item._id } });
+            this.collection.update({ _id: userId }, { $push: { ordersHistory: item._id.toString() } });
         });
         return Promise.resolve(items);
     }

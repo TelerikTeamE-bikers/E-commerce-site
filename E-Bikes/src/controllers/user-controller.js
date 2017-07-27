@@ -102,9 +102,37 @@ module.exports = function(data, factories, constants, errorHandler) {
                     console.log(err);
                     //errorHandler.handleError(req, res, err);
                 });
+            // console.log(bikes);
+            // return res.status(200).send(`${bikes}`);
         },
+        getOrdersHistory(req, res) {
+            const bodyUser = req.user;
+            const id = bodyUser._id;
+            data.user.findByUsername(bodyUser.email)
+                .then((dbUser) => {
+                    const orders = dbUser.ordersHistory;
 
-        // console.log(bikes);
-        // return res.status(200).send(`${bikes}`);
+                    console.log(orders, ' ORDERS');
+                    const bikes = [];
+
+                    let itemsProcessed = 0;
+
+                    orders.forEach((orderId) => {
+                        data.bike.findById(orderId)
+                            .then((bike) => {
+                                console.log(bike, ' Testing BIKE in loop');
+                                bikes.push(bike);
+                                itemsProcessed++;
+
+                                if (itemsProcessed === orders.length) {
+                                    console.log(bikes, ' Bikes');
+                                    return res.render('ordersHistory', {
+                                        model: bikes,
+                                    });
+                                }
+                            });
+                    });
+                });
+        },
     };
 };

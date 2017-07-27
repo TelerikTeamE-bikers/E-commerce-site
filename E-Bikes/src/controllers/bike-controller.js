@@ -44,7 +44,7 @@ module.exports =
                 });
             },
 
-            getBikeDetails(req, res, next) {
+            getBikeDetails(req, res) {
                 const id = req.params.id;
                 if (!data.bike.isValidObject(id)) {
                     return res.status(404).send();

@@ -48,6 +48,9 @@ module.exports = (app, controllers) => {
         })
         .post('/completeOrder', (req, res) => {
             return controller.completeOrder(req, res);
+        })
+        .get('/ordersHistory', (req, res) => {
+            return controller.getOrdersHistory(req, res);
         });
 
     app.use('/auth', router);
