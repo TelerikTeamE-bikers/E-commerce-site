@@ -24,27 +24,30 @@ class BaseMongoDbData {
                     resolve(result || null);
                 }).catch((err) => {
                     console.log(err)
-                    //errorHandler.handleError(req, res, err, 444);
+                        //errorHandler.handleError(req, res, err, 444);
                 });
         });
     }
 
     getAllByIds(items) {
         return new Promise((resolve, reject) => {
-            let result = [];
+            const result = [];
             let itemsProcessed = 0;
 
             items.forEach((item) => {
                 this.findById(item)
                     .then((obj) => {
-                        result.push([obj])
+                        result.push(obj);
+                        // result.push([obj]);
                         itemsProcessed++;
                         if (itemsProcessed === items.length) {
+                            console.log(result[0]);
                             resolve(result);
                             // Promise.all(result).then(() =>
                             //     resolve(result));
+
                         }
-                    })
+                    });
             });
         });
     }

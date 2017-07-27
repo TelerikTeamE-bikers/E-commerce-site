@@ -45,5 +45,11 @@ class UsersData extends BaseData {
             returnOriginal: false,
         });
     }
+    addItemsToOrdersHistory(userId, items) {
+        items.forEach((item) => {
+            this.collection.update({ _id: userId }, { $push: { ordersHistory: item._id } });
+        });
+        return Promise.resolve(items);
+    }
 }
 module.exports = UsersData;

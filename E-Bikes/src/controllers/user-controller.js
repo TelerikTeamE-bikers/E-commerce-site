@@ -3,7 +3,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
 const { SHA256 } = require('crypto-js');
 
-module.exports = function (data, factories, constants, errorHandler) {
+module.exports = function(data, factories, constants, errorHandler) {
     return {
         getSignUpForm(req, res) {
             return res.render('signup', {});
@@ -69,38 +69,42 @@ module.exports = function (data, factories, constants, errorHandler) {
                     res.redirect('/auth/updateProfile');
                 });
         },
-        buyBikes(req, res) {
-            let bodyUser = req.user;
-            console.log(req.user)
+        completeOrder(req, res) {
+            const bodyUser = req.user;
+            // console.log(req.user._id + ' USER ID');
 
             if (!bodyUser) {
                 return res.status(401).send('Unauthorized');
             }
-            else {
-                data.user.findByUsername(bodyUser.email)
-                    .then((dbUser) => {
-                        if (dbUser.password !== bodyUser.password) {
-                            return res.status(400).send('Current password does not match');
-                        }
+            data.user.findByUsername(bodyUser.email)
+                .then((dbUser) => {
+                    if (dbUser.password !== bodyUser.password) {
+                        return res.status(400).send('Current password does not match');
+                    }
+                    const items = req.body.items;
+                    console.log(items);
+                    if (Array.isArray(items)) {
+                        console.log('It is  Array');
+                        return data.bike.getAllByIds(items);
+                    }
+                })
+                .then((bikes) => {
+                    // bikes.map((x) => console.log(x._id));
+                    return data.user.addItemsToOrdersHistory(req.user._id, bikes);
+                })
+                .then((products) => {
+                    req.flash('success', 'You successfully order your e-bikes!');
+                    res.redirect('/auth/myProfile');
+                })
+                // console.log(bikes.map((x) => x.id));
+                // return res.status(200).send(`Purchase done`);
+                .catch((err) => {
+                    console.log(err);
+                    //errorHandler.handleError(req, res, err);
+                });
+        },
 
-                        let items = req.body.items;
-                        //let bikes = [];
-
-                        if (Array.isArray(items)) {
-                            data.bike.getAllByIds(items)
-                                .then((bikes) => {
-                                    console.log(bikes.map((x) => x.id));
-                                    return res.status(200).send(`Purchase done`);
-                                }).catch((err) => {
-                                    console.log(err);
-                                    //errorHandler.handleError(req, res, err);
-                                });
-                        }
-
-                        // console.log(bikes);
-                        // return res.status(200).send(`${bikes}`);
-                    });
-            }
-        }
+        // console.log(bikes);
+        // return res.status(200).send(`${bikes}`);
     };
 };
