@@ -3,7 +3,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
 const { SHA256 } = require('crypto-js');
 
-module.exports = function(data, factories, constants, errorHandler) {
+module.exports = function (data, factories, constants, errorHandler) {
     return {
         getSignUpForm(req, res) {
             return res.render('signup', {});
@@ -76,32 +76,35 @@ module.exports = function(data, factories, constants, errorHandler) {
             if (!bodyUser) {
                 return res.status(401).send('Unauthorized');
             }
+
+            const items = req.body.items;
+            console.log("Items " + items);
+
+            if (!Array.isArray(items)) {
+                return res.status(400).send('Incorrect items');
+            }
+
             data.user.findByUsername(bodyUser.email)
                 .then((dbUser) => {
                     if (dbUser.password !== bodyUser.password) {
                         return res.status(400).send('Current password does not match');
                     }
-                    const items = req.body.items;
-                    console.log(items);
-                    if (Array.isArray(items)) {
-                        console.log('It is  Array');
-                        return data.bike.getAllByIds(items);
-                    }
+
+                    return data.bike.getAllByIds(items);
                 })
                 .then((bikes) => {
-                    // bikes.map((x) => console.log(x._id));
                     return data.user.addItemsToOrdersHistory(req.user._id, bikes);
                 })
                 .then((products) => {
-                    req.flash('success', 'You successfully order your e-bikes!');
-                    res.redirect('/auth/myProfile');
+                    // req.flash('success', 'You successfully order your e-bikes!');
+                    // res.redirect('/auth/myProfile');
+                    return res.status(200).send('Successfull order');
                 })
-                // console.log(bikes.map((x) => x.id));
-                // return res.status(200).send(`Purchase done`);
                 .catch((err) => {
                     console.log(err);
                     //errorHandler.handleError(req, res, err);
                 });
+<<<<<<< HEAD
             // console.log(bikes);
             // return res.status(200).send(`${bikes}`);
         },
@@ -134,5 +137,8 @@ module.exports = function(data, factories, constants, errorHandler) {
                     });
                 });
         },
+=======
+        }
+>>>>>>> 192e6cffd5748085d6448777901213dae50d1f8c
     };
 };

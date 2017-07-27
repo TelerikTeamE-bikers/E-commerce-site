@@ -1,6 +1,7 @@
 /* global $ */
 
 $(document).ready(function() {
+    sessionStorage.removeItem('shoppingCart');
     // email input validation
     const emailInput = $('.email-validate');
     const emailErrorMessage = $('.error-email');

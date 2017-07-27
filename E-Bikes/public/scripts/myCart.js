@@ -1,5 +1,7 @@
 /* globals $ */
-$(document).ready(function() {
+$(document).ready(function () {
+
+    // function renderCart() {
     const listOrderedBikes = $('#showPurchases');
     const storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
 
@@ -8,16 +10,19 @@ $(document).ready(function() {
         output += '<li>' + 'Order' + i + '&nbsp' + '<div class="product_id">' + storageArr[i] + '</div>' +
             '<button>' + 'delete' + '</button>' + '</li>';
     }
+
     listOrderedBikes.html(output);
+    // }
 
+    // renderCart();
 
-    $('button').click(function() {
+    $('button').click(function () {
         $(this).parent().remove();
         console.log()
 
     });
 
-    $('.btn__purchase').click(function(event) {
+    $('.btn__purchase').click(function (event) {
         // console.log({ items: storageArr });
         console.log('It works');
         let http = new XMLHttpRequest();
@@ -36,12 +41,18 @@ $(document).ready(function() {
         console.log(params);
         // http.send(params);
         $.ajax({
-                method: 'POST',
-                url: url,
-                data: params,
-                contentType: 'application/json',
-            })
-            .done(function(msg) {});
+            method: 'POST',
+            url: url,
+            data: params,
+            contentType: 'application/json',
+            success: () => {
+                alert('You successfully order your e-bikes!');
+                sessionStorage.removeItem('shoppingCart');
+                listOrderedBikes.html('');
+            },
+            error: () => { alert(http.responseText) }
+        });
+        //.done(function(msg) {});
 
     });
 });
