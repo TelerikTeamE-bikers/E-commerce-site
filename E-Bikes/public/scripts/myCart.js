@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     let output = '';
     for (let i in storageArr) {
-        output += '<li class="flex__item box">' + 'Order' + i + '&nbsp' + '<div class="product_id">' + storageArr[i] + '</div>' +
+        output += '<li class="flex__item box">' + 'Order' + i + '&nbsp' + '<div class="product_id">' + storageArr[i].title + '<br>' + storageArr[i].price + '</div>' +
             '<button>' + 'delete' + '</button>' + '</li>';
     }
 

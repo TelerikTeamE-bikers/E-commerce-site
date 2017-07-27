@@ -8,8 +8,12 @@ $(document).ready(function() {
 
     $('.btn__add-to-cart').click(function(event) {
 
-        let currentBikeId = $(this).parent()
-            .siblings('.product-item__id').text();
+        let currentBikeId = {}
+        currentBikeId.title = $(this).parent()
+            .siblings('.product-item__title').text();
+        currentBikeId.price = $(this).parent()
+            .siblings('.product-item__price').text();
+
         shoppingCart.addItemToCart(currentBikeId);
 
 

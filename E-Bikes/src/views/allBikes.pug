@@ -23,7 +23,7 @@ block content
             img.product-item__photo(src="data:image/jpg;base64," + bike.picture)
             .product-item__title #{bike.brand} #{bike.model}
             .product-item__price #{bike.price}&euro;
-            .product-item__id #{bike.id}
+            
             .flex__container-btn
               a.btn__add-to-cart.flex__item-btn(href="#") Add to cart
               a.btn__product-details.flex__item-btn(href=`/bike/allbikes/${bike._id}`) Details

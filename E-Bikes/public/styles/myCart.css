@@ -993,7 +993,8 @@ h2 {
 .flex__item-btn {
         border: 3px solid green;
         margin: 20px;
-        cursor: pointer
+        cursor: pointer;
+        float: left
     }
 
 .flexbox-container {
