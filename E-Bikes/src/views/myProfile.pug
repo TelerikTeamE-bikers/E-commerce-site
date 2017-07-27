@@ -24,12 +24,22 @@ block content
                                                             
                             ul.info_1 
                                 li.address Address:   
+<<<<<<< HEAD
                                     a.home-a= model.address
                             ul.info_2
                                 li.phone Phone:  
                                     a.home-a= model.phone
                                 li.email Email address: 
                                     a.home-a= model.email
+=======
+                                    a.home-a(href='/auth/updateProfile', title='Update address') Click to add
+                            ul.info_2
+                                li.phone Phone:  
+                                    a.home-a(href='/auth/updateProfile', title='Update phone number') Click to add
+                                li.email Email address: 
+                                    a.home-a(href='/auth/updateProfile', title='Update email')= email
+                                
+>>>>>>> 0bd5a9bec521611d42c6e5dfe153313b2f0a9174
                                 li.twitter Purchase History:  
                                         .history_modal
                                             input#history_modal__trigger(type='checkbox')

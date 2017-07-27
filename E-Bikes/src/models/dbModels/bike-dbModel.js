@@ -3,11 +3,20 @@ const constants = require('../../common/constants');
 //const validator = require('../common/validator');
 
 class BikeDbModel {
-    constructor(brand, model, price, picture) {
+    constructor(id, brand, model, price, picture) {
+        this._id = id;
         this._brand = brand;
         this._model = model;
         this._price = price;
         this._picture = picture;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
     }
 
     get brand() {

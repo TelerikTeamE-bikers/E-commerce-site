@@ -3,7 +3,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
 const { SHA256 } = require('crypto-js');
 
-module.exports = function(data, constants, errorHandler) {
+module.exports = function (data, factories, constants, errorHandler) {
     return {
         getSignUpForm(req, res) {
             return res.render('signup', {});
@@ -45,6 +45,11 @@ module.exports = function(data, constants, errorHandler) {
                 user: req.user,
             });
         },
+        getMyCart(req, res) {
+            res.render('myCart', {
+                user: req.user,
+            });
+        },
         updateProfile(req, res) {
             //todo if some inputs are empty not to write it in DB???
             const bodyUser = req.body;
@@ -64,5 +69,38 @@ module.exports = function(data, constants, errorHandler) {
                     res.redirect('/auth/updateProfile');
                 });
         },
+        buyBikes(req, res) {
+            let bodyUser = req.user;
+            console.log(req.user)
+
+            if (!bodyUser) {
+                return res.status(401).send('Unauthorized');
+            }
+            else {
+                data.user.findByUsername(bodyUser.email)
+                    .then((dbUser) => {
+                        if (dbUser.password !== bodyUser.password) {
+                            return res.status(400).send('Current password does not match');
+                        }
+
+                        let items = req.body.items;
+                        //let bikes = [];
+
+                        if (Array.isArray(items)) {
+                            data.bike.getAllByIds(items)
+                                .then((bikes) => {
+                                    console.log(bikes.map((x) => x.id));
+                                    return res.status(200).send(`Purchase done`);
+                                }).catch((err) => {
+                                    console.log(err);
+                                    //errorHandler.handleError(req, res, err);
+                                });
+                        }
+
+                        // console.log(bikes);
+                        // return res.status(200).send(`${bikes}`);
+                    });
+            }
+        }
     };
 };

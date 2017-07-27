@@ -16,13 +16,14 @@ module.exports = {
 
     create(model, ModelClass) {
         const result = new ModelClass();
+        result.id = model._id;
 
         Object.keys(model)
             .forEach((prop) => {
                 result[prop] = model[prop];
             });
 
-        return result;
+            return result;
     },
 
     createBike(model) {

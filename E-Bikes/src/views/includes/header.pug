@@ -12,7 +12,7 @@ header.site-header
             if authenticated
               a.btn(href="/auth/logout") Log-Out
               span &nbsp
-              a.btn.open-modal.site-header__my-cart(href="/auth/my-cart")
+              a.btn.site-header__my-cart(href="/auth/myCart")
             else
               a.btn(href="/auth/login") Log-In
               span &nbsp
@@ -24,6 +24,8 @@ header.site-header
                 a(href="/bike/allbikes") All Bikes
               li
                 a#features-link(href="/bike-spare-parts") Parts & Spares
+              li
+                a#accessories-link(href="/accessories") Accessories
               if authenticated
                 li
                   a#testimonials-link(href="/auth/myProfile") My profile

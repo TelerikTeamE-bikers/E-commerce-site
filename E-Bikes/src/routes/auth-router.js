@@ -4,7 +4,7 @@ const passport = require('passport');
 module.exports = (app, controllers) => {
     const router = new express.Router();
     const controller = controllers.user;
-    const authPaths = ['/myProfile', '/updateProfile', '/logout'];
+    const authPaths = ['/myProfile', '/updateProfile', '/logout', '/myCart'];
 
     router
         .get('/signup', (req, res) => {
@@ -40,9 +40,15 @@ module.exports = (app, controllers) => {
             req.logout();
             res.redirect('/');
         })
+        .get('/myCart', (req, res) => {
+            return controller.getMyCart(req, res);
+        })
         .post('/updateProfile', (req, res) => {
             return controller.updateProfile(req, res);
-        });
+        })
+        .post('/buyBikes', (req, res) => {
+            return controller.buyBikes(req, res);
+         });
 
     app.use('/auth', router);
     // app.use('/', router);

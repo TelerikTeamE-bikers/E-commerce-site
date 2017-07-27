@@ -5,7 +5,7 @@ module.exports = (app, controllers) => {
     let controller = controllers.bike;
 
     router
-        .get('/testr', controller.addBike);
+        .get('/testr', controllers.user.getMyCart);
 
     app.use('/', router);
 

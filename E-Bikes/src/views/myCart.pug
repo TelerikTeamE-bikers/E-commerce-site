@@ -1,0 +1,17 @@
+extends layout.pug
+
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/allBikes.css')
+    
+block content
+    .wrapper
+        .flex__container-filter
+        .cart-display You have purchased 0 items
+        #showPurchases here 
+        .flex__container-btn
+              a.btn__purchase.flex__item-btn(href="#") Purchase
+        br
+
+block custom-scripts
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  script(src='/static/scripts/myCart.js')
