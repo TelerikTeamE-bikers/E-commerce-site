@@ -22,7 +22,7 @@ block content
             .product-item__id #{bike.id}
             .flex__container-btn
               a.btn__add-to-cart.flex__item-btn(href="#") Add to cart
-              a.btn__product-details.flex__item-btn(href="#") Details
+              a.btn__product-details.flex__item-btn(href=`/bike/allbikes/${bike._id}`) Details
 
 block custom-scripts
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')

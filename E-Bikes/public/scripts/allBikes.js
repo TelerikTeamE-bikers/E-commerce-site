@@ -7,7 +7,6 @@ $(document).ready(function() {
     $('.btn__add-to-cart').click(function(event) {
         let currentBikeId = $(this).parent().siblings('.product-item__id').text();
         shoppingCart.addItemToCart(currentBikeId);
-
     });
 });
 

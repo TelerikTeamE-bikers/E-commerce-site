@@ -25,7 +25,7 @@ module.exports =
             addBike(req, res) {
                 console.log('Creating new bike');
 
-                const c = fs.readFileSync("public/images/product-item.jpg",
+                const c = fs.readFileSync('public/images/product-item.jpg',
                     (err, c) => {
                         if (err) {
                             throw err;
@@ -34,7 +34,7 @@ module.exports =
                     });
 
                 console.log(c.buffer)
-                    //fs.writeFile("D:\kur.jpg", c)
+                    //fs.writeFile("D:\shmatka.jpg", c)
 
                 const newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
 
