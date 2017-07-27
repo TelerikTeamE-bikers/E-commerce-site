@@ -3,7 +3,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
 const { SHA256 } = require('crypto-js');
 
-module.exports = function (data, factories, constants, errorHandler) {
+module.exports = function(data, factories, constants, errorHandler) {
     return {
         getSignUpForm(req, res) {
             return res.render('signup', {});
@@ -104,7 +104,6 @@ module.exports = function (data, factories, constants, errorHandler) {
                     console.log(err);
                     //errorHandler.handleError(req, res, err);
                 });
-<<<<<<< HEAD
             // console.log(bikes);
             // return res.status(200).send(`${bikes}`);
         },
@@ -137,8 +136,5 @@ module.exports = function (data, factories, constants, errorHandler) {
                     });
                 });
         },
-=======
-        }
->>>>>>> 192e6cffd5748085d6448777901213dae50d1f8c
     };
 };
