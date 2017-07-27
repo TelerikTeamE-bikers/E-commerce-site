@@ -1,16 +1,15 @@
 extends layout.pug
 
-//- block custom-styles
-//-     link(rel='stylesheet', href='/static/styles/allBikes.css')
+block custom-styles
+    link(rel='stylesheet', href='/static/styles/myCart.css')
     
 block content
-    .wrapper
-        .flex__container-filter
-        .cart-display You have purchased 0 items
-        #showPurchases here 
-        .flex__container-btn
-              a.btn__purchase.flex__item-btn Purchase
-        br
+   
+   .wrapper
+ 
+      .flex__container.flexbox-container.wrap
+      a.btn__purchase.flex__item-btn Purchase
+         
 
 block custom-scripts
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')

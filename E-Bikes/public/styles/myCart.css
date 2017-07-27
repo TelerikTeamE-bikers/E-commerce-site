@@ -963,12 +963,9 @@ h2 {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
     }
+
+/*flex-wrap: wrap;*/
 
 @media (min-width: 530px) {
 
@@ -979,8 +976,8 @@ h2 {
 
 .flex__item {
         background-color: #FFF;
-        width: 200px;
-        height: 228px;
+        width: 70%;
+        height: 70px;
         padding: 0px;
         margin: 16px 25px;
         text-align: center;
@@ -993,74 +990,26 @@ h2 {
     }
     }
 
-.flex__container-btn {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
+.flex__item-btn {
+        border: 3px solid green;
+        margin: 20px;
+        cursor: pointer
     }
 
-.flex__item-filter {
-        margin: 16px 50px;
-    }
+.flexbox-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
 
-.flex__container-filter {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    }
+.flexbox-container.wrap {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-top: 80px;
+}
 
-.product-item__title {
-        font-size: 0.85rem;
-    }
-
-@media (min-width: 530px) {
-
-.product-item__title {
-            font-size: 1rem
-    }
-    }
-
-.product-item__price {
-        font-style: oblique;
-        padding: 7px 0;
-        font-size: 0.75rem;
-    }
-
-@media (min-width: 530px) {
-
-.product-item__price {
-            font-size: 0.8rem
-    }
-    }
-
-.product-item__description {
-        font-size: 0.7rem;
-        text-align: justify;
-        padding: 0 10px;
-    }
-
-@media (min-width: 530px) {
-
-.product-item__description {
-            font-size: 0.9rem
-    }
-    }
-
-.product-item__title-big {
-        font-size: 1.2rem;
-    }
-
-@media (min-width: 530px) {
-
-.product-item__title-big {
-            font-size: 1.4rem
-    }
-    }
+.box {
+    width: 150px;
+    height: 150px;
+    margin: 30px;
+}

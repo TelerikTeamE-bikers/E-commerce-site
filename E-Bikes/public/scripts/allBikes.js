@@ -8,16 +8,14 @@ $(document).ready(function() {
 
     $('.btn__add-to-cart').click(function(event) {
 
-        let currentBikeId = $(this).parent().siblings('.product-item__id').text();
+        let currentBikeId = $(this).parent()
+            .siblings('.product-item__id').text();
         shoppingCart.addItemToCart(currentBikeId);
 
 
         let orderCount = $('.numberOfPurchases')
         orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length)
         console.log(orderCount);
-
-        // $(this).css("background", "red");
-
     });
 });
 

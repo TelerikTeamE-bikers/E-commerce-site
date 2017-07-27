@@ -1,0 +1,42 @@
+.flex {
+    &__container {
+        padding-bottom: 50px;
+        list-style: none;
+        display: flex;
+        /*flex-wrap: wrap;*/
+        @mixin atSmall {
+            padding: 0px 48px 50px 48px;
+        }
+    }
+    &__item {
+        background-color: #FFF;
+        width: 70%;
+        height: 70px;
+        padding: 0px;
+        margin: 16px 25px;
+        text-align: center;
+        @mixin atSmall {
+            background-color: rgba($mainBlue, 0.3);
+        }
+    }
+    &__item-btn {
+        border: 3px solid green;
+        margin: 20px;
+        cursor: pointer
+    }
+}
+
+.flexbox-container {
+    display: flex;
+}
+
+.flexbox-container.wrap {
+    flex-wrap: wrap;
+    margin-top: 80px;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    margin: 30px;
+}

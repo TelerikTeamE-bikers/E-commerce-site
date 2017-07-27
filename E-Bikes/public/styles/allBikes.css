@@ -1064,3 +1064,7 @@ h2 {
             font-size: 1.4rem
     }
     }
+
+a.btn__add-to-cart:active {
+    background-color: green
+}
