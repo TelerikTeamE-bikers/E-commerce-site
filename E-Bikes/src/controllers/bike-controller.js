@@ -15,7 +15,6 @@ module.exports =
                     .then((bikes) => {
                         res.render('allBikes', {
                             'bikeList': bikes,
-                            // user: req.user,
                         });
                     }).catch((err) => {
                         console.log(err);
@@ -26,7 +25,7 @@ module.exports =
             addBike(req, res) {
                 console.log('Creating new bike');
 
-                let c = fs.readFileSync("public/images/product-item.jpg",
+                const c = fs.readFileSync("public/images/product-item.jpg",
                     (err, c) => {
                         if (err) {
                             throw err;
@@ -37,7 +36,7 @@ module.exports =
                 console.log(c.buffer)
                     //fs.writeFile("D:\kur.jpg", c)
 
-                var newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
+                const newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
 
                 res.render('allBikes', {
                     'bikeList': [newBike, newBike],
@@ -45,7 +44,7 @@ module.exports =
                 });
             },
 
-            getBikeDetails(req, res) {
+            getBikeDetails(req, res, next) {
                 const id = req.params.id;
                 if (!data.bike.isValidObject(id)) {
                     return res.status(404).send();
@@ -56,10 +55,7 @@ module.exports =
                             return res.status(404).send();
                         }
                         return res.render('detailsBike', {
-                            brand: bike.brand,
-                            model: bike.model,
-                            price: bike.price,
-                            picture: bike.picture,
+                            model: bike,
                         });
                     }).catch((err) => {
                         res.status(400).send(err);

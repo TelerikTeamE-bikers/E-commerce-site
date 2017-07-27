@@ -16,6 +16,7 @@ module.exports = {
 
             async()
             .then(() => {
+                    // eslint-disable-next-line no-process-env
                     process.env.ENV_MODE = config.Environment;
 
                     if (process.env.ENV_MODE === 'PRODUCTION') {

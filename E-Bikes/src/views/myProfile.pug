@@ -20,16 +20,16 @@ block content
                         .header_2
                             != messages()
                             h1
-                                span= name
+                                span= model.name
                                                             
                             ul.info_1 
                                 li.address Address:   
-                                    a.home-a= address
+                                    a.home-a= model.address
                             ul.info_2
                                 li.phone Phone:  
-                                    a.home-a= phone
+                                    a.home-a= model.phone
                                 li.email Email address: 
-                                    a.home-a= email
+                                    a.home-a= model.email
                                 li.twitter Purchase History:  
                                         .history_modal
                                             input#history_modal__trigger(type='checkbox')

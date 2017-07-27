@@ -36,10 +36,7 @@ module.exports = function(data, constants, errorHandler) {
             data.user.findByUsername(req.user.email)
                 .then((dbUser) => {
                     res.render('myProfile', {
-                        email: dbUser.email,
-                        address: dbUser.address,
-                        phone: dbUser.phone,
-                        name: dbUser.name,
+                        model: dbUser,
                     });
                 });
         },
