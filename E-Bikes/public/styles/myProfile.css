@@ -468,6 +468,10 @@ a {
     color: #d59541;
 }
 
+h2 {
+    text-align: center;
+}
+
 .btn {
     background-color: #2f5572;
     color: #FFF;
@@ -950,6 +954,12 @@ a {
 
 .success {
     color: green;
+}
+
+button {
+    color: #FFF;
+    background-color: #d59541;
+    padding: 7px;
 }
 
 .home-a:link {

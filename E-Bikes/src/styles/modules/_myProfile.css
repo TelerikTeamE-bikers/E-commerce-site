@@ -5,6 +5,12 @@
     color: green;
 }
 
+button {
+    color: #FFF;
+    background-color: $mainOrange;
+    padding: 7px;
+}
+
 .home-a:link {
     text-decoration: underline;
     color: #000;

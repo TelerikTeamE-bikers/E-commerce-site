@@ -15,3 +15,7 @@ img {
 a {
     color: $mainOrange;
 }
+
+h2 {
+    text-align: center;
+}
