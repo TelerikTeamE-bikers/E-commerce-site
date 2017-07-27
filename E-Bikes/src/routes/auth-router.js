@@ -4,7 +4,9 @@ const passport = require('passport');
 module.exports = (app, controllers) => {
     const router = new express.Router();
     const controller = controllers.user;
-    const authPaths = ['/myProfile', '/updateProfile', '/logout', '/myCart'];
+    const authPaths = ['/myProfile', '/updateProfile',
+        '/logout', '/myCart', '/ordersHistory',
+    ];
 
     router
         .get('/signup', (req, res) => {

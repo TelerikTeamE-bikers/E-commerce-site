@@ -994,7 +994,9 @@ h2 {
                 justify-content: space-between;
     }
 
-.flex__item-btn {}
+.flex__item-filter {
+        margin: 16px 50px;
+    }
 
 .flex__container-filter {
         display: -webkit-box;
@@ -1003,6 +1005,8 @@ h2 {
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     }
 
 .product-item__title {

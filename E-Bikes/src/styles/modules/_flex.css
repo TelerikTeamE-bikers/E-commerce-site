@@ -24,9 +24,12 @@
         display: flex;
         justify-content: space-between;
     }
-    &__item-btn {}
+    &__item-filter {
+        margin: 16px 50px;
+    }
     &__container-filter {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
     }
 }

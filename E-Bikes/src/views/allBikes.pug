@@ -4,13 +4,17 @@ block custom-styles
     link(rel='stylesheet', href='/static/styles/allBikes.css')
 
 block content
-  .wrapper.wrapper--t-padding
+  .wrapper.wrapper--t-padding.html-container
     .flex__container-filter
-      span Filter by: 
-      select#filter.flex__item-filter
-        option(value="asc-price") Ascending price
-        option(value="dsc-price") Descending price
-        option(value="brand-name") Brand name
+      .flex__item-filter
+        input.query-string(placeholder="find by brand or model", type="text", name="query")
+        button.search-button(value="Search") Search
+      .flex__item-filter
+        span Filter by: 
+        select#filter
+          option(value="asc-price") Ascending price
+          option(value="dsc-price") Descending price
+          option(value="brand-name") Brand name
     ul.flex__container
         each bike in bikeList
           li.flex__item.product-item

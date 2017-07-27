@@ -1,3 +1,4 @@
+/* globals $ */
 $(document).ready(function() {
     const shoppingCart = new ShoppingCart();
 
@@ -8,6 +9,22 @@ $(document).ready(function() {
         let currentBikeId = $(this).parent().siblings('.product-item__id').text();
         shoppingCart.addItemToCart(currentBikeId);
     });
+});
+
+$('.search-button').click(function(event) {
+    const queryString = $('.query-string').val();
+    const url = `http://localhost:3030/bike/allbikes/getBikesByFilter?query=${queryString}`;
+    $.ajax({
+            method: 'GET',
+            url: url,
+        })
+        .done(function(html) {
+            $('.html-container')(html);
+            $('.query-string').val('');
+        })
+        .fail(function(error) {
+            console.log(error);
+        });
 });
 
 class ShoppingCart {
