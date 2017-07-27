@@ -96,16 +96,11 @@ module.exports = function(data, factories, constants, errorHandler) {
                     return data.user.addItemsToOrdersHistory(req.user._id, bikes);
                 })
                 .then((products) => {
-                    // req.flash('success', 'You successfully order your e-bikes!');
-                    // res.redirect('/auth/myProfile');
                     return res.status(200).send('Successfull order');
                 })
                 .catch((err) => {
                     console.log(err);
-                    //errorHandler.handleError(req, res, err);
                 });
-            // console.log(bikes);
-            // return res.status(200).send(`${bikes}`);
         },
         getOrdersHistory(req, res) {
             const bodyUser = req.user;

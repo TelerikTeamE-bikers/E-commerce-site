@@ -31,8 +31,11 @@ module.exports = {
         const result = new Bike(
             model.brand,
             model.model,
-            model.price
+            model.price,
+            model.picture
         );
+        
+        result.id = model._id;
 
         return result;
     },

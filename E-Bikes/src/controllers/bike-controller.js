@@ -1,8 +1,9 @@
 const BikeModel = require('../models/dbModels/bike-dbModel');
 const fs = require('fs');
+const url = require('url');
 
 module.exports =
-    function(data) {
+    function (data) {
         return {
             getAll(req, res) {
                 console.log('all bikes page');
@@ -22,26 +23,47 @@ module.exports =
                     });
             },
 
-            addBike(req, res) {
-                console.log('Creating new bike');
+            createTestBikes(req, res) {
+                console.log('Creating new bikes...');
 
-                const c = fs.readFileSync('public/images/product-item.jpg',
-                    (err, c) => {
-                        if (err) {
-                            throw err;
-                        }
-                        return c;
-                    });
+                const items = req.body.items;
+                console.log("Items " + items);
 
-                console.log(c.buffer)
-                    //fs.writeFile("D:\shmatka.jpg", c)
+                if (!Array.isArray(items)) {
+                    return res.status(400).send('Incorrect items');
+                }
 
-                const newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
+                let brand = 1;
+                let model = 1;
+                let price = 1000
 
-                res.render('allBikes', {
-                    'bikeList': [newBike, newBike],
-                    user: req.user,
+                items.forEach((item) => {
+                    const newBike = new BikeModel('brand'+brand, 'model ' + model, price);
+                    data.bike.create(newBike);
+                    brand++;
+                    model++;
+                    price+=1000;
                 });
+
+                return res.status(200).send();
+                
+                // const c = fs.readFileSync('public/images/product-item.jpg',
+                //     (err, c) => {
+                //         if (err) {
+                //             throw err;
+                //         }
+                //         return c;
+                //     });
+
+                // console.log(c.buffer)
+                // //fs.writeFile("D:\shmatka.jpg", c)
+
+                // const newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
+
+                // res.render('allBikes', {
+                //     'bikeList': [newBike, newBike],
+                //     user: req.user,
+                // });
             },
 
             getBikeDetails(req, res) {
@@ -61,5 +83,27 @@ module.exports =
                         res.status(400).send(err);
                     });
             },
+
+            getBikesByFilter(req, res) {
+                console.log('Filtering bikes bikes...');
+
+                var url_parts = url.parse(req.url, true);
+                var query = url_parts.query;
+
+                //console.log(query.query);
+
+                data.bike.getBikesByFilter(`${query.query}`)
+                    .then((bikes) => {
+                        // res.render('allBikes', {
+                        //     'bikeList': bikes,
+                        // });
+                        console.log("result " + bikes)
+                        return res.status(200).send(bikes);
+                    }).catch((err) => {
+                        console.log(err);
+                        return res.status(400).send(err);
+                        //errorHandler.handleError(req, res, err);
+                    });
+            }
         };
     };
