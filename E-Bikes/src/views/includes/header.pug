@@ -12,7 +12,10 @@ header.site-header
             if authenticated
               a.btn(href="/auth/logout") Log-Out
               span &nbsp
+              span.numberOfPurchases 
               a.btn.site-header__my-cart(href="/auth/myCart")
+                
+             
             else
               a.btn(href="/auth/login") Log-In
               span &nbsp
@@ -33,3 +36,5 @@ header.site-header
                 li
                   a#testimonials-link(href="/testimonials") Testimonials
                 
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+script(src='/static/scripts/header.js')

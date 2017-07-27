@@ -2,12 +2,22 @@
 $(document).ready(function() {
     const shoppingCart = new ShoppingCart();
 
+
     //let items = JSON.parse(localStorage.getItem(shoppingCart.name));
     //shoppingCart.loadItems(items);
 
     $('.btn__add-to-cart').click(function(event) {
+
         let currentBikeId = $(this).parent().siblings('.product-item__id').text();
         shoppingCart.addItemToCart(currentBikeId);
+
+
+        let orderCount = $('.numberOfPurchases')
+        orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length)
+        console.log(orderCount);
+
+        // $(this).css("background", "red");
+
     });
 });
 
