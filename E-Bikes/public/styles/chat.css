@@ -114,7 +114,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -768,9 +769,16 @@ h2 {
         height: 35px;
         float: right;
         padding-top: 30px;
-        margin-right: 10px;
+        margin-right: 5px;
         @atMedium {}
     }
+
+.numberOfPurchases {
+    float: right;
+    padding-top: 15px;
+    margin-right: 10px;
+    font-weight: bold;
+}
 
 .site-footer {
     padding: 0.5rem 0;
