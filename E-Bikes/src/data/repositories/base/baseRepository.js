@@ -70,7 +70,14 @@ class BaseMongoDbData {
     }
 
     create(model) {
-        return this.collection.insert(model)
+        var insertObject = {};
+
+        Object.keys(model)
+            .forEach((prop) => {
+                insertObject[prop.substring(prop.indexOf('_') + 1)] = model[prop];
+            });
+
+        return this.collection.insert(insertObject)
             .then(() => {
                 return model;
             });
