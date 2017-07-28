@@ -3,7 +3,7 @@ const fs = require('fs');
 const url = require('url');
 
 module.exports =
-    function (data) {
+    function(data) {
         return {
             getAll(req, res) {
                 console.log('all bikes page');
@@ -38,15 +38,15 @@ module.exports =
                 let price = 1000
 
                 items.forEach((item) => {
-                    const newBike = new BikeModel('brand'+brand, 'model ' + model, price);
+                    const newBike = new BikeModel('brand' + brand, 'model ' + model, price);
                     data.bike.create(newBike);
                     brand++;
                     model++;
-                    price+=1000;
+                    price += 1000;
                 });
 
                 return res.status(200).send();
-                
+
                 // const c = fs.readFileSync('public/images/product-item.jpg',
                 //     (err, c) => {
                 //         if (err) {
@@ -87,8 +87,8 @@ module.exports =
             getBikesByFilter(req, res) {
                 console.log('Filtering bikes bikes...');
 
-                var url_parts = url.parse(req.url, true);
-                var query = url_parts.query;
+                const urlParts = url.parse(req.url, true);
+                const query = urlParts.query;
 
                 //console.log(query.query);
 
@@ -97,7 +97,7 @@ module.exports =
                         // res.render('allBikes', {
                         //     'bikeList': bikes,
                         // });
-                        console.log("result " + bikes)
+                        console.log('result ' + bikes);
                         return res.status(200).send(bikes);
                     }).catch((err) => {
                         console.log(err);

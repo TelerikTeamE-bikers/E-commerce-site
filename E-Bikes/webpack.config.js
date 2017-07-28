@@ -2,6 +2,7 @@ const path = require('path');
 module.exports = {
     entry: {
         layout: "./src/scripts/layout.js",
+        allBikes: "./src/scripts/allBikes.js",
         // Vendor: "./app/assets/scripts/Vendor.js"
     },
     output: {

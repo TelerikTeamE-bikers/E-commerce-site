@@ -3,7 +3,7 @@
         padding-bottom: 50px;
         list-style: none;
         display: flex;
-        /*flex-wrap: wrap;*/
+        flex-wrap: wrap;
         @mixin atSmall {
             padding: 0px 48px 50px 48px;
         }
@@ -11,7 +11,7 @@
     &__item {
         background-color: #FFF;
         width: 70%;
-        height: 70px;
+        height: 79px;
         padding: 0px;
         margin: 16px 25px;
         text-align: center;
@@ -27,17 +27,35 @@
     }
 }
 
-.flexbox-container {
-    display: flex;
+.footer {
+    width: 70%;
+    &__inner {
+        display: inline;
+    }
 }
 
-.flexbox-container.wrap {
+.totalPrice,
+.btn__purchase {
+    float: right;
+    margin: 10px;
+    padding: 5px;
+}
+
+
+/*.flexbox-container {
+    display: flex;
+}*/
+
+
+/*.flexbox-container.wrap {
     flex-wrap: wrap;
     margin-top: 80px;
-}
+}*/
 
+
+/*
 .box {
     width: 150px;
     height: 150px;
     margin: 30px;
-}
+}*/

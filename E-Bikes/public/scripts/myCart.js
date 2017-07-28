@@ -43,7 +43,7 @@ $(document).ready(function() {
         $.ajax({
             method: 'POST',
             url: url,
-            data: params,
+            data: params.items,
             contentType: 'application/json',
             success: () => {
                 alert('You successfully order your e-bikes!');
