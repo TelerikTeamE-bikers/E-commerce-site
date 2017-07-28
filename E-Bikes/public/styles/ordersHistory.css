@@ -768,9 +768,16 @@ h2 {
         height: 35px;
         float: right;
         padding-top: 30px;
-        margin-right: 10px;
+        margin-right: 5px;
         @atMedium {}
     }
+
+.numberOfPurchases {
+    float: right;
+    padding-top: 15px;
+    margin-right: 10px;
+    font-weight: bold;
+}
 
 .site-footer {
     padding: 0.5rem 0;

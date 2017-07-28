@@ -1,13 +1,13 @@
 /* globals $ */
-$(document).ready(function () {
+$(document).ready(function() {
 
     // function renderCart() {
-    const listOrderedBikes = $('#showPurchases');
+    const listOrderedBikes = $('.flex__container');
     const storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
 
     let output = '';
     for (let i in storageArr) {
-        output += '<li>' + 'Order' + i + '&nbsp' + '<div class="product_id">' + storageArr[i] + '</div>' +
+        output += '<li class="flex__item box">' + 'Order' + i + '&nbsp' + '<div class="product_id">' + storageArr[i].title + '<br>' + storageArr[i].price + '</div>' +
             '<button>' + 'delete' + '</button>' + '</li>';
     }
 
@@ -16,13 +16,13 @@ $(document).ready(function () {
 
     // renderCart();
 
-    $('button').click(function () {
+    $('button').click(function() {
         $(this).parent().remove();
         console.log()
 
     });
 
-    $('.btn__purchase').click(function (event) {
+    $('.btn__purchase').click(function(event) {
         // console.log({ items: storageArr });
         console.log('It works');
         let http = new XMLHttpRequest();
@@ -43,7 +43,7 @@ $(document).ready(function () {
         $.ajax({
             method: 'POST',
             url: url,
-            data: params,
+            data: params.items,
             contentType: 'application/json',
             success: () => {
                 alert('You successfully order your e-bikes!');

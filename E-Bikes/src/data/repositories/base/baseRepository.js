@@ -45,7 +45,6 @@ class BaseMongoDbData {
                             resolve(result);
                             // Promise.all(result).then(() =>
                             //     resolve(result));
-
                         }
                     });
             });
