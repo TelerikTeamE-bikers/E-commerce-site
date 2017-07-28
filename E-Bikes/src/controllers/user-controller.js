@@ -21,6 +21,7 @@ module.exports = function(data, factories, constants, errorHandler) {
                     if (dbUser) {
                         throw new Error('User already exists. Please try with another email');
                     }
+                    
                     return data.user.create(bodyUser);
                 }).then((dbUser) => {
                     req.login(dbUser, () => {
@@ -71,7 +72,6 @@ module.exports = function(data, factories, constants, errorHandler) {
         },
         completeOrder(req, res) {
             const bodyUser = req.user;
-            // console.log(req.user._id + ' USER ID');
 
             if (!bodyUser) {
                 return res.status(401).send('Unauthorized');
@@ -105,6 +105,7 @@ module.exports = function(data, factories, constants, errorHandler) {
         getOrdersHistory(req, res) {
             const bodyUser = req.user;
             const id = bodyUser._id;
+
             data.user.findByUsername(bodyUser.email)
                 .then((dbUser) => {
                     const orders = dbUser.ordersHistory;
@@ -117,7 +118,6 @@ module.exports = function(data, factories, constants, errorHandler) {
                     orders.forEach((orderId) => {
                         data.bike.findById(orderId)
                             .then((bike) => {
-                                console.log(bike, ' Testing BIKE in loop');
                                 bikes.push(bike);
                                 itemsProcessed++;
 

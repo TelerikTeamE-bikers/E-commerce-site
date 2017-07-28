@@ -18,12 +18,10 @@ block content
     ul.flex__container
         each bike in bikeList
           li.flex__item.product-item
-            //todo - how to save img in document in MongoDb
-            //img.product-item__photo(src="../../static/images/product-item.jpg")
             img.product-item__photo(src="data:image/jpg;base64," + bike.picture)
             .product-item__title #{bike.brand} #{bike.model}
             .product-item__price #{bike.price}&euro;
-            
+            .product-item__id #{bike._id}
             .flex__container-btn
               a.btn__add-to-cart.flex__item-btn(href="#") Add to cart
               a.btn__product-details.flex__item-btn(href=`/bike/allbikes/${bike._id}`) Details
