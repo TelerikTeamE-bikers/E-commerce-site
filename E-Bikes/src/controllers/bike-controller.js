@@ -94,11 +94,11 @@ module.exports =
 
                 data.bike.getBikesByFilter(`${query.query}`)
                     .then((bikes) => {
-                        // res.render('allBikes', {
-                        //     'bikeList': bikes,
-                        // });
-                        console.log("result " + bikes)
-                        return res.status(200).send(bikes);
+                        res.render('partials/_partialAllBikes', {
+                            'bikeList': bikes,
+                        });
+                        // console.log("result " + bikes)
+                        // return res.status(200).send(`${bikes}`);
                     }).catch((err) => {
                         console.log(err);
                         return res.status(400).send(err);

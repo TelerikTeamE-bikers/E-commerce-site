@@ -27,14 +27,13 @@ module.exports = {
     },
 
     createBike(model) {
-        console.log("M: " + model)
         const result = new Bike(
             model.brand,
             model.model,
             model.price,
             model.picture
         );
-        
+
         result.id = model._id;
 
         return result;

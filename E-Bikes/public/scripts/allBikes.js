@@ -23,13 +23,13 @@ $(document).ready(function() {
 
 $('.search-button').click(function(event) {
     const queryString = $('.query-string').val();
-    const url = `http://localhost:3030/bike/allbikes/getBikesByFilter?query=${queryString}`;
+    const url = `http://localhost:3030/bike/getBikesByFilter?query=${queryString}`;
     $.ajax({
             method: 'GET',
             url: url,
         })
         .done(function(html) {
-            $('.html-container')(html);
+            $('.html-container').html(html);
             $('.query-string').val('');
         })
         .fail(function(error) {
