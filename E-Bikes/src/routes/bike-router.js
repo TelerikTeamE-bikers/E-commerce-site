@@ -15,7 +15,7 @@ module.exports = (app, controllers) => {
             return controller.getBikesByFilter(req, res);
         });
 
-    // app.use('/', router);
+    //app.use('/', router);
     app.use('/bike', router);
 
     return router;
