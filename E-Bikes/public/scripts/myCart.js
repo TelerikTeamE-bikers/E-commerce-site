@@ -8,8 +8,8 @@ $(document).ready(function() {
     let output = '';
     for (let i in storageArr) {
         let order = +i + 1;
-        output += '<li class="flex__item box">' + 'Order' + '&nbsp' + order + '&nbsp' + '<div class="product_id">' + storageArr[i].title + '<br>' + storageArr[i].price + '</div>' + '<div class=".product-item__id">' + storageArr[i].id + '</div>' +
-            '<button class="delete_item">' + 'delete' + '</button>' + '</li>';
+        output += '<li class="flex__item box">' + 'Order' + '&nbsp' + order + '&nbsp' + '<div class="product_id">' + storageArr[i].title + '<br>' + storageArr[i].price + '</div>' + '<div class=".product-item__id">' + '</div>' +
+            '<button class="delete_item">' + 'delete' + '</button>' + '<span class="bike_id">' + storageArr[i].id + '</span>' + '</li>';
     }
 
     listOrderedBikes.html(output);

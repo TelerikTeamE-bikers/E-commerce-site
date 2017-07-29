@@ -49,6 +49,10 @@
     color: red;
 }
 
+.bike_id {
+    display: none;
+}
+
 
 /*.flexbox-container {
     display: flex;
