@@ -3,7 +3,7 @@ const fs = require('fs');
 const url = require('url');
 
 module.exports =
-    function (data, factories, constants, errorHandler) {
+    function(data, factories, constants, errorHandler) {
         return {
             getAll(req, res) {
                 console.log('all bikes page');
@@ -24,9 +24,9 @@ module.exports =
 
                         return domainBikes;
                     })
-                    .then((data) => {
+                    .then((viewBikes) => {
                         res.render('allBikes', {
-                            'bikeList': data,
+                            'bikeList': viewBikes,
                         });
                     }).catch((err) => {
                         console.log(err);
@@ -118,6 +118,17 @@ module.exports =
                 //console.log(query.query);
 
                 data.bike.getBikesByFilter(`${query.query}`)
+                    .then((dbBikes) => {
+                        const domainBikes = [];
+
+                        dbBikes.forEach((bike) => {
+                            const domBike = factories.domainModels.createBike(bike);
+                            domBike.initPictureValue();
+                            domainBikes.push(domBike);
+                        });
+
+                        return domainBikes;
+                    })
                     .then((bikes) => {
                         res.render('partials/_partialAllBikes', {
                             'bikeList': bikes,
@@ -136,10 +147,20 @@ module.exports =
                 const query = urlParts.query.query;
 
                 data.bike.sortBikesByProperty(query)
-                    .then((bikes) => {
-                        console.log(bikes);
+                    .then((dbBikes) => {
+                        const domainBikes = [];
+
+                        dbBikes.forEach((bike) => {
+                            const domBike = factories.domainModels.createBike(bike);
+                            domBike.initPictureValue();
+                            domainBikes.push(domBike);
+                        });
+
+                        return domainBikes;
+                    })
+                    .then((viewBikes) => {
                         res.render('partials/_partialAllBikes', {
-                            'bikeList': bikes,
+                            'bikeList': viewBikes,
                         });
                     });
                 console.log(query);

@@ -3,7 +3,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
 const { SHA256 } = require('crypto-js');
 
-module.exports = function (data, factories, constants, errorHandler) {
+module.exports = function(data, factories, constants, errorHandler) {
     return {
         getSignUpForm(req, res) {
             return res.render('signup', {});
@@ -112,7 +112,6 @@ module.exports = function (data, factories, constants, errorHandler) {
                 .then((dbUser) => {
                     const orders = dbUser.ordersHistory;
 
-                    console.log(orders, ' ORDERS');
                     const bikes = [];
 
                     let itemsProcessed = 0;
