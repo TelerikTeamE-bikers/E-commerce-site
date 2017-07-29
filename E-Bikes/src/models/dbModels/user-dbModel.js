@@ -5,8 +5,8 @@ const constants = require('../../common/constants');
 class UserDbModel {
     constructor(id, username, password, shoppingCart, shoppingHistory) {
         this._id = id;
-        this.username = username;
-        this.password = password;
+        this._username = username;
+        this._password = password;
         this._shoppingCart = shoppingCart;
         this._shoppingHistory = shoppingHistory;
     }

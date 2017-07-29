@@ -68,9 +68,11 @@ module.exports =
 
             getBikeDetails(req, res) {
                 const id = req.params.id;
+
                 if (!data.bike.isValidObject(id)) {
                     return res.status(404).send();
                 }
+
                 data.bike.findById(id)
                     .then((bike) => {
                         if (!bike) {
@@ -85,7 +87,7 @@ module.exports =
             },
 
             getBikesByFilter(req, res) {
-                console.log('Filtering bikes bikes...');
+                console.log('Filtering bikes...');
 
                 const urlParts = url.parse(req.url, true);
                 const query = urlParts.query;
@@ -94,11 +96,11 @@ module.exports =
 
                 data.bike.getBikesByFilter(`${query.query}`)
                     .then((bikes) => {
-                        // res.render('allBikes', {
-                        //     'bikeList': bikes,
-                        // });
-                        console.log('result ' + bikes);
-                        return res.status(200).send(bikes);
+                        res.render('partials/_partialAllBikes', {
+                            'bikeList': bikes,
+                        });
+                        // console.log("result " + bikes)
+                        // return res.status(200).send(`${bikes}`);
                     }).catch((err) => {
                         console.log(err);
                         return res.status(400).send(err);

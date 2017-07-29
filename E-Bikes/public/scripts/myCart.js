@@ -1,5 +1,5 @@
 /* globals $ */
-$(document).ready(function() {
+$(document).ready(function () {
 
     // function renderCart() {
     const listOrderedBikes = $('.flex__container');
@@ -16,18 +16,38 @@ $(document).ready(function() {
 
     // renderCart();
 
-    $('button').click(function() {
-        $(this).parent().remove();
-        console.log()
+    $('button').click(function () {
+        let bikeId = $(this).parent()
+            .siblings('.product-item__id')
+            .text();
+            
+        console.log('id to delete ' + bikeId)
+        let currentBikes = JSON.parse(sessionStorage.getItem('shoppingCart'));
 
+        //currentBikes.remove((x) => x.id === bikeId);
+        currentBikes = currentBikes.filter((item) => {
+            return !(item.id === bikeId);
+        });
+
+        console.log("currentbikes")
+        console.log(currentBikes)
+        sessionStorage.setItem('shoppingCart', JSON.stringify(currentBikes));
+
+        $(this).parent().remove();
+
+        let orderCount = $('.numberOfPurchases')
+        orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length)
+        console.log("orders count " + orderCount);
     });
 
-    $('.btn__purchase').click(function(event) {
+    $('.btn__purchase').click(function (event) {
         // console.log({ items: storageArr });
         console.log('It works');
         let http = new XMLHttpRequest();
         let url = 'http://localhost:3030/auth/completeOrder';
-        let params = JSON.stringify({ items: storageArr });
+        let bikeIds = storageArr.map((item) => item.id)
+        let params = JSON.stringify({ items: bikeIds });
+        console.log(params)
         // http.open("POST", url, true);
 
         // http.setRequestHeader("Content-type", "application/json");
@@ -43,12 +63,14 @@ $(document).ready(function() {
         $.ajax({
             method: 'POST',
             url: url,
-            data: params.items,
+            data: params,
             contentType: 'application/json',
             success: () => {
                 alert('You successfully order your e-bikes!');
                 sessionStorage.removeItem('shoppingCart');
                 listOrderedBikes.html('');
+                let orderCount = $('.numberOfPurchases')
+                orderCount.html('')
             },
             error: () => { alert(http.responseText) }
         });

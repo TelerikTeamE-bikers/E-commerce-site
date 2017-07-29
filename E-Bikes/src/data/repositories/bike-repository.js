@@ -8,14 +8,38 @@ class BikeRepository extends BaseRepository {
 
     getBikesByFilter(query) {
         // return new Promise((resolve, reject) => {
-        //     this.collection.filterBy({ email: new RegExp(email, 'i') })
-        //     .then(([user]) => user);
-        // }
+        //     console.log("query " + query)
+
+        //     this.filterBy({ brand: query})
+        //         //.toArray()
+        //         .then((models) => {
+        //             console.log("db")
+        //             console.log(models)
+        //             const result = models.map((model) => 
+        //                 this.factory.create(model, Bike)
+        //             );
+
+        //             console.log("after factory: " + result);
+
+        //             resolve(result || null);
+        //         }).catch((err) => {
+        //             console.log(err)
+        //         });
+        // });
+
 
         return new Promise((resolve, reject) => {
-            console.log("query " + query)
+            params = query.split(' ');
 
-            this.filterBy({ brand: query })
+            console.log(params)
+
+            params.forEach((element) => {
+                
+            });
+            
+            db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+
+            this.filterBy({ brand: query})
                 //.toArray()
                 .then((models) => {
                     console.log("db")
@@ -31,22 +55,6 @@ class BikeRepository extends BaseRepository {
                     console.log(err)
                 });
         });
-
-        // return new Promise((resolve, reject) => {
-        //     this.collection.find({ brand: query })
-        //         .toArray()
-        //         .then((models) => {
-        //             const result = models.map((model) =>
-        //                 this.factory.create(model, this.modelClass)
-        //             );
-
-        //             console.log(result);
-
-        //             resolve(result || null);
-        //         }).catch((err) => {
-        //             console.log(err)
-        //         });
-        // });
     }
 }
 
