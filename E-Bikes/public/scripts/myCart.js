@@ -58,7 +58,7 @@ $(document).ready(function () {
         //         alert(http.responseText);
         //     }
         // }
-        console.log(params);
+        console.log(JSON.parse(params.items));
         // http.send(params);
         $.ajax({
             method: 'POST',

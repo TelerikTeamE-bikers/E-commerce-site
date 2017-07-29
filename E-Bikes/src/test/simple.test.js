@@ -1,11 +1,9 @@
 const { expect } = require('chai');
-//  the same AS -> const expect = require('chai').expect
 
 describe('Test sum', () => {
     it('should return 4', () => { // 1 test
         const x = 2;
         const y = 2;
-
         const expected = x + y;
 
         expect(expected).to.eq(4).to.be.a('number'); // some chaining
@@ -17,7 +15,7 @@ describe('Examples of using chai with mocha', () => {
         expect(14).to.not.equal(13);
         expect({ a: 1 }).to.not.have.property('b');
         expect([1, 2]).to.be.an('array').that.does.not.include(3);
-        expect('foobar').to.include('fot');
+        expect('foobar').to.include('foo');
     });
 });
 
