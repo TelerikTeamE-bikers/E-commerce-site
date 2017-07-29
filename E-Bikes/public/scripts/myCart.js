@@ -1,14 +1,15 @@
 /* globals $ */
-$(document).ready(function () {
+$(document).ready(function() {
 
     // function renderCart() {
     const listOrderedBikes = $('.flex__container');
-    const storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
+    let storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
 
     let output = '';
     for (let i in storageArr) {
-        output += '<li class="flex__item box">' + 'Order' + i + '&nbsp' + '<div class="product_id">' + storageArr[i].title + '<br>' + storageArr[i].price + '</div>' +
-            '<button>' + 'delete' + '</button>' + '</li>';
+        let order = +i + 1;
+        output += '<li class="flex__item box">' + 'Order' + '&nbsp' + order + '&nbsp' + '<div class="product_id">' + storageArr[i].title + '<br>' + storageArr[i].price + '</div>' + '<div class=".product-item__id">' + storageArr[i].id + '</div>' +
+            '<button class="delete_item">' + 'delete' + '</button>' + '</li>';
     }
 
     listOrderedBikes.html(output);
@@ -16,31 +17,72 @@ $(document).ready(function () {
 
     // renderCart();
 
-    $('button').click(function () {
-        let bikeId = $(this).parent()
-            .siblings('.product-item__id')
-            .text();
-            
-        console.log('id to delete ' + bikeId)
-        let currentBikes = JSON.parse(sessionStorage.getItem('shoppingCart'));
-
-        //currentBikes.remove((x) => x.id === bikeId);
-        currentBikes = currentBikes.filter((item) => {
-            return !(item.id === bikeId);
-        });
-
-        console.log("currentbikes")
-        console.log(currentBikes)
-        sessionStorage.setItem('shoppingCart', JSON.stringify(currentBikes));
-
+    // Deleting a selected bike purchase from the cart
+    $('.delete_item').click(function() {
         $(this).parent().remove();
+        const orderObject = $(this).parent().text();
 
-        let orderCount = $('.numberOfPurchases')
-        orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length)
-        console.log("orders count " + orderCount);
+        const orderId = orderObject.split('\xa0');
+        let intOrderId = parseInt(orderId[1]) - 1;
+
+        if (
+
+            storageArr.indexOf(intOrderId) === -1) {
+            intOrderId = Math.floor(intOrderId / 64);
+        }
+
+        storageArr.splice(intOrderId, 1);
+        sessionStorage.setItem('shoppingCart', JSON.stringify(storageArr));
+
+        //  sessionStorage.getItem('shoppingCart', JSON.stringify(storageArr))
+        const orderCounts = $('.numberOfPurchases');
+        orderCounts.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length);
+
+
+
+        // const bikeId = $(this)
+        //     .prev()
+        //     .text();
+
+        // console.log('id to delete ' + bikeId)
+        // let currentBikes = JSON.parse(sessionStorage.getItem('shoppingCart'));
+
+        // //currentBikes.remove((x) => x.id === bikeId);
+        // let counter = 0;
+        // // currentBikes = currentBikes.filter((item) => {
+        // //     return !(item.id === bikeId);
+        // // });
+
+        // for (let i = 0; i < currentBikes.length; i++) {
+        //     let counter = 0;
+        //     if (currentBikes[i].id === bikeId && counter === 0) {
+        //         currentBikes.splice(i, 1);
+        //         counter++;
+        //     }
+        // }
+
+        // console.log("currentbikes")
+        // console.log(currentBikes)
+        // sessionStorage.setItem('shoppingCart', JSON.stringify(currentBikes));
+
+        // $(this).parent().remove();
+
+        // let orderCount = $('.numberOfPurchases')
+        // orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length)
+        // console.log("orders count " + orderCount);
     });
 
-    $('.btn__purchase').click(function (event) {
+    $('.btn__clearCart').click(function(event) {
+        console.log('cleared')
+
+        storageArr = []
+        sessionStorage.setItem('shoppingCart', JSON.stringify(storageArr))
+        listOrderedBikes.html(' ');
+        $('.numberOfPurchases').html('')
+
+    })
+
+    $('.btn__purchase').click(function(event) {
         // console.log({ items: storageArr });
         console.log('It works');
         let http = new XMLHttpRequest();
@@ -48,7 +90,7 @@ $(document).ready(function () {
         let bikeIds = storageArr.map((item) => item.id)
         let params = JSON.stringify({ items: bikeIds });
         console.log(params)
-        // http.open("POST", url, true);
+            // http.open("POST", url, true);
 
         // http.setRequestHeader("Content-type", "application/json");
 
@@ -58,7 +100,7 @@ $(document).ready(function () {
         //         alert(http.responseText);
         //     }
         // }
-        console.log(JSON.parse(params.items));
+        //console.log(JSON.parse(params.items));
         // http.send(params);
         $.ajax({
             method: 'POST',

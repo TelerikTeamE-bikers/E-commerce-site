@@ -1,4 +1,4 @@
-let orderCount = $('.numberOfPurchases')
-
-orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length)
-console.log(orderCount)
+if (sessionStorage.getItem('shoppingCart') !== null) {
+    const orderCount = $('.numberOfPurchases');
+    orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length);
+}
