@@ -5,13 +5,15 @@ $(document).ready(function() {
     const shoppingCart = new ShoppingCart();
 
     $('.btn__add-to-cart').click(function(event) {
-        const currentBikeId = {};
-        currentBikeId.title = $(this).parent()
+        const currentBike = {};
+        currentBike.title = $(this).parent()
             .siblings('.product-item__title').text();
-        currentBikeId.price = $(this).parent()
+        currentBike.price = $(this).parent()
             .siblings('.product-item__price').text();
+        currentBike.id = $(this).parent()
+            .siblings('.product-item__id').text();
 
-        shoppingCart.addItemToCart(currentBikeId);
+        shoppingCart.addItemToCart(currentBike);
 
         const orderCount = $('.numberOfPurchases');
         orderCount.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length);
@@ -28,7 +30,7 @@ $('.search-button').click(function(event) {
         })
         .done(function(html) {
             $('.html-container').html(html);
-            $('.query-string').val('');
+            //$('.query-string').val('');
         })
         .fail(function(error) {
             console.log(error);
