@@ -18,7 +18,7 @@ module.exports = (app, controllers) => {
             return controller.getBikesByProperty(req, res);
         });
 
-    // app.use('/', router);
+    //app.use('/', router);
     app.use('/bike', router);
 
     return router;

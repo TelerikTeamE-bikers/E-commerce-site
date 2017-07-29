@@ -1,14 +1,15 @@
 //const crypto = require('crypto-js');
 const constants = require('../../common/constants');
 //const validator = require('../common/validator');
+const fs = require('fs');
 
 class BikeDbModel {
-    constructor(brand, model, price, picture) {
+    constructor(brand, model, price, picturePath) {
         this._id;
         this._brand = brand;
         this._model = model;
         this._price = price;
-        this._picture = picture;
+        this._picturePath = picturePath;
     }
 
     get id() {
@@ -43,12 +44,12 @@ class BikeDbModel {
         this._price = value;
     }
 
-    get picture() {
-        return this._picture;
+    get picturePath() {
+        return this._picturePath;
     }
 
-    set picture(value) {
-        this._picture = value;
+    set picturePath(value) {
+        this._picturePath = value;
     }
 }
 

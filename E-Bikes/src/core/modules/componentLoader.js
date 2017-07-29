@@ -14,14 +14,18 @@ module.exports = {
         console.log('All routers loaded.');
         console.log();
     },
-    initializeControllers(data, factories) {
+    initializeControllers(data, factories, constants, errorHandler) {
         const controllers = {};
 
         fs.readdirSync('./src/controllers')
             .filter((x) => x.includes('-controller'))
             .forEach((file) => {
                 //console.log("f: ", file)
-                const controllerModule = require(path.join('../../controllers/', file))(data);
+                const controllerModule = require(path.join('../../controllers/', file))
+                    (data,
+                    factories,
+                    constants,
+                    errorHandler);
                 //console.log(1, controllerModule)
                 console.log('Loading controller:', '../../controllers/' + file);
 

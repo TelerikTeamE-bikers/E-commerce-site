@@ -3,7 +3,7 @@ const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
 const { SHA256 } = require('crypto-js');
 
-module.exports = function(data, factories, constants, errorHandler) {
+module.exports = function (data, factories, constants, errorHandler) {
     return {
         getSignUpForm(req, res) {
             return res.render('signup', {});

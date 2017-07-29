@@ -1,3 +1,7 @@
 a.btn__add-to-cart:active {
     background-color: green
 }
+
+.product-item__id {
+    display: none;
+}

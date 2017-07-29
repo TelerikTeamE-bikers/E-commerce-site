@@ -41,6 +41,18 @@
     padding: 5px;
 }
 
+.btn__clearCart {
+    float: right;
+    margin: 10px;
+    padding: 4px;
+    border: 3px solid grey;
+    color: red;
+}
+
+.bike_id {
+    display: none;
+}
+
 
 /*.flexbox-container {
     display: flex;
