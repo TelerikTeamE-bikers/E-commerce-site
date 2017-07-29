@@ -1,6 +1,6 @@
 /* globals $ */
-$(document).ready(function () {
-
+$(document).ready(function() {
+    const domain = 'localhost:3030';
     // function renderCart() {
     const listOrderedBikes = $('.flex__container');
     const storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
@@ -16,11 +16,11 @@ $(document).ready(function () {
 
     // renderCart();
 
-    $('button').click(function () {
+    $('button').click(function() {
         let bikeId = $(this).parent()
             .siblings('.product-item__id')
             .text();
-            
+
         console.log('id to delete ' + bikeId)
         let currentBikes = JSON.parse(sessionStorage.getItem('shoppingCart'));
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
         console.log("orders count " + orderCount);
     });
 
-    $('.btn__purchase').click(function (event) {
+    $('.btn__purchase').click(function(event) {
         // console.log({ items: storageArr });
         console.log('It works');
         let http = new XMLHttpRequest();
@@ -48,7 +48,7 @@ $(document).ready(function () {
         let bikeIds = storageArr.map((item) => item.id)
         let params = JSON.stringify({ items: bikeIds });
         console.log(params)
-        // http.open("POST", url, true);
+            // http.open("POST", url, true);
 
         // http.setRequestHeader("Content-type", "application/json");
 
@@ -58,7 +58,7 @@ $(document).ready(function () {
         //         alert(http.responseText);
         //     }
         // }
-        console.log(JSON.parse(params.items));
+        // console.log(JSON.parse(params.items));
         // http.send(params);
         $.ajax({
             method: 'POST',
@@ -70,7 +70,7 @@ $(document).ready(function () {
                 sessionStorage.removeItem('shoppingCart');
                 listOrderedBikes.html('');
                 let orderCount = $('.numberOfPurchases')
-                orderCount.html('')
+                orderCount.html('');
             },
             error: () => { alert(http.responseText) }
         });

@@ -21,12 +21,11 @@ module.exports = function(data, factories, constants, errorHandler) {
                     if (dbUser) {
                         throw new Error('User already exists. Please try with another email');
                     }
-                    
                     return data.user.create(bodyUser);
                 }).then((dbUser) => {
                     req.login(dbUser, () => {
-                        req.flash('success', 'Successful registration');
-                        res.redirect('/auth/myProfile');
+                        req.flash('success', 'Please enter your email and password');
+                        res.redirect('/auth/login');
                     });
                 }).catch((err) => {
                     req.flash('error', err.message);
@@ -97,6 +96,8 @@ module.exports = function(data, factories, constants, errorHandler) {
                     return data.user.addItemsToOrdersHistory(req.user._id, bikes);
                 })
                 .then((products) => {
+                    // req.flash('success', 'Your bike will be delivered soon');
+                    // res.redirect('/auth/myCart');
                     return res.status(200).send('Successfull order');
                 })
                 .catch((err) => {
