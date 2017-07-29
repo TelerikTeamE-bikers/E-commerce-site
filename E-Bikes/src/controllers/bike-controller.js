@@ -3,7 +3,7 @@ const fs = require('fs');
 const url = require('url');
 
 module.exports =
-    function(data) {
+    function (data, factories, constants, errorHandler) {
         return {
             getAll(req, res) {
                 console.log('all bikes page');
@@ -13,9 +13,20 @@ module.exports =
                 //data.addBike(bike);
 
                 data.bike.getAll()
-                    .then((bikes) => {
+                    .then((dbBikes) => {
+                        let domainBikes = [];
+
+                        dbBikes.forEach((bike) => {
+                            let domBike = factories.domainModels.createBike(bike);
+                            domBike.initPictureValue();
+                            domainBikes.push(domBike);
+                        });
+
+                        return domainBikes;
+                    })
+                    .then((data) => {
                         res.render('allBikes', {
-                            'bikeList': bikes,
+                            'bikeList': data,
                         });
                     }).catch((err) => {
                         console.log(err);
@@ -29,21 +40,33 @@ module.exports =
                 const items = req.body.items;
                 console.log("Items " + items);
 
-                if (!Array.isArray(items)) {
-                    return res.status(400).send('Incorrect items');
-                }
+                // if (!Array.isArray(items)) {
+                //     return res.status(400).send('Incorrect items');
+                // }
 
                 let brand = 1;
                 let model = 1;
-                let price = 1000
+                let price = 1000;
+                let picture = 1;
 
-                items.forEach((item) => {
-                    const newBike = new BikeModel('brand' + brand, 'model ' + model, price);
+                for (let i = 0; i < items; i++) {
+                    if (picture > 6) {
+                        picture = 1;
+                    }
+                    const newBike = new BikeModel(
+                        'brand' + brand,
+                        'model ' + model,
+                        price,
+                        `public/images/bikes/${picture.toString()}.jpg`
+                    );
+
                     data.bike.create(newBike);
+
                     brand++;
                     model++;
                     price += 1000;
-                });
+                    picture++;
+                }
 
                 return res.status(200).send();
 
