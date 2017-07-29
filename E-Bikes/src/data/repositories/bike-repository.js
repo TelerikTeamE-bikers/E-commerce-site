@@ -11,12 +11,12 @@ class BikeRepository extends BaseRepository {
             console.log("query " + query)
 
             //this.filterBy({ brand: query})
-            this.filterBy({ $or: [ { brand: query }, { model: query } ] })
+            this.filterBy({ $or: [{ brand: query }, { model: query }] })
                 //.toArray()
                 .then((models) => {
                     console.log("db")
                     console.log(models)
-                    const result = models.map((model) => 
+                    const result = models.map((model) =>
                         this.factory.create(model, Bike)
                     );
 
@@ -24,7 +24,50 @@ class BikeRepository extends BaseRepository {
 
                     resolve(result || null);
                 }).catch((err) => {
-                    console.log(err)
+                    console.log(err);
+                });
+        });
+    }
+
+    // getBikesByPrice(query){
+    //     return new Promise((resolve, reject) => {
+    //         if(query === 'price_asc'){
+    //             this.collection.find().sort( { price : 1 } )
+    //         }else if(query === 'price_dsc'){
+    //             this.collection.find().sort( { price : -1 } )
+    //         }
+    //         .then((models) => {
+    //             const result = models.map((model) => 
+    //                     this.factory.create(model, Bike)
+    //                 );
+    //         })
+    //     })
+    // },
+
+    sortBikesByProperty(query) {
+        return new Promise((resolve, reject) => {
+            return new Promise((res, rej) => {
+                    if (query === 'price_asc') {
+                        const models = this.collection.find()
+                            .sort({ price: 1 }).toArray();
+                        resolve(models);
+                    } else if (query === 'price_dsc') {
+                        const models = this.collection.find()
+                            .sort({ price: -1 }).toArray();
+                        resolve(models);
+                    } else if (query === 'name_asc') {
+                        const models = this.collection.find()
+                            .sort({ brand: 1 }).toArray();
+                        resolve(models);
+                    }
+                }).then((models) => {
+                    const result = models.map((model) =>
+                        this.factory.create(model, Bike)
+                    );
+                    resolve(result || null);
+                })
+                .catch((err) => {
+                    console.log(err);
                 });
         });
     }

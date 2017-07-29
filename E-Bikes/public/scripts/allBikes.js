@@ -120,7 +120,7 @@ $('#filter').on('change', function (event) {
     } else {
         queryString = 'name_asc';
     }
-    var url = 'http://localhost:3030/bike/getBikesByFilter?query=' + queryString;
+    var url = 'http://localhost:3030/bike/getBikesByProperty?query=' + queryString;
     $.ajax({
         method: 'GET',
         url: url

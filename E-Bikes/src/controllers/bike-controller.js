@@ -106,6 +106,21 @@ module.exports =
                         return res.status(400).send(err);
                         //errorHandler.handleError(req, res, err);
                     });
-            }
+            },
+
+            getBikesByProperty(req, res) {
+                const urlParts = url.parse(req.url, true);
+                const query = urlParts.query.query;
+
+                data.bike.sortBikesByProperty(query)
+                    .then((bikes) => {
+                        console.log(bikes);
+                        res.render('partials/_partialAllBikes', {
+                            'bikeList': bikes,
+                        });
+                    });
+                console.log(query);
+            },
+
         };
     };

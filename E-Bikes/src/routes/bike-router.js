@@ -13,6 +13,9 @@ module.exports = (app, controllers) => {
         })
         .get('/getBikesByFilter?:qwery', (req, res) => {
             return controller.getBikesByFilter(req, res);
+        })
+        .get('/getBikesByProperty?:query', (req, res) => {
+            return controller.getBikesByProperty(req, res);
         });
 
     // app.use('/', router);
