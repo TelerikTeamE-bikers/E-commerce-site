@@ -1,10 +1,29 @@
 /* globals $ */
 $(document).ready(function() {
     const domain = 'localhost:3030';
-    // function renderCart() {
+
     const listOrderedBikes = $('.flex__container');
     let storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
 
+    // total order price 
+    let eachBikePriceStr = storageArr.map(function(a) {
+        return a.price;
+    });
+    // removing € symbol
+    for (let i = 0; i < eachBikePriceStr.length; i += 1) {
+        eachBikePriceStr[i] = (eachBikePriceStr[i]).replace(/[^\d.-]/g, '');
+    }
+    // Parsing each bike price string and returning the sum 
+    function eachBikePriceSum(arr) {
+        return arr.map(Number)
+            .reduce((a, b) => a + b)
+    }
+    let totalPrice = eachBikePriceSum(eachBikePriceStr);
+    console.log(totalPrice);
+    //displaying the total price 
+    $('.totalPrice').text(`Total Price: ${totalPrice} €`);
+
+    // Rendering HTML of each bike in the cart 
     let output = '';
     for (let i in storageArr) {
         let order = +i + 1;
