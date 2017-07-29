@@ -78,9 +78,10 @@ module.exports = function(data, factories, constants, errorHandler) {
             }
 
             const items = req.body.items;
-            console.log("Items " + items);
+            console.log("Items " + items[0].title);
 
             if (!Array.isArray(items)) {
+                console.log('It is not array');
                 return res.status(400).send('Incorrect items');
             }
 
