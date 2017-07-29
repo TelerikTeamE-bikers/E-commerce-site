@@ -4,7 +4,7 @@ block custom-styles
     link(rel='stylesheet', href='/static/styles/allBikes.css')
 
 block content
-  .wrapper.wrapper--t-padding.html-container
+  .wrapper.wrapper--t-padding
     .flex__container-filter
       .flex__item-filter
         input.query-string(placeholder="find by brand or model", type="text", name="query")
@@ -15,7 +15,7 @@ block content
           option(value="asc-price") Ascending price
           option(value="dsc-price") Descending price
           option(value="brand-name") Brand name
-    ul.flex__container
+    ul.flex__container.html-container
         each bike in bikeList
           li.flex__item.product-item
             img.product-item__photo(src="data:image/jpg;base64," + bike.picture)

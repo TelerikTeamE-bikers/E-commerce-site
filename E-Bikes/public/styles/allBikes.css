@@ -1015,6 +1015,14 @@ h2 {
                 justify-content: center;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
+        padding-top: 20px;
+    }
+
+@media (min-width: 800px) {
+
+.flex__container-filter {
+            padding-top: 0
+    }
     }
 
 .product-item__title {

@@ -1,6 +1,10 @@
 /* globals $ */
 $(document).ready(function() {
+<<<<<<< HEAD
 
+=======
+    const domain = 'localhost:3030';
+>>>>>>> origin/master
     // function renderCart() {
     const listOrderedBikes = $('.flex__container');
     let storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
@@ -17,10 +21,25 @@ $(document).ready(function() {
 
     // renderCart();
 
+<<<<<<< HEAD
     // Deleting a selected bike purchase from the cart
     $('.delete_item').click(function() {
         $(this).parent().remove();
         const orderObject = $(this).parent().text();
+=======
+    $('button').click(function() {
+        let bikeId = $(this).parent()
+            .siblings('.product-item__id')
+            .text();
+
+        console.log('id to delete ' + bikeId)
+        let currentBikes = JSON.parse(sessionStorage.getItem('shoppingCart'));
+
+        //currentBikes.remove((x) => x.id === bikeId);
+        currentBikes = currentBikes.filter((item) => {
+            return !(item.id === bikeId);
+        });
+>>>>>>> origin/master
 
         const orderId = orderObject.split('\xa0');
         let intOrderId = parseInt(orderId[1]) - 1;
@@ -72,6 +91,7 @@ $(document).ready(function() {
         // console.log("orders count " + orderCount);
     });
 
+<<<<<<< HEAD
     $('.btn__clearCart').click(function(event) {
         console.log('cleared')
 
@@ -82,6 +102,8 @@ $(document).ready(function() {
 
     })
 
+=======
+>>>>>>> origin/master
     $('.btn__purchase').click(function(event) {
         // console.log({ items: storageArr });
         console.log('It works');
@@ -100,7 +122,11 @@ $(document).ready(function() {
         //         alert(http.responseText);
         //     }
         // }
+<<<<<<< HEAD
         //console.log(JSON.parse(params.items));
+=======
+        // console.log(JSON.parse(params.items));
+>>>>>>> origin/master
         // http.send(params);
         $.ajax({
             method: 'POST',
@@ -112,7 +138,7 @@ $(document).ready(function() {
                 sessionStorage.removeItem('shoppingCart');
                 listOrderedBikes.html('');
                 let orderCount = $('.numberOfPurchases')
-                orderCount.html('')
+                orderCount.html('');
             },
             error: () => { alert(http.responseText) }
         });
