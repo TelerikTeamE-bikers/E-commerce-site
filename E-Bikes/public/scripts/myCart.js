@@ -6,7 +6,7 @@ $(document).ready(function() {
     let storageArr = JSON.parse(sessionStorage.getItem('shoppingCart'));
 
     // total order price 
-    let eachBikePriceStr = storageArr.map(function(a) {
+    const eachBikePriceStr = storageArr.map(function(a) {
         return a.price;
     });
     // removing € symbol
@@ -16,18 +16,19 @@ $(document).ready(function() {
     // Parsing each bike price string and returning the sum 
     function eachBikePriceSum(arr) {
         return arr.map(Number)
-            .reduce((a, b) => a + b)
+            .reduce((a, b) => a + b);
     }
     let totalPrice = eachBikePriceSum(eachBikePriceStr);
     console.log(totalPrice);
-    //displaying the total price 
+    // displaying the total price 
     $('.totalPrice').text(`Total Price: ${totalPrice} €`);
 
     // Rendering HTML of each bike in the cart 
     let output = '';
     for (let i in storageArr) {
-        let order = +i + 1;
-        output += '<li class="flex__item box">' + 'Order' + '&nbsp' + order + '&nbsp' + '<div class="product_id">' + storageArr[i].title + '<br>' + storageArr[i].price + '</div>' + '<div class=".product-item__id">' + '</div>' +
+        const order = +i + 1;
+        output += '<li class="flex__item box">' + 'Order' + '&nbsp' + order + '&nbsp' + '<div class="product_id">' + storageArr[i].title +
+            '<br>' + '&nbsp' + storageArr[i].price + '&nbsp' + '</div>' + '<div class=".product-item__id">' + '</div>' +
             '<button class="delete_item">' + 'delete' + '</button>' + '<span class="bike_id">' + storageArr[i].id + '</span>' + '</li>';
     }
 
@@ -40,7 +41,6 @@ $(document).ready(function() {
     $('.delete_item').click(function() {
         $(this).parent().remove();
         const orderObject = $(this).parent().text();
-
         const orderId = orderObject.split('\xa0');
         let intOrderId = parseInt(orderId[1]) - 1;
 
@@ -57,8 +57,11 @@ $(document).ready(function() {
         const orderCounts = $('.numberOfPurchases');
         orderCounts.html(JSON.parse(sessionStorage.getItem('shoppingCart')).length);
 
-
-
+        // Deducting the price of the deleted bike form teh total price
+        let deletedBikePrice = orderId[3];
+        deletedBikePrice = parseInt(deletedBikePrice.replace(/[^\d.-]/g, ''));
+        totalPrice -= deletedBikePrice;
+        $('.totalPrice').text(`Total Price: ${totalPrice} €`);
         // const bikeId = $(this)
         //     .prev()
         //     .text();
@@ -91,13 +94,16 @@ $(document).ready(function() {
         // console.log("orders count " + orderCount);
     });
 
+    // Clearing the cart , all orders removed
     $('.btn__clearCart').click(function(event) {
-        console.log('cleared')
+        console.log('cleared');
 
-        storageArr = []
+        storageArr = [];
         sessionStorage.setItem('shoppingCart', JSON.stringify(storageArr))
         listOrderedBikes.html(' ');
-        $('.numberOfPurchases').html('')
+        $('.numberOfPurchases').html('');
+        totalPrice = 0;
+        $('.totalPrice').text(`Total Price: ${totalPrice} €`);
 
     })
 
@@ -106,10 +112,10 @@ $(document).ready(function() {
         console.log('It works');
         let http = new XMLHttpRequest();
         let url = 'http://localhost:3030/auth/completeOrder';
-        let bikeIds = storageArr.map((item) => item.id)
+        let bikeIds = storageArr.map((item) => item.id);
         let params = JSON.stringify({ items: bikeIds });
-        console.log(params)
-            // http.open("POST", url, true);
+        console.log(params);
+        // http.open("POST", url, true);
 
         // http.setRequestHeader("Content-type", "application/json");
 
