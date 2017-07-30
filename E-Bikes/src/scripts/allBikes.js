@@ -5,6 +5,14 @@ $(document).ready(function() {
     const shoppingCart = new ShoppingCart();
 
     $('.btn__add-to-cart').click(function(event) {
+
+        // Check if user is logged in 
+        const loginPopUp = $('.loginPopUp_Box_Hidden');
+        const validateAuth = $('.site-header__my-cart');
+        if (validateAuth.length === 0) {
+            loginPopUp.removeClass('loginPopUp_Box_Hidden')
+                .addClass('loginPopUp_Box_Display');
+        }
         const currentBike = {};
         currentBike.title = $(this).parent()
             .siblings('.product-item__title').text();

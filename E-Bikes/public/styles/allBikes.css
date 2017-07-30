@@ -114,7 +114,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -1078,4 +1079,21 @@ a.btn__add-to-cart:active {
 
 .product-item__id {
     display: none;
+}
+
+.loginPopUp_Box_Hidden {
+    display: none;
+}
+
+.loginPopUp_Box_Display {
+    display: block;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    border: 4px solid lightcoral;
+    color: red;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
 }
