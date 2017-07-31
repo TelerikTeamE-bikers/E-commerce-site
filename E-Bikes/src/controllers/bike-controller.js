@@ -1,3 +1,4 @@
+/* globals $ */
 const BikeModel = require('../models/dbModels/bike-dbModel');
 const fs = require('fs');
 const url = require('url');
@@ -34,7 +35,7 @@ module.exports =
                 console.log('Creating new bikes...');
 
                 const items = req.body.items;
-                console.log("Items " + items);
+                console.log('Items ' + items);
 
 
                 let brand = 1;
@@ -50,7 +51,8 @@ module.exports =
                         'brand' + brand,
                         'model ' + model,
                         price,
-                        `public/images/bikes/${picture.toString()}.jpg`
+                        // `public/images/bikes/${picture.toString()}.jpg`
+                        `https://s3.us-east-2.amazonaws.com/ebikes-bucket/${picture.toString()}.jpg`
                     );
 
                     data.bike.create(newBike);
@@ -90,6 +92,8 @@ module.exports =
                 const urlParts = url.parse(req.url, true);
                 const query = urlParts.query;
 
+                //  console.log(query.query);
+
                 data.bike.getBikesByFilter(`${query.query}`)
                     .then((dbBikes) => {
                         const domainBikes = [];
@@ -111,7 +115,7 @@ module.exports =
                     }).catch((err) => {
                         console.log(err);
                         return res.status(400).send(err);
-                        //errorHandler.handleError(req, res, err);
+                        //  errorHandler.handleError(req, res, err);
                     });
             },
 

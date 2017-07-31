@@ -1,3 +1,4 @@
+/* globals $ */
 $(document).ready(function() {
     // email input validation
     const emailInput = $('.email-validate');
@@ -57,7 +58,6 @@ $(document).ready(function() {
                 .addClass('error-password');
             diffpasswError.removeClass('error_show')
                 .addClass('error-difpass');
-
         } else {
             passwInput2.removeClass('valid')
                 .addClass('invalid');

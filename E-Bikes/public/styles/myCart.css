@@ -976,7 +976,7 @@ h2 {
 .flex__item {
         background-color: #FFF;
         width: 70%;
-        height: 79px;
+        height: 154px;
         padding: 0px;
         margin: 16px 25px;
         text-align: center;
@@ -1021,6 +1021,13 @@ h2 {
 
 .bike_id {
     display: none;
+}
+
+.product__image{
+    width: 20%;
+    /* height: 20%; */
+    display:block;
+    margin: 0 auto;
 }
 
 /*.flexbox-container {

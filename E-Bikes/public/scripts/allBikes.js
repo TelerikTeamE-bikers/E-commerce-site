@@ -80,6 +80,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 $(document).ready(function () {
     var shoppingCart = new _ShoppingCart2.default();
 
+    // let img = document.createElement('img');
+    // img.src = src;
+    // document.body.appendChild(img);
+
     $('.btn__add-to-cart').click(function (event) {
 
         // Check if user is logged in 
@@ -92,6 +96,9 @@ $(document).ready(function () {
         currentBike.title = $(this).parent().siblings('.product-item__title').text();
         currentBike.price = $(this).parent().siblings('.product-item__price').text();
         currentBike.id = $(this).parent().siblings('.product-item__id').text();
+        currentBike.picture = $(this).parent().siblings('.product-item__photo').attr('src');
+
+        console.log($(this).parent().siblings('.product-item__photo').attr('src'));
 
         shoppingCart.addItemToCart(currentBike);
 

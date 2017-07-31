@@ -1,3 +1,4 @@
+/* globals $ */
 const userDomainModel = require('../models/domainModels/user-domainModel');
 const bikeDomainModel = require('../models/domainModels/bike-domainModel');
 const passport = require('passport');
@@ -51,7 +52,7 @@ module.exports = function(data, factories, constants, errorHandler) {
             });
         },
         updateProfile(req, res) {
-            //todo if some inputs are empty not to write it in DB???
+            // todo if some inputs are empty not to write it in DB???
             const bodyUser = req.body;
             bodyUser._id = req.user._id;
 
@@ -77,7 +78,7 @@ module.exports = function(data, factories, constants, errorHandler) {
             }
 
             const items = req.body.items;
-            console.log("Items " + items[0].title);
+            console.log('Items' + items[0].title);
 
             if (!Array.isArray(items)) {
                 console.log('It is not array');
@@ -119,10 +120,13 @@ module.exports = function(data, factories, constants, errorHandler) {
                     orders.forEach((orderId) => {
                         data.bike.findById(orderId)
                             .then((bike) => {
-                                bikes.push(bike);
+                                if (bike !== null) {
+                                    bikes.push(bike);
+                                }
                                 itemsProcessed++;
 
                                 if (itemsProcessed === orders.length) {
+
                                     console.log(bikes, ' Bikes');
                                     return res.render('ordersHistory', {
                                         model: bikes,

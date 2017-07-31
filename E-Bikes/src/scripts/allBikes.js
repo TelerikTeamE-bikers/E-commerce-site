@@ -1,10 +1,14 @@
 /* globals $ */
 import ShoppingCart from './modules/ShoppingCart';
 
-$(document).ready(function() {
+$(document).ready(function () {
     const shoppingCart = new ShoppingCart();
 
-    $('.btn__add-to-cart').click(function(event) {
+    // let img = document.createElement('img');
+    // img.src = src;
+    // document.body.appendChild(img);
+
+    $('.btn__add-to-cart').click(function (event) {
 
         // Check if user is logged in 
         const loginPopUp = $('.loginPopUp_Box_Hidden');
@@ -20,6 +24,11 @@ $(document).ready(function() {
             .siblings('.product-item__price').text();
         currentBike.id = $(this).parent()
             .siblings('.product-item__id').text();
+        currentBike.picture = $(this).parent()
+            .siblings('.product-item__photo').attr('src');
+
+        console.log( $(this).parent()
+            .siblings('.product-item__photo').attr('src'))
 
         shoppingCart.addItemToCart(currentBike);
 
@@ -29,18 +38,18 @@ $(document).ready(function() {
     });
 });
 
-$('.search-button').click(function(event) {
+$('.search-button').click(function (event) {
     const queryString = $('.query-string').val();
     const url = `http://localhost:3030/bike/getBikesByFilter?query=${queryString}`;
     $.ajax({
-            method: 'GET',
-            url: url,
-        })
-        .done(function(html) {
+        method: 'GET',
+        url: url,
+    })
+        .done(function (html) {
             $('.html-container').html(html);
             //$('.query-string').val('');
         })
-        .fail(function(error) {
+        .fail(function (error) {
             console.log(error);
         });
 });
@@ -48,7 +57,7 @@ $('.search-button').click(function(event) {
 
 //Filtering by ascend / descend / brand name
 
-$('#filter').on('change', function(event) {
+$('#filter').on('change', function (event) {
     let queryString;
     if ($(this).val() === 'asc-price') {
         queryString = 'price_asc';
@@ -59,13 +68,13 @@ $('#filter').on('change', function(event) {
     }
     const url = `http://localhost:3030/bike/getBikesByProperty?query=${queryString}`;
     $.ajax({
-            method: 'GET',
-            url: url,
-        })
-        .done(function(html) {
+        method: 'GET',
+        url: url,
+    })
+        .done(function (html) {
             $('.html-container').html(html);
         })
-        .fail(function(error) {
+        .fail(function (error) {
             console.log(error);
         });
 });

@@ -238,3 +238,8 @@ button {
     padding-right: 45%;
     padding-bottom: 10px
 }
+
+.changeDetails {
+    float: left;
+    margin-left: 170px;
+}
