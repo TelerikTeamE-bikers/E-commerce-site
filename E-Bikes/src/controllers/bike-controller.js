@@ -57,7 +57,8 @@ module.exports =
                         'brand' + brand,
                         'model ' + model,
                         price,
-                        `public/images/bikes/${picture.toString()}.jpg`
+                        //`public/images/bikes/${picture.toString()}.jpg`
+                        `https://s3.us-east-2.amazonaws.com/ebikes-bucket/${picture.toString()}.jpg`
                     );
 
                     data.bike.create(newBike);

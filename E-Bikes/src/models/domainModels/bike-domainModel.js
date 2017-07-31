@@ -62,15 +62,16 @@ class BikeDomainModel {
     }
 
     initPictureValue() {
-        const c = fs.readFileSync(`${this._picturePath}`,
-            (err, c) => {
-                if (err) {
-                    throw err;
-                }
-                return c;
-            });
+        // const c = fs.readFileSync(`${this._picturePath}`,
+        //     (err, c) => {
+        //         if (err) {
+        //             throw err;
+        //         }
+        //         return c;
+        //     });
 
-        this._picture = c.toString('base64');
+        // this._picture = c.toString('base64');
+        this._picture = this._picturePath;
     }
 }
 

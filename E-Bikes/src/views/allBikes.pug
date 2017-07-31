@@ -19,7 +19,8 @@ block content
     ul.flex__container.html-container
         each bike in bikeList
           li.flex__item.product-item
-            img.product-item__photo(src="data:image/jpg;base64," + bike.picture)
+            //img.product-item__photo(src="data:image/jpg;base64," + bike.picture)
+            img.product-item__photo(src=bike.picture)
             .product-item__title #{bike.brand} #{bike.model}
             .product-item__price #{bike.price}&euro;
             .product-item__id #{bike.id}
