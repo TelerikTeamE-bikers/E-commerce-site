@@ -5,16 +5,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const constants = require('../../common/constants');
 
 module.exports = (app, data, errorHandler) => {
-    // require('./strategies/local-strategy')();
     passport.use(new LocalStrategy({
             usernameField: 'email',
             passwordField: 'password',
-            //passReqToCallback: true
         },
         (email, password, done) => {
             data.user.findUserByCredentials(email, password)
                 .then((user) => {
-                    console.log(user);
                     if (user !== null) {
                         return done(null, user);
                     }
@@ -23,12 +20,6 @@ module.exports = (app, data, errorHandler) => {
                     console.log(err);
                 });
         }));
-
-    // app.use(session({
-    //     secret: 'secret',
-    //     saveUninitialized: true,
-    //     resave: true,
-    // }));
 
     app.use(passport.initialize());
     app.use(passport.session());

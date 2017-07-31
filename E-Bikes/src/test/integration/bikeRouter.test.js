@@ -19,7 +19,7 @@ describe('Bike router', () => {
             });
     });
 
-    describe('GET request', () => {
+    describe('GET /bike', () => {
         it('/bike/allbikes expect to return 200', (done) => {
             request(app)
                 .get('/bike/allbikes')

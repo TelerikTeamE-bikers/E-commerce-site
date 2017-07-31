@@ -5,7 +5,8 @@
     "main": "launcher.js",
     "scripts": {
         "test": "mocha ./src/**/*.test.js",
-        "cover": "istanbul cover ./node_modules/.bin/_mocha test/unit/**/*.js"
+        "cover": "istanbul cover ./node_modules/.bin/_mocha test/unit/**/*.js",
+        "start": "node launcher.js"
     },
     "repository": {
         "type": "git",
@@ -45,6 +46,7 @@
         "babel-loader": "^7.1.1",
         "babel-preset-es2015": "^6.24.1",
         "chai": "^4.0.2",
+        "chance": "^1.0.10",
         "gulp": "^3.9.1",
         "gulp-istanbul": "^1.1.2",
         "gulp-mocha": "^3.0.1",

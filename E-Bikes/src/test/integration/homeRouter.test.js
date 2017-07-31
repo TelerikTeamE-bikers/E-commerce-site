@@ -19,7 +19,7 @@ describe('Home router', () => {
             });
     });
 
-    describe('GET request', () => {
+    describe('GET /home', () => {
         it('/home expect to return 200', (done) => {
             request(app)
                 .get('/home')
