@@ -24,6 +24,11 @@ $(document).ready(function () {
             .siblings('.product-item__price').text();
         currentBike.id = $(this).parent()
             .siblings('.product-item__id').text();
+        currentBike.picture = $(this).parent()
+            .siblings('.product-item__photo').attr('src');
+
+        console.log( $(this).parent()
+            .siblings('.product-item__photo').attr('src'))
 
         shoppingCart.addItemToCart(currentBike);
 
