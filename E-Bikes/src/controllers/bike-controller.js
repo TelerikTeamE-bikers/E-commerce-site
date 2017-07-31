@@ -8,10 +8,6 @@ module.exports =
             getAll(req, res) {
                 console.log('all bikes page');
 
-                //const bike = bikeModel.getBike('brand 1', 'model 1');
-                //console.log(bike);
-                //data.addBike(bike);
-
                 data.bike.getAll()
                     .then((dbBikes) => {
                         let domainBikes = [];
@@ -40,9 +36,6 @@ module.exports =
                 const items = req.body.items;
                 console.log("Items " + items);
 
-                // if (!Array.isArray(items)) {
-                //     return res.status(400).send('Incorrect items');
-                // }
 
                 let brand = 1;
                 let model = 1;
@@ -69,24 +62,6 @@ module.exports =
                 }
 
                 return res.status(200).send();
-
-                // const c = fs.readFileSync('public/images/product-item.jpg',
-                //     (err, c) => {
-                //         if (err) {
-                //             throw err;
-                //         }
-                //         return c;
-                //     });
-
-                // console.log(c.buffer)
-                // //fs.writeFile("D:\shmatka.jpg", c)
-
-                // const newBike = new BikeModel('brand 1', 'model 1', 1000, c.toString('base64'));
-
-                // res.render('allBikes', {
-                //     'bikeList': [newBike, newBike],
-                //     user: req.user,
-                // });
             },
 
             getBikeDetails(req, res) {
@@ -114,8 +89,6 @@ module.exports =
 
                 const urlParts = url.parse(req.url, true);
                 const query = urlParts.query;
-
-                //console.log(query.query);
 
                 data.bike.getBikesByFilter(`${query.query}`)
                     .then((dbBikes) => {
