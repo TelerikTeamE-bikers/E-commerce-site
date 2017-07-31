@@ -98,7 +98,7 @@ class ShoppingCart {
 module.exports = {
     getCart() {
         return new ShoppingCart();
-    }
+    },
 };
 
 //BikeDbModel;

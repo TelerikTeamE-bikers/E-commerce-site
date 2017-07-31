@@ -22,5 +22,5 @@ module.exports = {
             res.status(err.status);
             res.render('error');
         });
-    }
+    },
 };

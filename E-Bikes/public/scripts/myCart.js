@@ -108,8 +108,7 @@ $(document).ready(function() {
         $('.numberOfPurchases').html('');
         totalPrice = 0;
         $('.totalPrice').text(`Total Price: ${totalPrice} €`);
-
-    })
+    });
 
     $('.btn__purchase').click(function(event) {
         // console.log({ items: storageArr });

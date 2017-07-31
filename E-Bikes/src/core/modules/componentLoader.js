@@ -22,9 +22,9 @@ module.exports = {
             .forEach((file) => {
                 const controllerModule = require(path.join('../../controllers/', file))
                     (data,
-                    factories,
-                    constants,
-                    errorHandler);
+                        factories,
+                        constants,
+                        errorHandler);
                 //console.log('Loading controller:', '../../controllers/' + file);
 
                 controllers[file.substring(0, file.indexOf('-'))] = controllerModule;
@@ -43,8 +43,7 @@ module.exports = {
             .forEach((file) => {
                 let Repoitory = require(path.join('../../data/repositories', file));
 
-                const repositoryModule = new Repoitory
-                    (context,
+                const repositoryModule = new Repoitory(context,
                     constants,
                     factory,
                     errorHandler);
@@ -91,5 +90,5 @@ module.exports = {
         //console.log();
 
         return factories;
-    }
+    },
 };
