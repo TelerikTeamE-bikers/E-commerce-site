@@ -6,13 +6,13 @@ module.exports = {
         fs.readdirSync('./src/routes')
             .filter((x) => x.includes('-router'))
             .forEach((file) => {
-                console.log('Loading router:', '../../routes/' + file);
+                //console.log('Loading router:', '../../routes/' + file);
 
                 require(path.join('../../routes/', file))(app, controllers);
             });
 
-        console.log('All routers loaded.');
-        console.log();
+        //console.log('All routers loaded.');
+        //console.log();
     },
     initializeControllers(data, factories, constants, errorHandler) {
         const controllers = {};
@@ -20,21 +20,18 @@ module.exports = {
         fs.readdirSync('./src/controllers')
             .filter((x) => x.includes('-controller'))
             .forEach((file) => {
-                //console.log("f: ", file)
                 const controllerModule = require(path.join('../../controllers/', file))
                     (data,
                     factories,
                     constants,
                     errorHandler);
-                //console.log(1, controllerModule)
-                console.log('Loading controller:', '../../controllers/' + file);
+                //console.log('Loading controller:', '../../controllers/' + file);
 
                 controllers[file.substring(0, file.indexOf('-'))] = controllerModule;
             });
 
-        //console.log(2, controllers)
-        console.log('All controllers loaded.');
-        console.log();
+        //console.log('All controllers loaded.');
+        //console.log();
 
         return controllers;
     },
@@ -44,7 +41,6 @@ module.exports = {
         fs.readdirSync('./src/data/repositories')
             .filter((x) => x.includes('-repository'))
             .forEach((file) => {
-                // console.log("f: ", file)
                 let Repoitory = require(path.join('../../data/repositories', file));
 
                 const repositoryModule = new Repoitory
@@ -52,14 +48,13 @@ module.exports = {
                     constants,
                     factory,
                     errorHandler);
-                // console.log(1, controllerModule)
-                console.log('Loading repository:', '../../data/repositories/' + file);
+                //console.log('Loading repository:', '../../data/repositories/' + file);
 
                 repositories[file.substring(0, file.indexOf('-'))] = repositoryModule;
             });
 
-        console.log('All repositories loaded.');
-        console.log();
+        //console.log('All repositories loaded.');
+        //console.log();
 
         return repositories;
     },
@@ -70,13 +65,13 @@ module.exports = {
             .filter((x) => x.includes('-dbContext'))
             .forEach((file) => {
                 const contextModule = require(path.join('../../data/dbContexts', file));
-                console.log('Loading context:', '../../data/dbContexts/' + file);
+                //console.log('Loading context:', '../../data/dbContexts/' + file);
 
                 contexts[file.substring(0, file.indexOf('-'))] = contextModule;
             });
 
-        console.log("All contexts loaded.");
-        console.log();
+        //console.log("All contexts loaded.");
+        //console.log();
 
         return contexts;
     },
@@ -87,13 +82,13 @@ module.exports = {
             .filter((x) => x.includes('-factory'))
             .forEach((file) => {
                 const factoryModule = require(path.join('../../factories/', file));
-                console.log('Loading context:', '../../data/dbContexts/' + file);
+                //console.log('Loading context:', '../../data/dbContexts/' + file);
 
                 factories[file.substring(0, file.indexOf('-'))] = factoryModule;
             });
 
-        console.log("All factories loaded.");
-        console.log();
+        //console.log("All factories loaded.");
+        //console.log();
 
         return factories;
     }

@@ -37,11 +37,12 @@ class BaseMongoDbData {
             items.forEach((item) => {
                 this.findById(item)
                     .then((obj) => {
-                        result.push(obj);
+                        //result.push(obj);
+                        result.push(this.factory.create(obj, this.modelClass));
                         // result.push([obj]);
                         itemsProcessed++;
                         if (itemsProcessed === items.length) {
-                            console.log(result[0]);
+                            //console.log(result[0]);
                             resolve(result);
                             // Promise.all(result).then(() =>
                             //     resolve(result));

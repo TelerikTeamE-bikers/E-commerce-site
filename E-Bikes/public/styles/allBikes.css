@@ -1079,3 +1079,20 @@ a.btn__add-to-cart:active {
 .product-item__id {
     display: none;
 }
+
+.loginPopUp_Box_Hidden {
+    display: none;
+}
+
+.loginPopUp_Box_Display {
+    display: block;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    border: 4px solid lightcoral;
+    color: red;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}

@@ -81,6 +81,13 @@ $(document).ready(function () {
     var shoppingCart = new _ShoppingCart2.default();
 
     $('.btn__add-to-cart').click(function (event) {
+
+        // Check if user is logged in 
+        var loginPopUp = $('.loginPopUp_Box_Hidden');
+        var validateAuth = $('.site-header__my-cart');
+        if (validateAuth.length === 0) {
+            loginPopUp.removeClass('loginPopUp_Box_Hidden').addClass('loginPopUp_Box_Display');
+        }
         var currentBike = {};
         currentBike.title = $(this).parent().siblings('.product-item__title').text();
         currentBike.price = $(this).parent().siblings('.product-item__price').text();
