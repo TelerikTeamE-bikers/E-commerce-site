@@ -8,7 +8,8 @@ block content
     .wrapper.wrapper--t-padding
         ul.flex__container
             li.flex__item
-                img.product-item__photo(src="../../static/images/product-item.jpg")
+                //- img.product-item__photo(src="../../static/images/product-item.jpg")
+                img.product-item__photo(src=model.picturePath)
             li.flex__item
                 p.product-item__title-big= `${model.brand} ${model.model}`
                 p.product-item__subtitle Technical information
