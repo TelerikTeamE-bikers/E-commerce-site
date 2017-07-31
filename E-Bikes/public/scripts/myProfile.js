@@ -1,3 +1,4 @@
+/* globals $ */
 $('#loadingDiv')
     .hide() // Hide it initially
     .ajaxStart(function() {
@@ -5,4 +6,4 @@ $('#loadingDiv')
     })
     .ajaxStop(function() {
         $(this).hide();
-    });
+    }); // eslint-disable-line

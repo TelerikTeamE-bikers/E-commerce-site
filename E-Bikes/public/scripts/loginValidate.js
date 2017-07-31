@@ -52,4 +52,4 @@ $(document).ready(function() {
             event.preventDefault();
         }
     });
-});
+}); // eslint-disable-line
