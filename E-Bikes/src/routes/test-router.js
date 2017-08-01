@@ -1,8 +1,8 @@
 const express = require('express');
 
 module.exports = (app, controllers) => {
-    let router = new express.Router();
-    let controller = controllers.bike;
+    const router = new express.Router();
+    const controller = controllers.bike;
 
     router
         .post('/testr', controller.createTestBikes);
@@ -10,4 +10,4 @@ module.exports = (app, controllers) => {
     app.use('/', router);
 
     return router;
-};
+}; // eslint-disable-line

@@ -59,4 +59,4 @@ module.exports = (app, controllers) => {
     // app.use('/', router);
 
     return router;
-};
+}; // eslint-disable-line

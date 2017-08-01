@@ -21,4 +21,4 @@ module.exports = (app, controllers) => {
     app.use('/bike', router);
 
     return router;
-};
+}; // eslint-disable-line
