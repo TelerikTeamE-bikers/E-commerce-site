@@ -1,6 +1,6 @@
-let gulp = require('gulp'),
-    webpack = require('webpack');
-//using the configuration in webpack.config.js
+const gulp = require('gulp');
+const webpack = require('webpack');
+//  using the configuration in webpack.config.js
 gulp.task('scripts', function(callback) {
     webpack(require('../../../webpack.config'), function(err, stats) {
         if (err) {
@@ -9,4 +9,4 @@ gulp.task('scripts', function(callback) {
         console.log(stats.toString());
         callback();
     });
-});
+}); // eslint-disable-line
