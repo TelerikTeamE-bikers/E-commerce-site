@@ -18,23 +18,23 @@ describe('baseRepository.getAllByIds()', () => {
     };
 
     const findOne = (id) => {
-        //actualData.filter((x) => x.id = id);
+        // actualData.filter((x) => x.id = id);
 
         return Promise.resolve(actualData[0]);
     };
 
     const findById = (id) => {
-        //actualData.filter((x) => x.id === id)
+        // actualData.filter((x) => x.id === id)
         return {
             toArray,
         };
     };
 
-    let dbContext = {
-        collection: () => { },
-        findById
+    const dbContext = {
+        collection: () => {},
+        findById,
     };
-    let factory = {
+    const factory = {
         create: (model, ModelClass) => {
             const result = new ModelClass();
             if (model !== null || model !== undefined) {
@@ -46,14 +46,14 @@ describe('baseRepository.getAllByIds()', () => {
                     });
             }
             return result;
-        }
-    }
+        },
+    };
 
     let ModelClass = null;
     let dbSetName = null;
-    let errorHandler = null;
+    const errorHandler = null;
 
-    let input = [1, 2, 3]
+    const input = [1, 2, 3];
 
     describe('when called', () => {
         beforeEach(() => {
@@ -62,24 +62,26 @@ describe('baseRepository.getAllByIds()', () => {
                 { id: 2, brand: 'Brand 2', model: 'Model 2', price: 2000 },
                 { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 },
                 { id: 4, brand: 'Brand 4', model: 'Model 4', price: 4000 },
-                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 }];
+                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 }
+            ];
 
             resultData = [
                 { id: 1, brand: 'Brand 1', model: 'Model 1', price: 1000 },
                 { id: 2, brand: 'Brand 2', model: 'Model 2', price: 2000 },
-                { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 }];
+                { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 },
+            ];
 
             sinon.stub(dbContext, 'collection')
                 .callsFake(() => {
                     return { findOne };
                 });
 
-            ModelClass = class {
-            };
+            ModelClass = class {};
 
-            dbSetName = "testDbSet"
+            dbSetName = 'testDbSet';
 
-            data = new BaseData(dbContext, ModelClass, dbSetName, factory, errorHandler);
+            data = new BaseData(
+                dbContext, ModelClass, dbSetName, factory, errorHandler);
         });
 
         afterEach(() => {
@@ -101,24 +103,26 @@ describe('baseRepository.getAllByIds()', () => {
                 { id: 2, brand: 'Brand 2', model: 'Model 2', price: 2000 },
                 { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 },
                 { id: 4, brand: 'Brand 4', model: 'Model 4', price: 4000 },
-                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 }];
+                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 },
+            ];
 
             resultData = [
                 { id: 1, brand: 'Brand 1', model: 'Model 1', price: 1000 },
                 { id: 2, brand: 'Brand 2', model: 'Model 2', price: 2000 },
-                { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 }];
+                { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 },
+            ];
 
             sinon.stub(dbContext, 'collection')
                 .callsFake(() => {
                     return { findOne };
                 });
 
-            ModelClass = class {
-            };
+            ModelClass = class {};
 
-            dbSetName = "testDbSet"
+            dbSetName = 'testDbSet';
 
-            data = new BaseData(dbContext, ModelClass, dbSetName, factory, errorHandler);
+            data = new BaseData(
+                dbContext, ModelClass, dbSetName, factory, errorHandler);
         });
 
         afterEach(() => {
@@ -158,25 +162,16 @@ describe('baseRepository.getAllByIds()', () => {
                     return { findOne };
                 });
 
-            ModelClass = class {
-            };
+            ModelClass = class {};
 
-            dbSetName = "testDbSet"
+            dbSetName = 'testDbSet';
 
-            data = new BaseData(dbContext, ModelClass, dbSetName, factory, errorHandler);
+            data = new BaseData(
+                dbContext, ModelClass, dbSetName, factory, errorHandler);
         });
 
         afterEach(() => {
             dbContext.collection.restore();
         });
-
-        // it('should return empty array', () => {
-        //     return data.getAllByIds(input)
-        //         .then((data) => {
-        //             // assert.isEmpty(data);
-        //             assert.isTrue(data.length === 0);
-        //             done();
-        //         });
-        // });
     });
-});
+}); // eslint-disable-line

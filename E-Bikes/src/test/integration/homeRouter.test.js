@@ -46,4 +46,4 @@ describe('Home router', () => {
                 });
         });
     });
-});
+}); // eslint-disable-line

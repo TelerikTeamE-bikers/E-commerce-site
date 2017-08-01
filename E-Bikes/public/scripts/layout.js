@@ -10341,7 +10341,7 @@ var _Modal2 = _interopRequireDefault(_Modal);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mobileMenu = new _MobileMenu2.default();
-var modal = new _Modal2.default();
+var modal = new _Modal2.default(); // eslint-disable-line
 
 /***/ }),
 /* 2 */
@@ -10391,7 +10391,7 @@ var MobileMenu = function () {
     return MobileMenu;
 }();
 
-exports.default = MobileMenu;
+exports.default = MobileMenu; // eslint-disable-line
 
 /***/ }),
 /* 3 */
@@ -10427,19 +10427,19 @@ var Modal = function () {
     _createClass(Modal, [{
         key: 'events',
         value: function events() {
-            //clicking te open modal button
+            //  clicking te open modal button
             this.openModalButton.click(this.openModal.bind(this));
 
-            //clicking the x close modal button
+            //  clicking the x close modal button
             this.closeModalButton.click(this.closeModal.bind(this));
 
-            //pushes any key
+            //  pushes any key
             (0, _jquery2.default)(document).keyup(this.keyPressHandler.bind(this));
         }
     }, {
         key: 'keyPressHandler',
         value: function keyPressHandler(e) {
-            if (e.keyCode == 27) {
+            if (e.keyCode === 27) {
                 this.closeModal();
             }
         }
@@ -10447,7 +10447,8 @@ var Modal = function () {
         key: 'openModal',
         value: function openModal() {
             this.modal.addClass('modal--is-visible');
-            return false; // do let anchor tag (in this case the button)with # to go to the top of the page 
+            return false;
+            // do let anchor tag (in this case the button)with # to go to the top of the page 
         }
     }, {
         key: 'closeModal',
@@ -10459,7 +10460,7 @@ var Modal = function () {
     return Modal;
 }();
 
-exports.default = Modal;
+exports.default = Modal; // eslint-disable-line
 
 /***/ })
 /******/ ]);

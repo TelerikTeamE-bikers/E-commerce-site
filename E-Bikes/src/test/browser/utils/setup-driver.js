@@ -12,4 +12,4 @@ const setupDriver = (browser) => {
     return driver;
 };
 
-module.exports = { setupDriver };
+module.exports = { setupDriver }; // eslint-disable-line

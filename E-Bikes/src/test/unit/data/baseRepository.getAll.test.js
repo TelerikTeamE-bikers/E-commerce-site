@@ -4,11 +4,10 @@ const sinon = require('sinon');
 const BaseData = require('../../../data/repositories/base/baseRepository');
 
 describe('baseRepository.getAll()', () => {
-
     let actualData = [];
 
-    let dbContext = {
-        collection: () => { },
+    const dbContext = {
+        collection: () => {},
     };
 
     const toArray = () => {
@@ -21,7 +20,7 @@ describe('baseRepository.getAll()', () => {
         };
     };
 
-    let factory = {
+    const factory = {
         create: (model, ModelClass) => {
             const result = new ModelClass();
             result.id = model._id;
@@ -32,12 +31,12 @@ describe('baseRepository.getAll()', () => {
                 });
 
             return result;
-        }
-    }
+        },
+    };
 
     let ModelClass = null;
     let dbSetName = null;
-    let errorHandler = null;
+    const errorHandler = null;
 
     describe('when called', () => {
         beforeEach(() => {
@@ -46,17 +45,17 @@ describe('baseRepository.getAll()', () => {
                 { id: 2, brand: 'Brand 2', model: 'Model 2', price: 2000 },
                 { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 },
                 { id: 4, brand: 'Brand 4', model: 'Model 4', price: 4000 },
-                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 }];
+                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 },
+            ];
 
             sinon.stub(dbContext, 'collection')
                 .callsFake(() => {
                     return { find };
                 });
 
-            ModelClass = class {
-            };
+            ModelClass = class {};
 
-            dbSetName = "testDbSet"
+            dbSetName = 'testDbSet';
 
             data = new BaseData(dbContext, ModelClass, dbSetName, factory, errorHandler);
         });
@@ -80,17 +79,17 @@ describe('baseRepository.getAll()', () => {
                 { id: 2, brand: 'Brand 2', model: 'Model 2', price: 2000 },
                 { id: 3, brand: 'Brand 3', model: 'Model 3', price: 3000 },
                 { id: 4, brand: 'Brand 4', model: 'Model 4', price: 4000 },
-                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 }];
+                { id: 5, brand: 'Brand 5', model: 'Model 5', price: 5000 }
+            ];
 
             sinon.stub(dbContext, 'collection')
                 .callsFake(() => {
                     return { find };
                 });
 
-            ModelClass = class {
-            };
+            ModelClass = class {};
 
-            dbSetName = "testDbSet"
+            dbSetName = 'testDbSet';
 
             data = new BaseData(dbContext, ModelClass, dbSetName, factory, errorHandler);
         });
@@ -132,10 +131,9 @@ describe('baseRepository.getAll()', () => {
                     return { find };
                 });
 
-            ModelClass = class {
-            };
+            ModelClass = class {};
 
-            dbSetName = "testDbSet"
+            dbSetName = 'testDbSet';
 
             data = new BaseData(dbContext, ModelClass, dbSetName, factory, errorHandler);
         });
@@ -151,4 +149,4 @@ describe('baseRepository.getAll()', () => {
                 });
         });
     });
-});
+}); // eslint-disable-line

@@ -18,4 +18,4 @@ class MobileMenu {
     }
 }
 
-export default MobileMenu;
+export default MobileMenu; // eslint-disable-line

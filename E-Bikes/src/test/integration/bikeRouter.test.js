@@ -72,4 +72,4 @@ describe('Bike router', () => {
                 });
         });
     });
-});
+}); // eslint-disable-line

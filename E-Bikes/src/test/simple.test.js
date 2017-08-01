@@ -31,4 +31,4 @@ it('should asyncAdd two numbers', (done) => {
         expect(sum).to.equal(7).to.be.a('number');
         done();
     });
-});
+}); // eslint-disable-line
