@@ -4,4 +4,4 @@ module.exports = function(data) {
             res.render('chat', {});
         },
     };
-};
+}; // eslint-disable-line

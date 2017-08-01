@@ -4,4 +4,4 @@ module.exports = function(data) {
             res.render('home', {});
         },
     };
-};
+}; // eslint-disable-line

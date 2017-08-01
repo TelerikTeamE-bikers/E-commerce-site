@@ -11,10 +11,11 @@ module.exports =
 
                 data.bike.getAll()
                     .then((dbBikes) => {
-                        let domainBikes = [];
+                        const domainBikes = [];
 
                         dbBikes.forEach((bike) => {
-                            let domBike = factories.domainModels.createBike(bike);
+                            const domBike = factories.domainModels
+                                .createBike(bike);
                             domBike.initPictureValue();
                             domainBikes.push(domBike);
                         });
@@ -27,7 +28,6 @@ module.exports =
                         });
                     }).catch((err) => {
                         console.log(err);
-                        //errorHandler.handleError(req, res, err);
                     });
             },
 
@@ -51,7 +51,6 @@ module.exports =
                         'brand' + brand,
                         'model ' + model,
                         price,
-                        // `public/images/bikes/${picture.toString()}.jpg`
                         `https://s3.us-east-2.amazonaws.com/ebikes-bucket/${picture.toString()}.jpg`
                     );
 
@@ -99,7 +98,8 @@ module.exports =
                         const domainBikes = [];
 
                         dbBikes.forEach((bike) => {
-                            const domBike = factories.domainModels.createBike(bike);
+                            const domBike = factories.domainModels
+                                .createBike(bike);
                             domBike.initPictureValue();
                             domainBikes.push(domBike);
                         });
@@ -110,12 +110,9 @@ module.exports =
                         res.render('partials/_partialAllBikes', {
                             'bikeList': bikes,
                         });
-                        // console.log("result " + bikes)
-                        // return res.status(200).send(`${bikes}`);
                     }).catch((err) => {
                         console.log(err);
                         return res.status(400).send(err);
-                        //  errorHandler.handleError(req, res, err);
                     });
             },
 
@@ -144,4 +141,4 @@ module.exports =
             },
 
         };
-    };
+    }; // eslint-disable-line

@@ -4,4 +4,4 @@ module.exports = function(data) {
             res.render('accessories', {});
         },
     };
-};
+}; // eslint-disable-line

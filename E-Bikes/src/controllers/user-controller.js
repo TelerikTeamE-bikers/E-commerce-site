@@ -13,8 +13,9 @@ module.exports = function(data, factories, constants, errorHandler) {
             return res.render('login', {});
         },
         registerNewUser(req, res) {
-            req.body.password = SHA256(req.body.password).toString();
-            req.body.password_repeat = SHA256(req.body.password_repeat).toString();
+            req.body.password = new SHA256(req.body.password).toString();
+            req.body.password_repeat = new SHA256(req.body.password_repeat)
+                .toString();
 
             const bodyUser = req.body;
             data.user.findByUsername(bodyUser.email)
@@ -52,7 +53,6 @@ module.exports = function(data, factories, constants, errorHandler) {
             });
         },
         updateProfile(req, res) {
-            // todo if some inputs are empty not to write it in DB???
             const bodyUser = req.body;
             bodyUser._id = req.user._id;
 
@@ -88,17 +88,17 @@ module.exports = function(data, factories, constants, errorHandler) {
             data.user.findByUsername(bodyUser.email)
                 .then((dbUser) => {
                     if (dbUser.password !== bodyUser.password) {
-                        return res.status(400).send('Current password does not match');
+                        return res.status(400)
+                            .send('Current password does not match');
                     }
 
                     return data.bike.getAllByIds(items);
                 })
                 .then((bikes) => {
-                    return data.user.addItemsToOrdersHistory(req.user._id, bikes);
+                    return data.user
+                        .addItemsToOrdersHistory(req.user._id, bikes);
                 })
                 .then((products) => {
-                    // req.flash('success', 'Your bike will be delivered soon');
-                    // res.redirect('/auth/myCart');
                     return res.status(200).send('Successfull order');
                 })
                 .catch((err) => {
@@ -126,7 +126,6 @@ module.exports = function(data, factories, constants, errorHandler) {
                                 itemsProcessed++;
 
                                 if (itemsProcessed === orders.length) {
-
                                     console.log(bikes, ' Bikes');
                                     return res.render('ordersHistory', {
                                         model: bikes,
@@ -137,4 +136,4 @@ module.exports = function(data, factories, constants, errorHandler) {
                 });
         },
     };
-};
+}; // eslint-disable-line

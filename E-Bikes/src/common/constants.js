@@ -1,7 +1,6 @@
 module.exports = {
     APP_PORT: 3030,
-    
-    //DB_URL: 'mongodb://localhost:27017/testDb',
+    //  DB_URL: 'mongodb://localhost:27017/testDb',
     DB_URL: 'mongodb://18.220.98.129:27017/e-bikes',
     DOMAIN: 'http://localhost:',
     MIN_USERNAME_LENGTH: 5,
@@ -11,4 +10,4 @@ module.exports = {
 
     BIKES_COLLECTION: 'bikes',
     USERS_COLLECTION: 'users',
-};
+}; // eslint-disable-line

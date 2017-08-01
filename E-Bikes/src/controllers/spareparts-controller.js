@@ -4,4 +4,4 @@ module.exports = function(data) {
             res.render('spareParts', {});
         },
     };
-};
+}; // eslint-disable-line
