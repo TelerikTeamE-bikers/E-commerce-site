@@ -19,12 +19,11 @@ class BaseMongoDbData {
                         this.factory.create(model, this.modelClass)
                     );
 
-                    //console.log(result);
+                    //  console.log(result);
 
                     resolve(result || null);
                 }).catch((err) => {
-                    console.log(err)
-                        //errorHandler.handleError(req, res, err, 444);
+                    //  console.log(err);
                 });
         });
     }
@@ -37,12 +36,12 @@ class BaseMongoDbData {
             items.forEach((item) => {
                 this.findById(item)
                     .then((obj) => {
-                        //result.push(obj);
+                        //  result.push(obj);
                         result.push(this.factory.create(obj, this.modelClass));
                         // result.push([obj]);
                         itemsProcessed++;
                         if (itemsProcessed === items.length) {
-                            //console.log(result[0]);
+                            //  console.log(result[0]);
                             resolve(result);
                             // Promise.all(result).then(() =>
                             //     resolve(result));
@@ -70,21 +69,18 @@ class BaseMongoDbData {
     }
 
     create(model) {
-        var insertObject = {};
+        const insertObject = {};
 
         Object.keys(model)
             .forEach((prop) => {
-                insertObject[prop.substring(prop.indexOf('_') + 1)] = model[prop];
+                insertObject[prop
+                    .substring(prop.indexOf('_') + 1)] = model[prop];
             });
 
         return this.collection.insert(insertObject)
             .then(() => {
                 return model;
             });
-        // return new Promise((resolve, reject) => {
-        //     this.collection.insertOne(model);
-        //     resolve(model);
-        // });
     }
 
     isValidObject(id) {
@@ -93,11 +89,6 @@ class BaseMongoDbData {
         }
         return true;
     }
-
-    // _getCollectionName() {
-    //     // ot kyde idva ModelClass.name ???
-    //     return this.modelClass.name.toLowerCase() + 's';
-    // }
 }
 
-module.exports = BaseMongoDbData;
+module.exports = BaseMongoDbData; // eslint-disable-line

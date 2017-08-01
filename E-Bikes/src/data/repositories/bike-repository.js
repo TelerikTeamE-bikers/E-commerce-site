@@ -3,24 +3,26 @@ const Bike = require('../../models/dbModels/bike-dbModel');
 
 class BikeRepository extends BaseRepository {
     constructor(dbContext, constants, factory, errorHandler) {
-        super(dbContext, Bike, constants.BIKES_COLLECTION, factory, errorHandler);
+        super(
+            dbContext, Bike, constants.BIKES_COLLECTION, factory, errorHandler
+        );
     }
 
     getBikesByFilter(query) {
         return new Promise((resolve, reject) => {
-            console.log("query " + query)
+            // console.log('query' + query);
 
-            //this.filterBy({ brand: query})
+            //  this.filterBy({ brand: query})
             this.filterBy({ $or: [{ brand: query }, { model: query }] })
-                //.toArray()
+                //  .toArray()
                 .then((models) => {
-                    console.log("db")
-                    console.log(models)
+                    //  console.log('db');
+                    //  console.log(models);
                     const result = models.map((model) =>
                         this.factory.create(model, Bike)
                     );
 
-                    console.log("after factory: " + result);
+                    // console.log('after factory: ' + result);
 
                     resolve(result || null);
                 }).catch((err) => {
@@ -28,21 +30,6 @@ class BikeRepository extends BaseRepository {
                 });
         });
     }
-
-    // getBikesByPrice(query){
-    //     return new Promise((resolve, reject) => {
-    //         if(query === 'price_asc'){
-    //             this.collection.find().sort( { price : 1 } )
-    //         }else if(query === 'price_dsc'){
-    //             this.collection.find().sort( { price : -1 } )
-    //         }
-    //         .then((models) => {
-    //             const result = models.map((model) => 
-    //                     this.factory.create(model, Bike)
-    //                 );
-    //         })
-    //     })
-    // },
 
     sortBikesByProperty(query) {
         return new Promise((resolve, reject) => {
@@ -73,4 +60,4 @@ class BikeRepository extends BaseRepository {
     }
 }
 
-module.exports = BikeRepository;
+module.exports = BikeRepository; // eslint-disable-line

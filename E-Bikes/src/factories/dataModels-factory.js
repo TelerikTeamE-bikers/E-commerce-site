@@ -6,10 +6,10 @@ module.exports = {
     createModel(model, modelClass) {
         switch (modelClass.name.toLowerCase()) {
             case Bike.name.toLowerCase():
-                //return this.createBike(model);
+                //  return this.createBike(model);
                 return this.create(model, modelClass);
             case User.name.toLowerCase():
-                //return this.createUser(model);
+                //  return this.createUser(model);
                 return this.create(model, modelClass);
         }
     },
@@ -23,7 +23,7 @@ module.exports = {
                 result[prop] = model[prop];
             });
 
-            return result;
+        return result;
     },
 
     createBike(model) {
@@ -48,5 +48,5 @@ module.exports = {
             });
 
         return result;
-    }
-};
+    },
+}; // eslint-disable-line
