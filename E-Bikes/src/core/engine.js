@@ -42,24 +42,27 @@ module.exports = {
                     );
                     app.use(require('connect-flash')());
                     app.use((req, res, next) => {
-                        res.locals.messages = require('express-messages')(req, res);
+                        res.locals
+                            .messages = require('express-messages')(req, res);
                         next();
                     });
                 })
                 .then(() => componentLoader.initializeContexts(constants))
                 .then((contexts) => contexts.mongo.init(constants.DB_URL))
                 .then((context) => {
-                    const factories = componentLoader.initializeFactories(constants);
+                    const factories = componentLoader
+                        .initializeFactories(constants);
                     const data = componentLoader.initializeRepositories(context,
                         constants,
                         factories.dataModels,
                         errorHandler);
 
-                    return {data: data, factories: factories};
+                    return { data: data, factories: factories };
                 })
                 .then((result) => {
-                    //app.use(flash())
-                    require('./modules/authentication')(app, result.data, errorHandler);
+                    require('./modules/authentication')(
+                        app, result.data, errorHandler
+                    );
 
                     app.use((req, res, next) => {
                         res.locals.user = req.user; // for pug calling only user
@@ -75,7 +78,7 @@ module.exports = {
                         .initializeControllers(result.data, result.factories, constants, errorHandler);
                     componentLoader.initializeRoutes(app, controllers);
 
-                    //errorHandler.handleErrors(app);
+                    //  errorHandler.handleErrors(app);
 
                     resolve(app);
                 })
@@ -83,5 +86,5 @@ module.exports = {
                     console.log(err);
                 });
         });
-    }
-};
+    },
+}; // eslint-disable-line

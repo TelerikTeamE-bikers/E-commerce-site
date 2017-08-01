@@ -21,12 +21,16 @@ module.exports = function(data, factories, constants, errorHandler) {
             data.user.findByUsername(bodyUser.email)
                 .then((dbUser) => {
                     if (dbUser) {
-                        throw new Error('User already exists. Please try with another email');
+                        throw new Error(
+                            'User already exists. Please try with another email'
+                        );
                     }
                     return data.user.create(bodyUser);
                 }).then((dbUser) => {
                     req.login(dbUser, () => {
-                        req.flash('success', 'Please enter your email and password');
+                        req.flash(
+                            'success', 'Please enter your email and password'
+                        );
                         res.redirect('/auth/login');
                     });
                 }).catch((err) => {
@@ -59,11 +63,15 @@ module.exports = function(data, factories, constants, errorHandler) {
             data.user.findByUsername(bodyUser.email)
                 .then((dbUser) => {
                     if (dbUser) {
-                        throw new Error('Email already exists. Please try with another email!');
+                        throw new Error(
+                            'Email already exists. Please try with another email!'
+                        );
                     }
                     return data.user.updateById(bodyUser);
                 }).then((updatedUser) => {
-                    req.flash('success', 'You successfully update your profile');
+                    req.flash(
+                        'success', 'You successfully update your profile'
+                    );
                     res.redirect('/auth/myProfile');
                 }).catch((err) => {
                     req.flash('error', err.message);

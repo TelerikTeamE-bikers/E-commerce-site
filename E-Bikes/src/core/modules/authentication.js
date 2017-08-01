@@ -15,7 +15,8 @@ module.exports = (app, data, errorHandler) => {
                     if (user !== null) {
                         return done(null, user);
                     }
-                    return done(null, false, { message: 'User not found or wrong password' });
+                    return done(null,
+                        false, { message: 'User not found or wrong password' });
                 }).catch((err) => {
                     console.log(err);
                 });
@@ -26,9 +27,11 @@ module.exports = (app, data, errorHandler) => {
 
     // If authentication succeeds, a session will be established and maintained
     // via a cookie set in the user's browser.
-    // Each subsequent request will not contain credentials, but rather the unique
+    // Each subsequent request will not contain
+    // credentials, but rather the unique
     // cookie that identifies the session. In order to support login sessions,
-    // Passport will serialize and deserialize user instances to and from the session.
+    // Passport will serialize and deserialize
+    // user instances to and from the session.
 
     passport.serializeUser((user, done) => {
         done(null, user._id);
@@ -44,4 +47,4 @@ module.exports = (app, data, errorHandler) => {
             })
             .catch((error) => done(error, false));
     });
-};
+}; // eslint-disable-line

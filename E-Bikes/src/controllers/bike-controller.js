@@ -125,7 +125,8 @@ module.exports =
                         const domainBikes = [];
 
                         dbBikes.forEach((bike) => {
-                            const domBike = factories.domainModels.createBike(bike);
+                            const domBike = factories.domainModels
+                                .createBike(bike);
                             domBike.initPictureValue();
                             domainBikes.push(domBike);
                         });
