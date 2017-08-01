@@ -1,7 +1,5 @@
-//const crypto = require('crypto-js');
 const constants = require('../../common/constants');
 const cart = require('./shoppingCart-domainModel');
-//const validator = require('../common/validator');
 
 class UserDomainModel {
     constructor(username, password) {
@@ -16,9 +14,6 @@ class UserDomainModel {
     }
 
     set username(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_USERNAME_LENGTH, constants.MAX_USERNAME_LENGTH);
-
         this._username = value.trim();
     }
 
@@ -27,26 +22,22 @@ class UserDomainModel {
     }
 
     set password(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_PASSWORD_LENGTH, constants.MAX_PASSWORD_LENGTH);
-
-        //this._password = new crypto.SHA1(value.trim()).toString();
         this._password = value.trim().toString();
     }
 
-    get shoppingCart(){
+    get shoppingCart() {
         return this._shoppingCart;
     }
 
-    get shoppingHistory(){
+    get shoppingHistory() {
         return this._shoppingHistory;
     }
 
-    addToCart(bike){
+    addToCart(bike) {
         this._shoppingCart.AddToCart(bike);
     }
 
-    getCartTotalPrice(){
+    getCartTotalPrice() {
         return this._shoppingCart.totalPrice;
     }
 }
@@ -55,4 +46,4 @@ module.exports = {
     getUser(username, password) {
         return new UserDomainModel(username, password);
     },
-};
+}; // eslint-disable-line

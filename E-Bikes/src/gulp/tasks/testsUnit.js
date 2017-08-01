@@ -24,4 +24,4 @@ gulp.task('tests:unit', ['pre-test'], () => {
             reporter: 'nyan',
         }))
         .pipe(istanbul.writeReports());
-});
+}); // eslint-disable-line

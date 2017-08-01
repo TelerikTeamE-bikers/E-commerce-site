@@ -1,7 +1,5 @@
-//const crypto = require('crypto-js');
 const constants = require('../../common/constants');
 const fs = require('fs');
-//const validator = require('../common/validator');
 
 class BikeDomainModel {
     constructor(brand, model, price, picturePath) {
@@ -62,22 +60,8 @@ class BikeDomainModel {
     }
 
     initPictureValue() {
-        // const c = fs.readFileSync(`${this._picturePath}`,
-        //     (err, c) => {
-        //         if (err) {
-        //             throw err;
-        //         }
-        //         return c;
-        //     });
-
-        // this._picture = c.toString('base64');
         this._picture = this._picturePath;
     }
 }
 
-// module.exports = {
-//     getBike(brand, model, price) {
-//         return new BikeDomainModel(brand, model, price);
-//     },
-// };
-module.exports = BikeDomainModel;
+module.exports = BikeDomainModel; // eslint-disable-line

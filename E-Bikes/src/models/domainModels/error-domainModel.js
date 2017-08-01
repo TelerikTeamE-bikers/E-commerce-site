@@ -1,6 +1,4 @@
-//const crypto = require('crypto-js');
 const constants = require('../../common/constants');
-//const validator = require('../common/validator');
 
 class Error {
     constructor(content) {
@@ -13,9 +11,6 @@ class Error {
     }
 
     set content(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_USERNAME_LENGTH, constants.MAX_USERNAME_LENGTH);
-
         this._content = value.trim();
     }
 
@@ -28,4 +23,4 @@ module.exports = {
     getError(content) {
         return new Error(content);
     },
-};
+}; // eslint-disable-line

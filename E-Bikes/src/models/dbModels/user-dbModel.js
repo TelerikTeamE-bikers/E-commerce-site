@@ -1,6 +1,4 @@
-//const crypto = require('crypto-js');
 const constants = require('../../common/constants');
-//const validator = require('../common/validator');
 
 class UserDbModel {
     constructor(id, username, password, shoppingCart, shoppingHistory) {
@@ -24,9 +22,6 @@ class UserDbModel {
     }
 
     set username(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_USERNAME_LENGTH, constants.MAX_USERNAME_LENGTH);
-
         this._username = value.trim();
     }
 
@@ -35,10 +30,6 @@ class UserDbModel {
     }
 
     set password(value) {
-        // validator.validateStringLength(value,
-        //     constants.MIN_PASSWORD_LENGTH, constants.MAX_PASSWORD_LENGTH);
-
-        //this._password = new crypto.SHA1(value.trim()).toString();
         this._password = value.trim().toString();
     }
 
@@ -50,7 +41,7 @@ class UserDbModel {
         this._shoppingCart = value;
     }
 
-    get shoppingHistory(){
+    get shoppingHistory() {
         return this._shoppingHistory;
     }
 
@@ -60,10 +51,4 @@ class UserDbModel {
 }
 
 module.exports =
-//  {
-//     getUser(username, password, shoppingCart, shoppingHistory) {
-//         return new UserDbModel(username, password, shoppingCart, shoppingHistory);
-//     },
-// };
-
-UserDbModel;
+    UserDbModel; // eslint-disable-line

@@ -1,6 +1,6 @@
-//const crypto = require('crypto-js');
+//  const crypto = require('crypto-js');
 const constants = require('../../common/constants');
-//const validator = require('../common/validator');
+//  const validator = require('../common/validator');
 const fs = require('fs');
 
 class BikeDbModel {
@@ -54,9 +54,4 @@ class BikeDbModel {
 }
 
 module.exports =
-    //{
-    // getBike(brand, model, price) {
-    //     return new BikeDbModel(brand, model, price);
-    // },
-    //}
-    BikeDbModel;
+    BikeDbModel; // eslint-disable-line

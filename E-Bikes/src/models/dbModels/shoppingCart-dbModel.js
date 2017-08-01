@@ -1,6 +1,4 @@
-//const crypto = require('crypto-js');
 const constants = require('../../common/constants');
-//const validator = require('../common/validator');
 
 class ShoppingCartDomainModel {
     constructor(bikes, totalPrice) {
@@ -29,4 +27,4 @@ module.exports = {
     getCart(bikes, totalPrice) {
         return new ShoppingCartDomainModel(bikes, totalPrice);
     },
-};
+}; // eslint-disable-line
